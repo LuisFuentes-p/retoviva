@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Viva Aerobus | Pago de viaje (prototipo)</title>
+    <style>
+      :root {
+        --viva-red: #e4002b;
+        --viva-dark: #1f1f1f;
+        --viva-gray: #f5f5f7;
+        --viva-border: #e3e3e3;
+        --viva-accent: #ff6b00;
+        --success: #2e7d32;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: var(--viva-dark);
+        background: #ffffff;
+      }
+
+      header {
+        background: var(--viva-red);
+        color: white;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header .brand {
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        font-size: 20px;
+      }
+
+      header .stepper {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      main {
+        padding: 28px 24px 60px;
+        background: var(--viva-gray);
+        min-height: 100vh;
+      }
+
+      .layout {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2.1fr 1fr;
+        gap: 22px;
+      }
+
+      .card {
+        background: white;
+        border: 1px solid var(--viva-border);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .card h2 {
+        margin: 0 0 16px;
+        font-size: 18px;
+      }
+
+      .section {
+        border: 1px solid var(--viva-border);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .section h3 {
+        margin: 0 0 12px;
+        font-size: 15px;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--viva-border);
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #f0f0f0;
+        color: #444;
+      }
+
+      .addons {
+        display: grid;
+        gap: 10px;
+      }
+
+      .addon-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid var(--viva-border);
+        padding: 12px;
+        border-radius: 12px;
+      }
+
+      .addon-item.featured {
+        border: 2px solid var(--viva-accent);
+        background: linear-gradient(90deg, #fff3e8, #ffffff);
+        box-shadow: 0 10px 20px rgba(255, 107, 0, 0.15);
+      }
+
+      .addon-item .title-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .addon-item .feature-badge {
+        background: var(--viva-accent);
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 4px 6px;
+        border-radius: 6px;
+        text-transform: uppercase;
+      }
+
+      .addon-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+      }
+
+      .summary {
+        display: grid;
+        gap: 10px;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
+
+      .summary-row.total {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .price {
+        font-weight: 700;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 14px 18px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        background: var(--viva-red);
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .notice {
+        font-size: 12px;
+        color: #555;
+      }
+
+      .success {
+        background: #e8f5e9;
+        color: var(--success);
+        border: 1px solid #c8e6c9;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        display: none;
+      }
+
+      .badge {
+        background: var(--viva-accent);
+        color: white;
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 8px;
+      }
+
+      .summary-card {
+        position: sticky;
+        top: 20px;
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--viva-border);
+        margin: 12px 0;
+      }
+
+      @media (max-width: 960px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">VIVA AEROBUS</div>
+      <div class="stepper">Paso 3 de 4 · Pago</div>
+    </header>
+
+    <main>
+      <div class="layout">
+        <section class="card">
+          <h2>Pago de viaje</h2>
+          <div class="section">
+            <h3>Resumen del vuelo</h3>
+            <div class="row">
+              <div>
+                <div class="pill">MTY → CDMX</div>
+                <p><strong>Salida:</strong> 08:35 · 15 FEB 2026</p>
+              </div>
+              <div>
+                <div class="pill">Vuelo VB1021</div>
+                <p><strong>Regreso:</strong> 20:10 · 18 FEB 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Contacto</h3>
+            <div class="row">
+              <div>
+                <label for="email">Correo electrónico</label>
+                <input id="email" type="email" placeholder="nombre@correo.com" />
+              </div>
+              <div>
+                <label for="phone">Teléfono</label>
+                <input id="phone" type="tel" placeholder="(55) 1234 5678" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Forma de pago</h3>
+            <div class="row">
+              <div>
+                <label for="cardName">Titular</label>
+                <input id="cardName" type="text" placeholder="Nombre como aparece en la tarjeta" />
+              </div>
+              <div>
+                <label for="cardNumber">Número de tarjeta</label>
+                <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" />
+              </div>
+            </div>
+            <div class="row" style="margin-top: 12px;">
+              <div>
+                <label for="expiry">Vencimiento</label>
+                <input id="expiry" type="text" maxlength="5" placeholder="MM/AA" />
+              </div>
+              <div>
+                <label for="cvc">CVC</label>
+                <input id="cvc" type="password" maxlength="4" placeholder="123" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Servicios adicionales</h3>
+            <div class="addons">
+              <label class="addon-item featured">
+                <div>
+                  <div class="title-row">
+                    <strong>Transporte VivaExpress</strong>
+                    <span class="feature-badge">Nuevo</span>
+                  </div>
+                  <div class="notice">Ciudad ↔ Aeropuerto ↔ Ciudad · salidas cada 30 min</div>
+                </div>
+                <div>
+                  <span class="price" data-price="320">$320</span>
+                  <input type="checkbox" class="addon" data-price="320" />
+                </div>
+              </label>
+              <label class="addon-item">
+                <div>
+                  <strong>Maleta documentada</strong>
+                  <div class="notice">1 pieza 25kg</div>
+                </div>
+                <div>
+                  <span class="price" data-price="450">$450</span>
+                  <input type="checkbox" class="addon" data-price="450" />
+                </div>
+              </label>
+              <label class="addon-item">
+                <div>
+                  <strong>Asiento VivaPlus</strong>
+                  <div class="notice">Fila preferente</div>
+                </div>
+                <div>
+                  <span class="price" data-price="280">$280</span>
+                  <input type="checkbox" class="addon" data-price="280" />
+                </div>
+              </label>
+              <label class="addon-item">
+                <div>
+                  <strong>Equipaje de mano extra</strong>
+                  <div class="notice">+5kg</div>
+                </div>
+                <div>
+                  <span class="price" data-price="190">$190</span>
+                  <input type="checkbox" class="addon" data-price="190" />
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Cupones y promociones</h3>
+            <div class="row">
+              <div>
+                <label for="promo">Código promocional</label>
+                <input id="promo" type="text" placeholder="VIVA2026" />
+              </div>
+              <div>
+                <label>&nbsp;</label>
+                <button class="btn" id="applyPromo" type="button" style="background: var(--viva-dark);">Aplicar</button>
+              </div>
+            </div>
+            <p class="notice" id="promoMessage"></p>
+          </div>
+
+          <div class="section">
+            <label>
+              <input type="checkbox" id="terms" />
+              Acepto términos y condiciones y política de privacidad
+            </label>
+          </div>
+
+          <div class="success" id="successMessage">
+            Pago simulado exitoso. Se envió el itinerario al correo registrado.
+          </div>
+        </section>
+
+        <aside class="card summary-card">
+          <h2>Resumen de pago</h2>
+          <div class="summary">
+            <div class="summary-row">
+              <span>Tarifa base</span>
+              <span id="baseFare">$1,990</span>
+            </div>
+            <div class="summary-row">
+              <span>Impuestos y cargos</span>
+              <span id="taxes">$520</span>
+            </div>
+            <div class="summary-row">
+              <span>Servicios adicionales</span>
+              <span id="addonsTotal">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Descuento</span>
+              <span id="discount">-$0</span>
+            </div>
+            <div class="divider"></div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="total">$2,510</span>
+            </div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button id="payButton" class="btn" type="button">Pagar ahora</button>
+          </div>
+          <p class="notice" style="margin-top: 12px;">
+            <span class="badge">Demo</span>
+            Esta es una simulación para prototipo visual. No se realizan cargos reales.
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <script>
+      const baseFare = 1990;
+      const taxes = 520;
+      let discount = 0;
+      let promoApplied = false;
+
+      const addonsInputs = document.querySelectorAll(".addon");
+      const addonsTotalEl = document.getElementById("addonsTotal");
+      const totalEl = document.getElementById("total");
+      const discountEl = document.getElementById("discount");
+      const promoInput = document.getElementById("promo");
+      const promoMessage = document.getElementById("promoMessage");
+      const applyPromoBtn = document.getElementById("applyPromo");
+      const payButton = document.getElementById("payButton");
+      const successMessage = document.getElementById("successMessage");
+      const termsCheck = document.getElementById("terms");
+
+      const formatCurrency = (value) =>
+        new Intl.NumberFormat("es-MX", {
+          style: "currency",
+          currency: "MXN",
+          maximumFractionDigits: 0,
+        }).format(value);
+
+      const calculateTotals = () => {
+        const addonsTotal = Array.from(addonsInputs)
+          .filter((input) => input.checked)
+          .reduce((sum, input) => sum + Number(input.dataset.price), 0);
+
+        const subtotal = baseFare + taxes + addonsTotal;
+        const total = Math.max(subtotal - discount, 0);
+
+        addonsTotalEl.textContent = formatCurrency(addonsTotal);
+        discountEl.textContent = `-${formatCurrency(discount)}`;
+        totalEl.textContent = formatCurrency(total);
+
+        payButton.disabled = !termsCheck.checked;
+      };
+
+      addonsInputs.forEach((input) => {
+        input.addEventListener("change", calculateTotals);
+      });
+
+      termsCheck.addEventListener("change", calculateTotals);
+
+      applyPromoBtn.addEventListener("click", () => {
+        const code = promoInput.value.trim().toUpperCase();
+        if (!code) {
+          promoMessage.textContent = "Ingresa un código promocional.";
+          promoMessage.style.color = "#b71c1c";
+          return;
+        }
+
+        if (code === "VIVA2026" && !promoApplied) {
+          discount = 250;
+          promoApplied = true;
+          promoMessage.textContent = "Código aplicado: descuento de $250 MXN.";
+          promoMessage.style.color = "#2e7d32";
+          calculateTotals();
+          return;
+        }
+
+        if (promoApplied) {
+          promoMessage.textContent = "Ya hay un código aplicado.";
+        } else {
+          promoMessage.textContent = "Código inválido. Intenta con VIVA2026.";
+        }
+        promoMessage.style.color = "#b71c1c";
+      });
+
+      payButton.addEventListener("click", () => {
+        successMessage.style.display = "block";
+        successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+
+      const cardNumberInput = document.getElementById("cardNumber");
+      cardNumberInput.addEventListener("input", (event) => {
+        const value = event.target.value.replace(/\D/g, "").slice(0, 16);
+        event.target.value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+      });
+
+      const expiryInput = document.getElementById("expiry");
+      expiryInput.addEventListener("input", (event) => {
+        const value = event.target.value.replace(/\D/g, "").slice(0, 4);
+        if (value.length >= 3) {
+          event.target.value = `${value.slice(0, 2)}/${value.slice(2)}`;
+        } else {
+          event.target.value = value;
+        }
+      });
+
+      calculateTotals();
+    </script>
+  </body>
+</html>
