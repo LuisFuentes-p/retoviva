@@ -1,0 +1,399 @@
+.viva-bus-1-0,
+.viva-bus-1-0 * {
+  box-sizing: border-box;
+}
+.viva-bus-1-0 {
+  background: #ffffff;
+  height: 1297px;
+  position: relative;
+  overflow-x: auto;
+}
+.rectangle-41 {
+  background: #d9d9d9;
+  width: 595px;
+  height: 200px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.texto {
+  position: absolute;
+  inset: 0;
+}
+.haz-tu-viaje-m-s-sencillo {
+  color: #c2c0c0;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 227px;
+}
+.te-ofrecemos-conectividad-total-en-tu-viaje {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 43px;
+  top: 290px;
+  width: 514px;
+}
+.adquiere-viva-bus-para-tu-traslado-desde-la-ciudad-al-aeropuerto-y-o-desde-el-aeropuerto-a-tu-destino-final-elige-la-ruta-que-deseas-en-la-secci-n-de-abajo {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 43px;
+  top: 328px;
+  width: 511px;
+}
+.viva-bus {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 251px;
+}
+.total {
+  position: absolute;
+  inset: 0;
+}
+.line-4 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 517px;
+  height: 0px;
+  position: absolute;
+  left: 43px;
+  top: 1017px;
+}
+.line-5 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 517px;
+  height: 0px;
+  position: absolute;
+  left: 43px;
+  top: 1126px;
+}
+.total2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 502.01px;
+  top: 1032px;
+  width: 39.32px;
+}
+._0 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 494.15px;
+  top: 1054px;
+  width: 65.85px;
+  height: 35px;
+}
+.mxn {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 494px;
+  top: 1087px;
+  width: 49px;
+}
+.regreso {
+  position: absolute;
+  inset: 0;
+}
+.canc-n {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 419px;
+  width: 209px;
+}
+.group-14 {
+  width: 406px;
+  height: 52px;
+  position: static;
+}
+.rectangle-42 {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 406px;
+  height: 52px;
+  position: absolute;
+  left: 43px;
+  top: 465px;
+}
+.elige-la-ruta {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  left: 55px;
+  top: 470px;
+}
+.seleccionar {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 55px;
+  top: 491px;
+}
+._000 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 490px;
+  top: 476px;
+  width: 67px;
+  height: 35px;
+}
+.mxn2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 503px;
+  top: 506px;
+}
+.nuevo {
+  position: absolute;
+  inset: 0;
+}
+.es-tu-primera-vez-con-nosotros {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 43px;
+  top: 940px;
+}
+.registrate-y-escoge-tu-asiento-sin-costo {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 43px;
+  top: 967px;
+}
+.iniciar-sesi-n {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: underline;
+  position: absolute;
+  left: 43px;
+  top: 987px;
+  width: 105px;
+  height: 18px;
+}
+.group-85 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-93 {
+  background: #d6f2e1;
+  border-radius: 30px;
+  width: 175px;
+  height: 50px;
+  position: absolute;
+  left: 31px;
+  top: 1155px;
+}
+.no-gracias {
+  color: #02af42;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  position: absolute;
+  left: 59px;
+  top: 1168px;
+}
+.group-84 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-92 {
+  background: #a9a9a9;
+  border-radius: 30px;
+  width: 175px;
+  height: 50px;
+  position: absolute;
+  left: 375px;
+  top: 1155px;
+}
+.confirmar {
+  color: #fffafa;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  position: absolute;
+  left: 411px;
+  top: 1168px;
+}
+.eligeel-autob-s-que-deseas-en-la-secci-n-de-abajo {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 43px;
+  top: 552px;
+  width: 511px;
+}
+.familiar {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-34 {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 180.47px;
+  height: 142.43px;
+  position: absolute;
+  left: 43px;
+  top: 589px;
+}
+.autob-s-familiar {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  left: 52.18px;
+  top: 611.1px;
+  width: 138.72px;
+  height: 19.38px;
+}
+.rectangle-32 {
+  background: #02af42;
+  border-radius: 30px;
+  width: 52.83px;
+  height: 17.75px;
+  position: absolute;
+  left: 159.23px;
+  top: 699.73px;
+}
+.pareja {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-35 {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 180.47px;
+  height: 142.43px;
+  position: absolute;
+  left: 280.47px;
+  top: 589px;
+}
+.rectangle-38 {
+  background: #02af42;
+  border-radius: 30px;
+  width: 52.83px;
+  height: 17.75px;
+  position: absolute;
+  left: 397.12px;
+  top: 699.73px;
+}
+.autob-s-en-pareja {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  left: 287.57px;
+  top: 611.1px;
+  width: 138.72px;
+  height: 19.38px;
+}
+.normal {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-36 {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 180.47px;
+  height: 142.43px;
+  position: absolute;
+  left: 43px;
+  top: 760px;
+}
+.rectangle-39 {
+  background: #02af42;
+  border-radius: 30px;
+  width: 52.83px;
+  height: 17.75px;
+  position: absolute;
+  left: 157.96px;
+  top: 870.73px;
+}
+.autob-s-normal {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  left: 58.22px;
+  top: 782.1px;
+  width: 138.72px;
+  height: 19.38px;
+}

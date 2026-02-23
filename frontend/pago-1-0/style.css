@@ -1,0 +1,1281 @@
+.pago-1-0,
+.pago-1-0 * {
+  box-sizing: border-box;
+}
+.pago-1-0 {
+  background: #ffffff;
+  height: 2545px;
+  position: relative;
+  overflow-x: auto;
+}
+.rectangle-1 {
+  border-style: solid;
+  border-color: #c2c0c0;
+  border-width: 1px;
+  width: 1440px;
+  height: 123px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.pasos {
+  position: absolute;
+  inset: 0;
+}
+.vuelos {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 145px;
+  top: 144px;
+}
+.combos {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 349px;
+  top: 144px;
+}
+.pasajeros {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 564px;
+  top: 144px;
+}
+.adicionales {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 790px;
+  top: 144px;
+}
+.asientos {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 1029px;
+  top: 144px;
+}
+.pagos {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 1247px;
+  top: 144px;
+}
+.revisa-tu-reserva {
+  position: absolute;
+  inset: 0;
+}
+.ida {
+  width: 810px;
+  height: 150px;
+  position: static;
+}
+.group-92 {
+  width: 810px;
+  height: 150px;
+  position: absolute;
+  left: 60px;
+  top: 510px;
+  overflow: visible;
+}
+._7-00-am {
+  color: #000000;
+  text-align: left;
+  position: absolute;
+  left: 93px;
+  top: 553px;
+}
+._7-00-am-span {
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+._7-00-am-span2 {
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+._10-15-am {
+  color: #000000;
+  text-align: left;
+  position: absolute;
+  left: 447px;
+  top: 553px;
+}
+._10-15-am-span {
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+._10-15-am-span2 {
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+.group-93 {
+  width: 177px;
+  height: 16px;
+  position: absolute;
+  left: 259px;
+  top: 577px;
+  overflow: visible;
+}
+.group-95 {
+  width: 70px;
+  height: 24px;
+  position: static;
+}
+.rectangle-99 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 70px;
+  height: 23px;
+  position: absolute;
+  left: 90px;
+  top: 607px;
+}
+.mex {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 103px;
+  top: 607px;
+}
+.group-96 {
+  width: 70px;
+  height: 24px;
+  position: static;
+}
+.group-94 {
+  width: 70px;
+  height: 23px;
+  position: static;
+}
+.rectangle-100 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 70px;
+  height: 23px;
+  position: absolute;
+  left: 551px;
+  top: 607px;
+}
+.cun {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 564px;
+  top: 607px;
+}
+.directo {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 321px;
+  top: 535px;
+}
+.rectangle-101 {
+  background: #d9d9d9;
+  border-radius: 30px 0px 30px 0px;
+  width: 210px;
+  height: 30px;
+  position: absolute;
+  left: 60px;
+  top: 510px;
+}
+.detalles {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 709px;
+  top: 573px;
+}
+.s-b-21-feb-2026 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 90px;
+  top: 514px;
+}
+.regreso {
+  width: 810px;
+  height: 150px;
+  position: static;
+}
+.group-97 {
+  width: 810px;
+  height: 150px;
+  position: absolute;
+  left: 60px;
+  top: 720px;
+  overflow: visible;
+}
+._6-10-am {
+  color: #000000;
+  text-align: left;
+  position: absolute;
+  left: 93px;
+  top: 765px;
+}
+._6-10-am-span {
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+._6-10-am-span2 {
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+._7-35-am {
+  color: #000000;
+  text-align: left;
+  position: absolute;
+  left: 465px;
+  top: 765px;
+}
+._7-35-am-span {
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+._7-35-am-span2 {
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+.group-98 {
+  width: 177px;
+  height: 16px;
+  position: absolute;
+  left: 259px;
+  top: 789px;
+  overflow: visible;
+}
+.group-99 {
+  width: 70px;
+  height: 24px;
+  position: static;
+}
+.rectangle-992 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 70px;
+  height: 23px;
+  position: absolute;
+  left: 90px;
+  top: 819px;
+}
+.cun2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 103px;
+  top: 819px;
+}
+.group-100 {
+  width: 70px;
+  height: 24px;
+  position: static;
+}
+.rectangle-1002 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 70px;
+  height: 23px;
+  position: absolute;
+  left: 551px;
+  top: 819px;
+}
+.mex2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 564px;
+  top: 819px;
+}
+.directo2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 321px;
+  top: 747px;
+}
+.rectangle-102 {
+  background: #d9d9d9;
+  border-radius: 30px 0px 30px 0px;
+  width: 210px;
+  height: 30px;
+  position: absolute;
+  left: 60px;
+  top: 720px;
+}
+.detalles2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 709px;
+  top: 785px;
+}
+.s-b-28-feb-2026 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 90px;
+  top: 726px;
+}
+.infor {
+  width: 651px;
+  height: 184px;
+  position: static;
+}
+.revisa-tu-reservaci-n {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  position: absolute;
+  left: 58px;
+  top: 239px;
+}
+.itinerario-de-viaje {
+  color: #646464;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 58px;
+  top: 310px;
+}
+.ciudad-de-m-xico {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  left: 58px;
+  top: 339px;
+}
+.canc-n {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  left: 560px;
+  top: 339px;
+}
+.rectangle-94 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 70px;
+  height: 23px;
+  position: absolute;
+  left: 58px;
+  top: 400px;
+}
+.rectangle-95 {
+  background: #d9d9d9;
+  border-radius: 30px;
+  width: 70px;
+  height: 23px;
+  position: absolute;
+  left: 160px;
+  top: 400px;
+}
+.mex3 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 75px;
+  top: 402px;
+}
+.aicm {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 177px;
+  top: 402px;
+}
+.maleta {
+  width: 810px;
+  height: 110.61px;
+  position: static;
+}
+.zero {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 90px;
+  top: 975px;
+}
+.group-106 {
+  width: 810px;
+  height: 110.61px;
+  position: static;
+}
+.group-105 {
+  width: 810px;
+  height: 110.61px;
+  position: absolute;
+  left: 60px;
+  top: 930px;
+  overflow: visible;
+}
+.line-18 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #c5b8b8;
+  border-width: 1px 0 0 0;
+  width: 109.88px;
+  height: 0px;
+  position: absolute;
+  left: 300px;
+  top: 930.74px;
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.rectangle-107 {
+  background: #eeeeee;
+  border-radius: 0px 0px 0px 200px;
+  width: 150px;
+  height: 49px;
+  position: absolute;
+  left: 150px;
+  top: 931px;
+}
+._1-art-culo-personal {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 346px;
+  top: 982px;
+}
+.sin-equipaje-de-mano {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 515px;
+  top: 982px;
+}
+.pasajeros2 {
+  position: absolute;
+  inset: 0;
+}
+.pasajeros3 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 60px;
+  top: 1140px;
+}
+.rectangle-109 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #a9a9a9;
+  border-width: 1px;
+  width: 810px;
+  height: 106px;
+  position: absolute;
+  left: 60px;
+  top: 1200px;
+}
+.ellipse-74 {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #c5b8b8;
+  border-width: 1px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  left: 80px;
+  top: 1220px;
+}
+.your-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  position: absolute;
+  left: 165px;
+  top: 1225px;
+}
+.dd-mm-aaaa {
+  color: #d9d9d9;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  left: 165px;
+  top: 1260px;
+}
+.viaja-con-tranquilidad {
+  position: absolute;
+  inset: 0;
+}
+.viaja-con-tranquilidad2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 64px;
+  top: 1380px;
+}
+.vuela-sin-contratiempos-con-nuestras-opciones-de-seguros-y-asistencia {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 60px;
+  top: 1451px;
+}
+.protecci-n-por-interrupci-n {
+  width: 810px;
+  height: 240px;
+  position: static;
+}
+.group-107 {
+  width: 810px;
+  height: 240px;
+  position: static;
+}
+.rectangle-110 {
+  background: #eeeeee;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #a9a9a9;
+  border-width: 1px;
+  width: 810px;
+  height: 240px;
+  position: absolute;
+  left: 60px;
+  top: 1530px;
+}
+.rectangle-111 {
+  background: #f5f5f5;
+  border-radius: 0px 30px 30px 0px;
+  border-style: solid;
+  border-color: #c5b8b8;
+  border-width: 1px;
+  width: 750px;
+  height: 240px;
+  position: absolute;
+  left: 120px;
+  top: 1530px;
+}
+.group-109 {
+  width: 653px;
+  height: 198px;
+  position: static;
+}
+.recomendado {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 178px;
+  top: 1546px;
+}
+.protecci-n-por-interrupci-n-de-vuelo {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 178px;
+  top: 1571px;
+}
+.si-tu-vuelo-fue-cancelado-o-tuvo-una-demora-mayor-a-2-horas-podr-s-reservar-un-nuevo-vuelo-sin-costo-a-conservar-tu-vuelo-original-y-recibir-un-reembolso-de-1-836-02-mxn {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 182px;
+  top: 1616px;
+  width: 418px;
+}
+.serviced-by {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  position: absolute;
+  left: 180px;
+  top: 1727px;
+}
+.group-108 {
+  width: 111px;
+  height: 64px;
+  position: static;
+}
+._165 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 720px;
+  top: 1590px;
+}
+.mxn {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 752px;
+  top: 1634px;
+}
+.conoce-m-s {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 720px;
+  top: 1724px;
+}
+.tarifa-reembolsable {
+  width: 810px;
+  height: 240px;
+  position: static;
+}
+.rectangle-1102 {
+  background: #eeeeee;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #a9a9a9;
+  border-width: 1px;
+  width: 810px;
+  height: 240px;
+  position: absolute;
+  left: 60px;
+  top: 1802px;
+}
+.rectangle-1112 {
+  background: #f5f5f5;
+  border-radius: 0px 30px 30px 0px;
+  border-style: solid;
+  border-color: #c5b8b8;
+  border-width: 1px;
+  width: 750px;
+  height: 240px;
+  position: absolute;
+  left: 120px;
+  top: 1802px;
+}
+.group-1092 {
+  width: 644px;
+  height: 198px;
+  position: static;
+}
+.recomendado2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 178px;
+  top: 1818px;
+}
+.tarifa-reembolsable2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 178px;
+  top: 1843px;
+}
+.cancela-con-total-flez-s-bilidad-hasta-24-hotas-antes-de-tu-vuelo-y-recibe-el-reembolao-en-tu-forma-de-pago-original-sin-complicaciones-ni-explicaciones-cubre-vuelo-impuestos-y-extras-disponible-solo-ahora-ltima-oportunidad {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 182px;
+  top: 1888px;
+  width: 436px;
+}
+.group-1082 {
+  width: 94px;
+  height: 64px;
+  position: static;
+}
+._553 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 720px;
+  top: 1862px;
+}
+.mxn2 {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 752px;
+  top: 1906px;
+}
+.conoce-m-s2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 720px;
+  top: 1996px;
+}
+.viaje-sin-protecci-n {
+  position: absolute;
+  inset: 0;
+}
+.group-110 {
+  width: 810px;
+  height: 90px;
+  position: static;
+}
+.rectangle-112 {
+  background: #eeeeee;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #a9a9a9;
+  border-width: 1px;
+  width: 810px;
+  height: 90px;
+  position: absolute;
+  left: 60px;
+  top: 2070px;
+}
+.rectangle-113 {
+  background: #f5f5f5;
+  border-radius: 0px 30px 30px 0px;
+  border-style: solid;
+  border-color: #a9a9a9;
+  border-width: 1px;
+  width: 750px;
+  height: 90px;
+  position: absolute;
+  left: 120px;
+  top: 2070px;
+}
+.viaje-sin-protecci-n2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 150px;
+  top: 2107px;
+}
+.group-114 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-98 {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #c2c0c0;
+  border-width: 1px;
+  width: 480px;
+  height: 846px;
+  position: absolute;
+  left: 900px;
+  top: 240px;
+}
+.carrito-de-compra {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  position: absolute;
+  left: 930px;
+  top: 259px;
+}
+.tarifa-de-uso {
+  width: 480px;
+  height: 138px;
+  position: static;
+}
+.rectangle-105 {
+  width: 480px;
+  height: 42px;
+  position: absolute;
+  left: 900px;
+  top: 600px;
+  overflow: visible;
+}
+.tarifa-de-uso-de-aeropuerto {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 930px;
+  top: 609px;
+}
+.tua-mex {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 930px;
+  top: 672px;
+}
+._609-00 {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 1254px;
+  top: 672px;
+}
+._351-00 {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 1258px;
+  top: 720px;
+}
+.tua-cun {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 930px;
+  top: 720px;
+}
+.otros-cargos {
+  width: 480px;
+  height: 90px;
+  position: static;
+}
+.rectangle-106 {
+  background: #eeeeee;
+  width: 480px;
+  height: 45px;
+  position: absolute;
+  left: 900px;
+  top: 780px;
+}
+.otros-cargos2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 930px;
+  top: 791px;
+}
+._1-016-00 {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 1250px;
+  top: 852px;
+}
+.transfer {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 930px;
+  top: 852px;
+}
+.ida-tab {
+  width: 480px;
+  height: 129px;
+  position: static;
+}
+.rectangle-103 {
+  background: #eeeeee;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 480px;
+  height: 90px;
+  position: absolute;
+  left: 900px;
+  top: 300px;
+}
+.s-b-21-feb-07-00-am-directo {
+  color: #646464;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  left: 990px;
+  top: 358px;
+}
+._1-x-tarifa-zero {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 930px;
+  top: 411px;
+}
+._1-082-66 {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 1260px;
+  top: 411px;
+}
+.cd-m-xico-mex-canc-n-cun {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 990px;
+  top: 330px;
+}
+.regreso-tab {
+  width: 480px;
+  height: 129px;
+  position: static;
+}
+.rectangle-104 {
+  background: #eeeeee;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 480px;
+  height: 90px;
+  position: absolute;
+  left: 900px;
+  top: 450px;
+}
+.canc-n-cun-cd-m-xico-mex {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 990px;
+  top: 479px;
+}
+.s-b-28-feb-06-10-am-directo {
+  color: #646464;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  left: 990px;
+  top: 506px;
+}
+._1-x-tarifa-zero2 {
+  color: #4d4d4d;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 930px;
+  top: 561px;
+}
+._753-35 {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 1260px;
+  top: 561px;
+}
+.group-113 {
+  width: 480px;
+  height: 120px;
+  position: static;
+}
+.group-112 {
+  width: 480px;
+  height: 90px;
+  position: static;
+}
+.rectangle-108 {
+  background: #d9d9d9;
+  width: 480px;
+  height: 90px;
+  position: absolute;
+  left: 900px;
+  top: 900px;
+}
+.total {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 930px;
+  top: 925px;
+}
+._3-813 {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 1251px;
+  top: 930px;
+}
+.impuestos-y-cargos-incluidos {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 930px;
+  top: 999px;
+  width: 264px;
+  height: 21px;
+}
+._380-75 {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 1258px;
+  top: 999px;
+}
+.group-111 {
+  width: 480px;
+  height: 44px;
+  position: static;
+}
+.rectangle-114 {
+  background: #49ba4d;
+  border-radius: 0px 0px 30px 30px;
+  width: 480px;
+  height: 44px;
+  position: absolute;
+  left: 900px;
+  top: 1041px;
+}
+.cambia-a-switch-o-smart-y-pago-hasta-en-14-msi {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 940px;
+  top: 1053px;
+}
+.rectangle-115 {
+  background: #10402f;
+  border-radius: 30px;
+  width: 810px;
+  height: 120px;
+  position: absolute;
+  left: 60px;
+  top: 2220px;
+}
+.continuar {
+  width: 375px;
+  height: 70px;
+  position: absolute;
+  left: 447px;
+  top: 2245px;
+}
+.rectangle-14 {
+  background: #d9d9d9;
+  border-radius: 60px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.continuar2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  right: 33.6%;
+  left: 33.33%;
+  width: 33.07%;
+  bottom: 28.57%;
+  top: 30%;
+  height: 41.43%;
+}
+.cuadro-gris {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 76px;
+  top: 1635px;
+}
+.rectangle-50 {
+  background: #ffffff;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: #646464;
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.cuadro-gris2 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 76px;
+  top: 1910px;
+}
+.cuadro-gris3 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 76px;
+  top: 2100px;
+}

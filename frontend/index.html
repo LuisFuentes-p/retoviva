@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Viva Aerobus | Pago de viaje (prototipo)</title>
+    <style>
+      :root {
+        --viva-red: #e4002b;
+        --viva-dark: #1f1f1f;
+        --viva-gray: #f5f5f7;
+        --viva-border: #e3e3e3;
+        --viva-accent: #ff6b00;
+        --success: #2e7d32;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: var(--viva-dark);
+        background: #ffffff;
+      }
+
+      header {
+        background: var(--viva-red);
+        color: white;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header .brand {
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        font-size: 20px;
+      }
+
+      header .stepper {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      main {
+        padding: 28px 24px 60px;
+        background: var(--viva-gray);
+        min-height: 100vh;
+      }
+
+      .layout {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2.1fr 1fr;
+        gap: 22px;
+      }
+
+      .card {
+        background: white;
+        border: 1px solid var(--viva-border);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .card h2 {
+        margin: 0 0 16px;
+        font-size: 18px;
+      }
+
+      .section {
+        border: 1px solid var(--viva-border);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .section h3 {
+        margin: 0 0 12px;
+        font-size: 15px;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--viva-border);
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #f0f0f0;
+        color: #444;
+      }
+
+      .addons {
+        display: grid;
+        gap: 10px;
+      }
+
+      .addon-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid var(--viva-border);
+        padding: 12px;
+        border-radius: 12px;
+      }
+
+      .addon-item.featured {
+        border: 2px solid var(--viva-accent);
+        background: linear-gradient(90deg, #fff3e8, #ffffff);
+        box-shadow: 0 10px 20px rgba(255, 107, 0, 0.15);
+      }
+
+      .addon-item .title-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .addon-item .feature-badge {
+        background: var(--viva-accent);
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 4px 6px;
+        border-radius: 6px;
+        text-transform: uppercase;
+      }
+
+      .addon-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+      }
+
+      .summary {
+        display: grid;
+        gap: 10px;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
+
+      .summary-row.total {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .price {
+        font-weight: 700;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 14px 18px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        background: var(--viva-red);
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .notice {
+        font-size: 12px;
+        color: #555;
+      }
+
+      .success {
+        background: #e8f5e9;
+        color: var(--success);
+        border: 1px solid #c8e6c9;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        display: none;
+      }
+
+      .badge {
+        background: var(--viva-accent);
+        color: white;
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 8px;
+      }
+
+      .summary-card {
+        position: sticky;
+        top: 20px;
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--viva-border);
+        margin: 12px 0;
+      }
+
+      .compare-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .compare-card {
+        border: 1px solid var(--viva-border);
+        border-radius: 14px;
+        padding: 14px;
+        background: #fff;
+      }
+
+      .compare-card h4 {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+
+      .compare-card ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 13px;
+        color: #444;
+      }
+
+      .compare-highlight {
+        border: 2px solid var(--viva-accent);
+        background: linear-gradient(90deg, #fff3e8, #ffffff);
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: none;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 80px 16px 24px;
+        z-index: 50;
+      }
+
+      .modal {
+        width: min(720px, 100%);
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid var(--viva-border);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        padding: 18px;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .modal-header h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .modal-close {
+        border: none;
+        background: #f2f2f2;
+        border-radius: 10px;
+        padding: 6px 10px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .loading {
+        font-size: 13px;
+        color: #777;
+      }
+
+      @media (max-width: 960px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">VIVA AEROBUS</div>
+      <div class="stepper">Paso 3 de 4 · Pago</div>
+    </header>
+
+    <main>
+      <div class="layout">
+        <section class="card">
+          <h2>Pago de viaje</h2>
+          <div class="section">
+            <h3>Resumen del vuelo</h3>
+            <div class="row">
+              <div>
+                <div class="pill" id="routeLabel">Cargando...</div>
+                <p><strong>Salida:</strong> <span id="departureInfo">--</span></p>
+              </div>
+              <div>
+                <div class="pill" id="flightNumber">Vuelo --</div>
+                <p><strong>Regreso:</strong> <span id="returnInfo">--</span></p>
+              </div>
+            </div>
+            <p class="notice" style="margin-top: 8px;">
+              Reserva <strong id="bookingRef">---</strong> · <span id="passengerName">Pasajero</span>
+            </p>
+          </div>
+
+          <div class="section">
+            <h3>Contacto</h3>
+            <div class="row">
+              <div>
+                <label for="email">Correo electrónico</label>
+                <input id="email" type="email" placeholder="nombre@correo.com" />
+              </div>
+              <div>
+                <label for="phone">Teléfono</label>
+                <input id="phone" type="tel" placeholder="(55) 1234 5678" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Forma de pago</h3>
+            <div class="row">
+              <div>
+                <label for="cardName">Titular</label>
+                <input id="cardName" type="text" placeholder="Nombre como aparece en la tarjeta" />
+              </div>
+              <div>
+                <label for="cardNumber">Número de tarjeta</label>
+                <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" />
+              </div>
+            </div>
+            <div class="row" style="margin-top: 12px;">
+              <div>
+                <label for="expiry">Vencimiento</label>
+                <input id="expiry" type="text" maxlength="5" placeholder="MM/AA" />
+              </div>
+              <div>
+                <label for="cvc">CVC</label>
+                <input id="cvc" type="password" maxlength="4" placeholder="123" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Servicios adicionales</h3>
+            <div class="addons" id="addonsList">
+              <div class="loading">Cargando servicios...</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Comparativa VivaExpress</h3>
+            <button class="btn" id="openCompare" type="button" style="background: var(--viva-dark);">
+              Ver comparativa VivaExpress vs. tradicional
+            </button>
+            <p class="notice" style="margin-top: 8px;">Se abrirá un pop-up con los beneficios.</p>
+          </div>
+
+          <div class="section">
+            <h3>Cupones y promociones</h3>
+            <div class="row">
+              <div>
+                <label for="promo">Código promocional</label>
+                <input id="promo" type="text" placeholder="VIVA2026" />
+              </div>
+              <div>
+                <label>&nbsp;</label>
+                <button class="btn" id="applyPromo" type="button" style="background: var(--viva-dark);">Aplicar</button>
+              </div>
+            </div>
+            <p class="notice" id="promoMessage"></p>
+          </div>
+
+          <div class="section">
+            <label>
+              <input type="checkbox" id="terms" />
+              Acepto términos y condiciones y política de privacidad
+            </label>
+          </div>
+
+          <div class="success" id="successMessage">
+            Pago simulado exitoso. Se envió el itinerario al correo registrado.
+          </div>
+        </section>
+
+        <aside class="card summary-card">
+          <h2>Resumen de pago</h2>
+          <div class="summary">
+            <div class="summary-row">
+              <span>Tarifa base</span>
+              <span id="baseFare">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Impuestos y cargos</span>
+              <span id="taxes">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Servicios adicionales</span>
+              <span id="addonsTotal">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Descuento</span>
+              <span id="discount">-$0</span>
+            </div>
+            <div class="divider"></div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="total">$0</span>
+            </div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button id="payButton" class="btn" type="button">Pagar ahora</button>
+          </div>
+          <p class="notice" style="margin-top: 12px;">
+            <span class="badge">Demo</span>
+            Esta es una simulación para prototipo visual. No se realizan cargos reales.
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <div class="modal-backdrop" id="compareModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h3>Comparativa VivaExpress</h3>
+          <button class="modal-close" id="closeCompare" type="button">Cerrar</button>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-card compare-highlight">
+            <h4>VivaExpress (Ciudad ↔ Aeropuerto)</h4>
+            <ul>
+              <li>Salidas cada 30 min</li>
+              <li>Tiempo estimado: 35–45 min</li>
+              <li>Pick-up dedicado cerca de tu zona</li>
+              <li>Sin filas de compra en terminal</li>
+              <li>Integrado a tu reserva Viva</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <h4>Servicios tradicionales</h4>
+            <ul>
+              <li>Salidas cada 60–90 min</li>
+              <li>Tiempo estimado: 60–90 min</li>
+              <li>Traslados extra entre terminales</li>
+              <li>Compra y validación en sitio</li>
+              <li>Sin integración con tu vuelo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const state = {
+        bookingId: null,
+        baseFare: 0,
+        taxes: 0,
+        discount: 0,
+        promoApplied: false,
+        selectedAddons: new Set(),
+        promoCode: null,
+      };
+
+      const elements = {
+        routeLabel: document.getElementById("routeLabel"),
+        departureInfo: document.getElementById("departureInfo"),
+        returnInfo: document.getElementById("returnInfo"),
+        flightNumber: document.getElementById("flightNumber"),
+        bookingRef: document.getElementById("bookingRef"),
+        passengerName: document.getElementById("passengerName"),
+        addonsList: document.getElementById("addonsList"),
+        addonsTotal: document.getElementById("addonsTotal"),
+        total: document.getElementById("total"),
+        discount: document.getElementById("discount"),
+        baseFare: document.getElementById("baseFare"),
+        taxes: document.getElementById("taxes"),
+        promoInput: document.getElementById("promo"),
+        promoMessage: document.getElementById("promoMessage"),
+        applyPromoBtn: document.getElementById("applyPromo"),
+        payButton: document.getElementById("payButton"),
+        successMessage: document.getElementById("successMessage"),
+        termsCheck: document.getElementById("terms"),
+        email: document.getElementById("email"),
+        phone: document.getElementById("phone"),
+        cardName: document.getElementById("cardName"),
+        cardNumber: document.getElementById("cardNumber"),
+        expiry: document.getElementById("expiry"),
+        cvc: document.getElementById("cvc"),
+      };
+
+      const formatCurrency = (value) =>
+        new Intl.NumberFormat("es-MX", {
+          style: "currency",
+          currency: "MXN",
+          maximumFractionDigits: 0,
+        }).format(value);
+
+      const calculateTotals = () => {
+        const addonsTotal = Array.from(state.selectedAddons).reduce(
+          (sum, addon) => sum + addon.price,
+          0
+        );
+        const subtotal = state.baseFare + state.taxes + addonsTotal;
+        const total = Math.max(subtotal - state.discount, 0);
+
+        elements.addonsTotal.textContent = formatCurrency(addonsTotal);
+        elements.discount.textContent = `-${formatCurrency(state.discount)}`;
+        elements.total.textContent = formatCurrency(total);
+        elements.baseFare.textContent = formatCurrency(state.baseFare);
+        elements.taxes.textContent = formatCurrency(state.taxes);
+
+        elements.payButton.disabled = !elements.termsCheck.checked;
+      };
+
+      const renderAddons = (addons, selectedIds) => {
+        elements.addonsList.innerHTML = "";
+        state.selectedAddons.clear();
+
+        addons.forEach((addon) => {
+          const label = document.createElement("label");
+          label.className = `addon-item${addon.isFeatured ? " featured" : ""}`;
+
+          const info = document.createElement("div");
+          const titleRow = document.createElement("div");
+          titleRow.className = "title-row";
+
+          const title = document.createElement("strong");
+          title.textContent = addon.name;
+          titleRow.appendChild(title);
+
+          if (addon.isFeatured) {
+            const badge = document.createElement("span");
+            badge.className = "feature-badge";
+            badge.textContent = "Nuevo";
+            titleRow.appendChild(badge);
+          }
+
+          const description = document.createElement("div");
+          description.className = "notice";
+          description.textContent = addon.description;
+
+          info.appendChild(titleRow);
+          info.appendChild(description);
+
+          const action = document.createElement("div");
+          const price = document.createElement("span");
+          price.className = "price";
+          price.textContent = formatCurrency(addon.price);
+
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.className = "addon";
+          input.dataset.price = addon.price;
+          input.dataset.id = addon.id;
+          input.checked = selectedIds.includes(addon.id);
+
+          if (input.checked) {
+            state.selectedAddons.add({ id: addon.id, price: addon.price });
+          }
+
+          input.addEventListener("change", () => {
+            if (input.checked) {
+              state.selectedAddons.add({ id: addon.id, price: addon.price });
+            } else {
+              state.selectedAddons.forEach((item) => {
+                if (item.id === addon.id) {
+                  state.selectedAddons.delete(item);
+                }
+              });
+            }
+            calculateTotals();
+          });
+
+          action.appendChild(price);
+          action.appendChild(input);
+
+          label.appendChild(info);
+          label.appendChild(action);
+          elements.addonsList.appendChild(label);
+        });
+      };
+
+      const loadBooking = async () => {
+        const response = await fetch("/api/booking");
+        const data = await response.json();
+
+        state.bookingId = data.booking.id;
+        state.baseFare = data.booking.baseFare;
+        state.taxes = data.booking.taxes;
+
+        elements.routeLabel.textContent = `${data.flight.origin} → ${data.flight.destination}`;
+        elements.flightNumber.textContent = `Vuelo ${data.flight.number}`;
+        elements.departureInfo.textContent = `${data.flight.departureTime} · ${data.flight.departureDate}`;
+        elements.returnInfo.textContent = `${data.flight.returnTime} · ${data.flight.returnDate}`;
+        elements.bookingRef.textContent = data.booking.reference;
+        elements.passengerName.textContent = data.passenger.name;
+
+        renderAddons(data.addons, data.selectedAddons);
+        calculateTotals();
+      };
+
+      elements.applyPromoBtn.addEventListener("click", async () => {
+        const code = elements.promoInput.value.trim().toUpperCase();
+        if (!code) {
+          elements.promoMessage.textContent = "Ingresa un código promocional.";
+          elements.promoMessage.style.color = "#b71c1c";
+          return;
+        }
+
+        const response = await fetch("/api/promo", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code }),
+        });
+
+        const data = await response.json();
+        if (data.applied) {
+          state.discount = data.discount;
+          state.promoApplied = true;
+          state.promoCode = code;
+          elements.promoMessage.textContent = data.message;
+          elements.promoMessage.style.color = "#2e7d32";
+          calculateTotals();
+          return;
+        }
+
+        elements.promoMessage.textContent = data.message;
+        elements.promoMessage.style.color = "#b71c1c";
+      });
+
+      elements.payButton.addEventListener("click", async () => {
+        elements.payButton.disabled = true;
+        const response = await fetch("/api/pay", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            bookingId: state.bookingId,
+            addons: Array.from(state.selectedAddons).map((addon) => addon.id),
+            promoCode: state.promoCode,
+            contact: {
+              email: elements.email.value,
+              phone: elements.phone.value,
+            },
+            payment: {
+              cardName: elements.cardName.value,
+              cardNumber: elements.cardNumber.value,
+              expiry: elements.expiry.value,
+            },
+          }),
+        });
+
+        const data = await response.json();
+        elements.successMessage.textContent = data.message;
+        elements.successMessage.style.display = "block";
+        elements.successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+        elements.payButton.disabled = !elements.termsCheck.checked;
+      });
+
+      elements.termsCheck.addEventListener("change", calculateTotals);
+
+      const cardNumberInput = elements.cardNumber;
+      cardNumberInput.addEventListener("input", (event) => {
+        const value = event.target.value.replace(/\D/g, "").slice(0, 16);
+        event.target.value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+      });
+
+      const expiryInput = elements.expiry;
+      expiryInput.addEventListener("input", (event) => {
+        const value = event.target.value.replace(/\D/g, "").slice(0, 4);
+        if (value.length >= 3) {
+          event.target.value = `${value.slice(0, 2)}/${value.slice(2)}`;
+        } else {
+          event.target.value = value;
+        }
+      });
+
+      const compareModal = document.getElementById("compareModal");
+      const openCompare = document.getElementById("openCompare");
+      const closeCompare = document.getElementById("closeCompare");
+
+      const toggleCompare = (isOpen) => {
+        compareModal.style.display = isOpen ? "flex" : "none";
+        compareModal.setAttribute("aria-hidden", String(!isOpen));
+      };
+
+      openCompare.addEventListener("click", () => toggleCompare(true));
+      closeCompare.addEventListener("click", () => toggleCompare(false));
+      compareModal.addEventListener("click", (event) => {
+        if (event.target === compareModal) {
+          toggleCompare(false);
+        }
+      });
+
+      loadBooking().catch(() => {
+        elements.addonsList.innerHTML = "<div class=\"loading\">No se pudo cargar la información.</div>";
+      });
+    </script>
+  </body>
+</html>

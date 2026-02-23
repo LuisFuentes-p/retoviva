@@ -1,0 +1,252 @@
+.iniciar-sesin {
+  background-color: #ffffff;
+  width: 100%;
+  min-width: 1440px;
+  min-height: 1024px;
+  position: relative;
+}
+
+.iniciar-sesin .rectangle {
+  position: absolute;
+  top: 111px;
+  left: 436px;
+  width: 584px;
+  height: 819px;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+}
+
+.iniciar-sesin .bienvenido {
+  position: absolute;
+  top: 240px;
+  left: 624px;
+  width: 196px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+.iniciar-sesin .text-wrapper {
+  margin-left: 1px;
+  width: 190px;
+  height: 39px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.iniciar-sesin .div {
+  width: 192px;
+  height: 17px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.iniciar-sesin .usuario {
+  position: absolute;
+  top: 341px;
+  left: 488px;
+  width: 467px;
+  height: 79px;
+}
+
+.iniciar-sesin .rectangle-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 463px;
+  height: 79px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.iniciar-sesin .text-wrapper-2 {
+  position: absolute;
+  top: 13px;
+  left: 46px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #646464;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.iniciar-sesin .text-wrapper-3 {
+  position: absolute;
+  top: 41px;
+  left: 46px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #646464;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.iniciar-sesin .contrasea {
+  position: absolute;
+  top: 465px;
+  left: 488px;
+  width: 467px;
+  height: 79px;
+}
+
+.iniciar-sesin .recurdame {
+  position: absolute;
+  top: 575px;
+  left: 526px;
+  width: 100px;
+  height: 18px;
+  display: flex;
+}
+
+.iniciar-sesin .text-wrapper-4 {
+  width: 98px;
+  height: 18px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.iniciar-sesin .text-wrapper-5 {
+  position: absolute;
+  top: 575px;
+  left: 791px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.iniciar-sesin .div-2 {
+  position: absolute;
+  top: 644px;
+  left: 488px;
+  width: 465px;
+  height: 79px;
+}
+
+.iniciar-sesin .rectangle-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 463px;
+  height: 79px;
+  background-color: #646464;
+  border-radius: 15px;
+}
+
+.iniciar-sesin .text-wrapper-6 {
+  position: absolute;
+  top: 25px;
+  left: 151px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.iniciar-sesin .text-wrapper-7 {
+  position: absolute;
+  top: 739px;
+  left: 663px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.iniciar-sesin .crear-cuenta {
+  position: absolute;
+  top: 782px;
+  left: 436px;
+  width: 586px;
+  height: 74px;
+}
+
+.iniciar-sesin .rectangle-4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 584px;
+  height: 74px;
+  background-color: #d9d9d9;
+}
+
+.iniciar-sesin .text-wrapper-8 {
+  position: absolute;
+  top: 22px;
+  left: 355px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.iniciar-sesin .powered {
+  position: absolute;
+  top: 856px;
+  left: 436px;
+  width: 586px;
+  height: 74px;
+}
+
+.iniciar-sesin .rectangle-5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 584px;
+  height: 74px;
+  background-color: #c5b7b7;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.iniciar-sesin .text-wrapper-9 {
+  position: absolute;
+  top: 37px;
+  left: 180px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.iniciar-sesin .cuadro {
+  position: absolute;
+  top: 568px;
+  left: 492px;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #49ba4c;
+}

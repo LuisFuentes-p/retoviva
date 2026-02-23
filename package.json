@@ -4,7 +4,8 @@
   "description": "Prototipo de pago Viva Aerobus con Node.js y SQLite",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "generate:screens": "node scripts/generate-screens.js"
   },
   "dependencies": {
     "express": "^4.19.2",

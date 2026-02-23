@@ -1,0 +1,189 @@
+.viva-bus-1-1,
+.viva-bus-1-1 * {
+  box-sizing: border-box;
+}
+.viva-bus-1-1 {
+  background: #ffffff;
+  height: 2545px;
+  position: relative;
+  overflow-x: auto;
+}
+.rectangle-43 {
+  background: #d9d9d9;
+  width: 1440px;
+  height: 330px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.viva-bus {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  position: absolute;
+  left: 60px;
+  top: 134px;
+}
+.haz-tu-viaje-m-s-sencillo {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  position: absolute;
+  left: 60px;
+  top: 84px;
+}
+.te-ofrecemos-conectividad-total-en-tu-viaje {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  left: 60px;
+  top: 204px;
+  width: 540px;
+}
+.group-89 {
+  position: absolute;
+  inset: 0;
+}
+.autob-s-familiar {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 60px;
+  top: 480px;
+}
+.line-11 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 1320px;
+  height: 0px;
+  position: absolute;
+  left: 60px;
+  top: 540px;
+}
+.group-88 {
+  position: absolute;
+  inset: 0;
+}
+.autob-s-pareja {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 60px;
+  top: 794px;
+}
+.line-12 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 1320px;
+  height: 0px;
+  position: absolute;
+  left: 60px;
+  top: 859px;
+}
+.group-87 {
+  position: absolute;
+  inset: 0;
+}
+.autob-s-entre-amigos {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 60px;
+  top: 1113px;
+}
+.line-13 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 1320px;
+  height: 0px;
+  position: absolute;
+  left: 60px;
+  top: 1171px;
+}
+.group-90 {
+  position: absolute;
+  inset: 0;
+}
+.autob-s-normal {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 60px;
+  top: 1425px;
+}
+.line-132 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 1320px;
+  height: 0px;
+  position: absolute;
+  left: 60px;
+  top: 1483px;
+}
+.weui-arrow-outlined {
+  width: 49px;
+  height: 98px;
+  position: absolute;
+  left: 1380px;
+  top: 1420px;
+  transform: translate(-98px, 0px);
+  overflow: visible;
+  aspect-ratio: 49/98;
+}
+.weui-arrow-outlined2 {
+  width: 49px;
+  height: 98px;
+  position: absolute;
+  left: 1380px;
+  top: 789px;
+  transform: translate(-98px, 0px);
+  overflow: visible;
+  aspect-ratio: 49/98;
+}
+.weui-arrow-outlined3 {
+  width: 49px;
+  height: 98px;
+  position: absolute;
+  left: 1380px;
+  top: 1110px;
+  transform: translate(-98px, 0px);
+  overflow: visible;
+  aspect-ratio: 49/98;
+}
+.weui-arrow-outlined4 {
+  width: 49px;
+  height: 98px;
+  position: absolute;
+  left: 1380px;
+  top: 479px;
+  transform: translate(-98px, 0px);
+  overflow: visible;
+  aspect-ratio: 49/98;
+}

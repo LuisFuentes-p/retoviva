@@ -1,0 +1,305 @@
+.viva-transfer-1-0,
+.viva-transfer-1-0 * {
+  box-sizing: border-box;
+}
+.viva-transfer-1-0 {
+  background: #ffffff;
+  height: 917px;
+  position: relative;
+  overflow: hidden;
+}
+.rectangle-41 {
+  background: #d9d9d9;
+  width: 595px;
+  height: 200px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.texto {
+  position: absolute;
+  inset: 0;
+}
+.conectividad-para-tu-viaje {
+  color: #c2c0c0;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 227px;
+}
+.viaja-c-modamente-en-nuestro-servicio-compartido-para-llegar-hasta-tu-destino {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 43px;
+  top: 290px;
+  width: 514px;
+}
+.adquiere-tu-transportaci-n-terrestre-a-un-precio-preferencial {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  position: absolute;
+  left: 43px;
+  top: 363px;
+  width: 514px;
+}
+.viva-transfer {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 251px;
+}
+.total {
+  position: absolute;
+  inset: 0;
+}
+.line-4 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 526px;
+  height: 0px;
+  position: absolute;
+  left: 31px;
+  top: 772px;
+}
+.line-5 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 526px;
+  height: 0px;
+  position: absolute;
+  left: 31px;
+  top: 881px;
+}
+.total2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 498px;
+  top: 787px;
+}
+._0 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 490px;
+  top: 809px;
+  width: 67px;
+  height: 35px;
+}
+.mxn {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 503px;
+  top: 842px;
+}
+.ida {
+  position: absolute;
+  inset: 0;
+}
+.ciudad-de-m-xico {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 408px;
+  width: 209px;
+}
+.group-13 {
+  width: 406px;
+  height: 52px;
+  position: static;
+}
+.rectangle-42 {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 406px;
+  height: 52px;
+  position: absolute;
+  left: 43px;
+  top: 454px;
+}
+.elige-la-ruta {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  left: 55px;
+  top: 459px;
+}
+.seleccionar {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 55px;
+  top: 480px;
+}
+._000 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 490px;
+  top: 462px;
+  width: 67px;
+  height: 35px;
+}
+.mxn2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 503px;
+  top: 493px;
+}
+.regreso {
+  position: absolute;
+  inset: 0;
+}
+.canc-n {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 43px;
+  top: 544px;
+  width: 209px;
+}
+.group-14 {
+  width: 406px;
+  height: 52px;
+  position: static;
+}
+.rectangle-422 {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 406px;
+  height: 52px;
+  position: absolute;
+  left: 43px;
+  top: 590px;
+}
+.elige-la-ruta2 {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  left: 55px;
+  top: 595px;
+}
+.seleccionar2 {
+  color: #646464;
+  text-align: left;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 55px;
+  top: 616px;
+}
+._0002 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 490px;
+  top: 601px;
+  width: 67px;
+  height: 35px;
+}
+.mxn3 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 503px;
+  top: 631px;
+}
+.nuevo {
+  position: absolute;
+  inset: 0;
+}
+.es-tu-primera-vez-con-nosotros {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 43px;
+  top: 682px;
+}
+.registrate-y-escoge-tu-asiento-sin-costo {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 43px;
+  top: 709px;
+}
+.iniciar-sesi-n {
+  color: #000000;
+  text-align: left;
+  font-family: "Montserrat-Medium", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: underline;
+  position: absolute;
+  left: 43px;
+  top: 729px;
+  width: 105px;
+  height: 18px;
+}

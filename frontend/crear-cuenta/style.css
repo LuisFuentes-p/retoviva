@@ -1,0 +1,586 @@
+.crear-cuenta {
+  background-color: #ffffff;
+  width: 100%;
+  min-width: 1440px;
+  min-height: 2491px;
+  position: relative;
+}
+
+.crear-cuenta .rectangle {
+  position: absolute;
+  top: 266px;
+  left: 227px;
+  width: 985px;
+  height: 1943px;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+}
+
+.crear-cuenta .div {
+  position: absolute;
+  top: 512px;
+  left: 227px;
+  width: 985px;
+  height: 1714px;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+}
+
+.crear-cuenta .bienvenido {
+  position: absolute;
+  width: 701px;
+  height: 73px;
+  top: 489px;
+  left: 369px;
+  display: flex;
+}
+
+.crear-cuenta .group {
+  width: 705px;
+  height: 73px;
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-cuenta .text-wrapper {
+  margin-left: 215px;
+  width: 271px;
+  height: 49px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .p {
+  width: 701px;
+  height: 24px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.crear-cuenta .div-2 {
+  position: absolute;
+  top: 1829px;
+  left: 488px;
+  width: 465px;
+  height: 79px;
+}
+
+.crear-cuenta .rectangle-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 463px;
+  height: 79px;
+  background-color: #646464;
+  border-radius: 15px;
+}
+
+.crear-cuenta .text-wrapper-2 {
+  position: absolute;
+  top: 25px;
+  left: 152px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-3 {
+  position: absolute;
+  top: 2009px;
+  left: 583px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .powered {
+  position: absolute;
+  top: 2102px;
+  left: 227px;
+  width: 987px;
+  height: 125px;
+}
+
+.crear-cuenta .rectangle-3 {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 985px;
+  height: 125px;
+  background-color: #c5b7b7;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.crear-cuenta .text-wrapper-4 {
+  position: absolute;
+  top: 50px;
+  left: 304px;
+  width: 155px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .contrasea {
+  position: absolute;
+  top: 1369px;
+  left: 276px;
+  width: 888px;
+  height: 139px;
+}
+
+.crear-cuenta .text-wrapper-5 {
+  top: 0;
+  left: 0;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 32px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-2 {
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 429px;
+  height: 86px;
+}
+
+.crear-cuenta .rectangle-4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 425px;
+  height: 86px;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.crear-cuenta .text-wrapper-6 {
+  top: 6px;
+  left: 22px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-7 {
+  position: absolute;
+  top: 43px;
+  left: 22px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #4c4c4c;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-3 {
+  position: absolute;
+  top: 53px;
+  left: 461px;
+  width: 429px;
+  height: 86px;
+}
+
+.crear-cuenta .text-wrapper-8 {
+  position: absolute;
+  top: 43px;
+  left: 21px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #4c4c4c;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-9 {
+  position: absolute;
+  top: 6px;
+  left: 21px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.crear-cuenta .infromacin-personal {
+  position: absolute;
+  top: 861px;
+  left: 276px;
+  width: 888px;
+  height: 273px;
+}
+
+.crear-cuenta .group-4 {
+  position: absolute;
+  top: 67px;
+  left: 0;
+  width: 429px;
+  height: 86px;
+}
+
+.crear-cuenta .group-5 {
+  position: absolute;
+  top: 67px;
+  left: 461px;
+  width: 429px;
+  height: 86px;
+}
+
+.crear-cuenta .text-wrapper-10 {
+  position: absolute;
+  top: 43px;
+  left: 34px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #4c4c4c;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-11 {
+  position: absolute;
+  top: 6px;
+  left: 34px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.crear-cuenta .group-6 {
+  position: absolute;
+  top: 187px;
+  left: 0;
+  width: 429px;
+  height: 86px;
+}
+
+.crear-cuenta .text-wrapper-12 {
+  position: absolute;
+  top: 8px;
+  left: 22px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.crear-cuenta .informacin-contacto {
+  position: absolute;
+  top: 1182px;
+  left: 276px;
+  width: 888px;
+  height: 153px;
+}
+
+.crear-cuenta .text-wrapper-13 {
+  position: absolute;
+  top: 43px;
+  left: 92px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #4c4c4c;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-14 {
+  position: absolute;
+  top: 6px;
+  left: 92px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.crear-cuenta .line {
+  position: absolute;
+  top: 15px;
+  left: 76px;
+  width: 1px;
+  height: 57px;
+  object-fit: cover;
+}
+
+.crear-cuenta .requisitos {
+  position: absolute;
+  height: 79px;
+  top: 1565px;
+  left: 276px;
+  display: flex;
+  align-items: flex-start;
+  min-width: 856px;
+  gap: 220px;
+}
+
+.crear-cuenta .group-7 {
+  width: 251px;
+  height: 79px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.crear-cuenta .group-8 {
+  width: 249px;
+  display: flex;
+  gap: 11px;
+}
+
+.crear-cuenta .ellipse {
+  width: 21px;
+  height: 21px;
+  background-color: #d9d9d9;
+  border-radius: 10.5px;
+}
+
+.crear-cuenta .text-wrapper-15 {
+  margin-top: 2px;
+  width: 215px;
+  height: 17px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #c5b7b7;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-9 {
+  width: 253px;
+  display: flex;
+  gap: 11px;
+}
+
+.crear-cuenta .text-wrapper-16 {
+  margin-top: 2px;
+  width: 219px;
+  height: 17px;
+  font-weight: 500;
+  color: #c5b7b7;
+  font-size: 14px;
+  font-family: "Montserrat-Medium", Helvetica;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-10 {
+  width: 221px;
+  display: flex;
+  gap: 11px;
+}
+
+.crear-cuenta .text-wrapper-17 {
+  margin-top: 2px;
+  width: 187px;
+  height: 17px;
+  font-weight: 500;
+  color: #c5b7b7;
+  font-size: 14px;
+  font-family: "Montserrat-Medium", Helvetica;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-11 {
+  width: 385px;
+  height: 78px;
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-cuenta .group-12 {
+  width: 270px;
+  display: flex;
+  gap: 11px;
+}
+
+.crear-cuenta .text-wrapper-18 {
+  margin-top: 2px;
+  width: 236px;
+  height: 17px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #c5b7b7;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-13 {
+  width: 387px;
+  margin-top: 8px;
+  display: flex;
+  gap: 11px;
+}
+
+.crear-cuenta .un-car-cter-no {
+  margin-top: 2px;
+  width: 353px;
+  height: 17px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #c5b7b7;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .group-14 {
+  width: 221px;
+  margin-top: 7px;
+  display: flex;
+  gap: 11px;
+}
+
+.crear-cuenta .text-wrapper-19 {
+  margin-top: 3px;
+  width: 187px;
+  height: 17px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #c5b7b7;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .ya-tienes-una-cuenta {
+  position: absolute;
+  top: 1925px;
+  left: 573px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .span {
+  font-weight: 500;
+  color: #646464;
+}
+
+.crear-cuenta .text-wrapper-20 {
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #10402f;
+}
+
+.crear-cuenta .trminos-y {
+  position: absolute;
+  top: 1724px;
+  left: 325px;
+  width: 839px;
+  height: 60px;
+  display: flex;
+}
+
+.crear-cuenta .al-crear-una-cuenta {
+  width: 837px;
+  height: 60px;
+  font-weight: 400;
+  color: transparent;
+  font-size: 16px;
+  text-align: justify;
+  font-family: "Montserrat-Medium", Helvetica;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-21 {
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #124734;
+}
+
+.crear-cuenta .crea-una-cuenta-para {
+  position: absolute;
+  top: 618px;
+  left: 394px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .text-wrapper-22 {
+  color: #02af42;
+}
+
+.crear-cuenta .text-wrapper-23 {
+  color: #000000;
+}
+
+.crear-cuenta .registra-a-tus-compa {
+  position: absolute;
+  top: 690px;
+  left: calc(50.00% - 205px);
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.crear-cuenta .cuadro {
+  position: absolute;
+  top: 1724px;
+  left: 301px;
+  width: 19px;
+  height: 19px;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #49ba4c;
+}

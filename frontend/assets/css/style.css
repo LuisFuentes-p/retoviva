@@ -1,0 +1,1086 @@
+.informacin-del {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1440px;
+  min-height: 3600px;
+  position: relative;
+}
+
+.informacin-del .rectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 123px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.informacin-del .navbar {
+  position: absolute;
+  top: 144px;
+  left: 145px;
+  width: 1163px;
+  height: 19px;
+  display: flex;
+}
+
+.informacin-del .text-wrapper {
+  width: 55px;
+  height: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .div {
+  width: 66px;
+  margin-left: 149px;
+  height: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-2 {
+  width: 77px;
+  margin-left: 149px;
+  height: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-3 {
+  width: 92px;
+  margin-left: 149px;
+  height: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-4 {
+  width: 70px;
+  margin-left: 147px;
+  height: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-5 {
+  width: 49px;
+  margin-left: 148px;
+  height: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .pasajero {
+  position: absolute;
+  top: 225px;
+  left: 100px;
+  width: 464px;
+  height: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.informacin-del .text-wrapper-6 {
+  width: 396px;
+  height: 39px;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .p {
+  width: 460px;
+  height: 24px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .nuevo-pasajero {
+  top: 371px;
+  position: absolute;
+  left: 50px;
+  width: 1354px;
+  height: 879px;
+}
+
+.informacin-del .rectangle-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1350px;
+  height: 879px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
+}
+
+.informacin-del .text-wrapper-7 {
+  width: 80px;
+  position: absolute;
+  top: 21px;
+  left: 227px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-8 {
+  position: absolute;
+  top: 44px;
+  left: 227px;
+  width: 195px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .nuevo-pasajero-2 {
+  top: 1332px;
+  position: absolute;
+  left: 50px;
+  width: 1354px;
+  height: 879px;
+}
+
+.informacin-del .text-wrapper-9 {
+  width: 119px;
+  position: absolute;
+  top: 21px;
+  left: 227px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .informacin {
+  position: absolute;
+  top: 500px;
+  left: 50px;
+  width: 1354px;
+  height: 750px;
+}
+
+.informacin-del .rectangle-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1350px;
+  height: 750px;
+  background-color: #eeeeee;
+  border-radius: 0px 0px 30px 30px;
+}
+
+.informacin-del .text-wrapper-10 {
+  top: 30px;
+  width: 270px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  position: absolute;
+  left: 50px;
+}
+
+.informacin-del .text-wrapper-11 {
+  position: absolute;
+  top: 74px;
+  left: 50px;
+  width: 1075px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .asistencia-especial {
+  position: absolute;
+  top: 575px;
+  left: 50px;
+  width: 1175px;
+  height: 85px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.informacin-del .line {
+  width: 1175px;
+  height: 1px;
+  object-fit: cover;
+}
+
+.informacin-del .asistencia-personal {
+  margin-left: 52px;
+  width: 402px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.informacin-del .text-wrapper-12 {
+  width: 156px;
+  height: 20px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-13 {
+  width: 398px;
+  height: 40px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .informacin-2 {
+  top: 1461px;
+  width: 1354px;
+  height: 750px;
+  position: absolute;
+  left: 50px;
+}
+
+.informacin-del .nombre {
+  position: absolute;
+  top: 675px;
+  left: 100px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .rectangle-4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 75px;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.informacin-del .text-wrapper-14 {
+  position: absolute;
+  top: 8px;
+  left: 25px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-15 {
+  top: 38px;
+  left: 22px;
+  font-size: 20px;
+  position: absolute;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .nombre-2 {
+  position: absolute;
+  top: 1636px;
+  left: 100px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .apellidos {
+  position: absolute;
+  top: 675px;
+  left: 653px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .text-wrapper-16 {
+  position: absolute;
+  top: 8px;
+  left: 22px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .apellidos-2 {
+  position: absolute;
+  top: 1636px;
+  left: 653px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .gnero {
+  top: 832px;
+  position: absolute;
+  left: 100px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .text-wrapper-17 {
+  position: absolute;
+  top: 9px;
+  left: 25px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-18 {
+  position: absolute;
+  top: 39px;
+  left: 22px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .gnero-2 {
+  top: 1793px;
+  position: absolute;
+  left: 100px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .nacionalidad {
+  top: 962px;
+  position: absolute;
+  left: 100px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .text-wrapper-19 {
+  position: absolute;
+  top: 13px;
+  left: 25px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-20 {
+  position: absolute;
+  top: 35px;
+  left: 22px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .nacionalidad-2 {
+  top: 1923px;
+  position: absolute;
+  left: 100px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .socio {
+  position: absolute;
+  top: 962px;
+  left: 653px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .text-wrapper-21 {
+  position: absolute;
+  top: 13px;
+  left: 22px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .socio-2 {
+  position: absolute;
+  top: 1923px;
+  left: 653px;
+  width: 504px;
+  height: 75px;
+}
+
+.informacin-del .fecha-de-nacimiento {
+  top: 800px;
+  position: absolute;
+  left: 653px;
+  width: 591px;
+  height: 107px;
+}
+
+.informacin-del .group {
+  position: absolute;
+  top: 49px;
+  left: 522px;
+  width: 71px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.informacin-del .text-wrapper-22 {
+  width: 62px;
+  height: 18px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #49ba4c;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-23 {
+  width: 67px;
+  height: 18px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-24 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .group-2 {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 157px;
+  height: 75px;
+}
+
+.informacin-del .rectangle-5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 153px;
+  height: 75px;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.informacin-del .group-3 {
+  position: absolute;
+  top: 32px;
+  left: 174px;
+  width: 156px;
+  height: 75px;
+}
+
+.informacin-del .text-wrapper-25 {
+  position: absolute;
+  top: 38px;
+  left: 12px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-26 {
+  top: 8px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  position: absolute;
+  left: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .rectangle-6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 152px;
+  height: 75px;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.informacin-del .group-4 {
+  position: absolute;
+  top: 32px;
+  left: 347px;
+  width: 157px;
+  height: 75px;
+}
+
+.informacin-del .fecha-de-nacimiento-2 {
+  top: 1761px;
+  position: absolute;
+  left: 653px;
+  width: 591px;
+  height: 107px;
+}
+
+.informacin-del .div-2 {
+  position: absolute;
+  top: 2305px;
+  left: 50px;
+  width: 1354px;
+  height: 495px;
+}
+
+.informacin-del .rectangle-7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1350px;
+  height: 495px;
+  background-color: #eeeeee;
+  border-radius: 30px;
+}
+
+.informacin-del .text-wrapper-27 {
+  position: absolute;
+  top: 45px;
+  left: 50px;
+  width: 325px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 24px;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-28 {
+  position: absolute;
+  top: 89px;
+  left: 50px;
+  width: 1213px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .telfono {
+  position: absolute;
+  top: 2471px;
+  left: 78px;
+  width: 379px;
+  height: 56px;
+}
+
+.informacin-del .rectangle-8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 375px;
+  height: 56px;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.informacin-del .text-wrapper-29 {
+  position: absolute;
+  top: 10px;
+  left: 74px;
+  width: 140px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-30 {
+  position: absolute;
+  top: 26px;
+  left: 74px;
+  width: 84px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .nmero {
+  position: absolute;
+  top: 2471px;
+  left: 528px;
+  width: 379px;
+  height: 56px;
+}
+
+.informacin-del .text-wrapper-31 {
+  position: absolute;
+  top: 26px;
+  left: 74px;
+  width: 151px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #646464;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .direccin {
+  position: absolute;
+  top: 2577px;
+  left: 78px;
+  width: 379px;
+  height: 56px;
+}
+
+.informacin-del .text-wrapper-32 {
+  position: absolute;
+  top: 13px;
+  left: 74px;
+  width: 140px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-33 {
+  top: 30px;
+  left: 74px;
+  width: 238px;
+  font-size: 16px;
+  position: absolute;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .motivo {
+  position: absolute;
+  top: 2682px;
+  left: 78px;
+  width: 379px;
+  height: 56px;
+}
+
+.informacin-del .text-wrapper-34 {
+  position: absolute;
+  top: 13px;
+  left: 19px;
+  width: 160px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-35 {
+  top: 30px;
+  left: 17px;
+  width: 108px;
+  font-size: 16px;
+  position: absolute;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #646464;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .ofertas {
+  position: absolute;
+  top: 2585px;
+  left: 578px;
+  width: 317px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.informacin-del .text-wrapper-36 {
+  width: 120px;
+  height: 20px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-37 {
+  width: 313px;
+  height: 20px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .notificaciones {
+  position: absolute;
+  top: 2479px;
+  left: 978px;
+  width: 368px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.informacin-del .text-wrapper-38 {
+  width: 178px;
+  height: 20px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-39 {
+  width: 364px;
+  height: 20px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .privacidad {
+  position: absolute;
+  top: 2850px;
+  left: 50px;
+  width: 1352px;
+  height: 125px;
+}
+
+.informacin-del .rectangle-9 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1350px;
+  height: 125px;
+  background-color: #124734;
+  border-radius: 30px;
+}
+
+.informacin-del .acepto-el-iso-de-mis {
+  position: absolute;
+  top: 43px;
+  left: 103px;
+  width: 711px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .span {
+  color: #ffffff;
+}
+
+.informacin-del .text-wrapper-40 {
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.informacin-del .overlap-group {
+  position: absolute;
+  width: 1450px;
+  height: 550px;
+  top: 3050px;
+  left: 0;
+}
+
+.informacin-del .group-5 {
+  position: absolute;
+  width: 1450px;
+  height: 550px;
+  top: 0;
+  left: 0;
+}
+
+.informacin-del .rectangle-10 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 550px;
+  background-color: #0a241b;
+}
+
+.informacin-del .rectangle-11 {
+  position: absolute;
+  top: 519px;
+  left: 0;
+  width: 1450px;
+  height: 31px;
+  background-color: #ffffff;
+}
+
+.informacin-del .rectangle-12 {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 1325px;
+  height: 200px;
+  background-color: #10402f;
+  border-radius: 30px;
+}
+
+.informacin-del .group-6 {
+  position: absolute;
+  top: 122px;
+  left: 50px;
+  width: 542px;
+  height: 336px;
+  display: flex;
+  flex-direction: column;
+}
+
+.informacin-del .text-wrapper-41 {
+  margin-left: 45px;
+  width: 367px;
+  height: 39px;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .text-wrapper-42 {
+  width: 418px;
+  height: 24px;
+  margin-top: 140px;
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-43 {
+  width: 534px;
+  height: 24px;
+  margin-top: 85px;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.informacin-del .text-wrapper-44 {
+  width: 529px;
+  height: 20px;
+  margin-top: 4px;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .decotracin {
+  position: absolute;
+  width: 517px;
+  height: 185px;
+  top: 54px;
+  left: 775px;
+}
+
+.informacin-del .continuar {
+  position: absolute;
+  top: 2878px;
+  left: 987px;
+  width: 375px;
+  height: 70px;
+  background-color: #d9d9d9;
+  border-radius: 60px;
+}
+
+.informacin-del .text-wrapper-45 {
+  position: absolute;
+  width: 33.07%;
+  height: 41.43%;
+  top: 30.00%;
+  left: 33.33%;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.informacin-del .regreso {
+  position: absolute;
+  top: 2885px;
+  left: 901px;
+  width: 57px;
+  height: 57px;
+}
+
+.informacin-del .ellipse {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 53px;
+  height: 53px;
+  background-color: #386555;
+  border-radius: 26.5px;
+}
+
+.informacin-del .flecha-pequena {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 57px;
+  height: 57px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
