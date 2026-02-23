@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+		<link rel="manifest" href="/assets/favicon/site.webmanifest" />
+		<title>Pantalla principal | Prototipo Viva</title>
+		<link rel="stylesheet" href="../assets/css/global.css" />
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<header class="top-header">
+			<div class="container top-header-row">
+				<nav class="top-links" aria-label="Navegación superior principal">
+					<button type="button" class="ghost-link">Reservar</button>
+					<button type="button" class="ghost-link">Información</button>
+					<button type="button" class="ghost-link">Doters</button>
+					<a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+				</nav>
+				<nav class="top-links right" aria-label="Utilidades superiores">
+					<button type="button" class="ghost-link">Estatus de vuelo</button>
+					<button type="button" class="ghost-link">Promociones</button>
+					<button type="button" class="icon-btn" aria-label="Buscar">🔎</button>
+					<button type="button" class="ghost-link">MXN</button>
+					<a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+				</nav>
+			</div>
+		</header>
+
+		<header class="main-header">
+			<div class="container main-header-row">
+				<div class="brand-block">
+					<button type="button" class="profile-btn" aria-label="Perfil">👤</button>
+					<div>
+						<div class="logo">VIVA AEROBUS</div>
+						<p class="logo-sub">Sitio de reserva (prototipo)</p>
+					</div>
+				</div>
+				<div class="main-actions">
+					<a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+					<a href="../cart/" class="secondary-btn">Carrito</a>
+					<a href="../booking/" class="primary-btn">Mi reserva</a>
+				</div>
+			</div>
+		</header>
+
+		<main class="container page-content">
+			<section class="hero card">
+				<h1>Encuentra cómo viajar con Viva</h1>
+				<p>
+					Esta pantalla conecta tus módulos actuales. Lo disponible te lleva a pantallas reales;
+					lo pendiente aparece como demostración visual.
+				</p>
+
+				<div class="module-tabs" role="tablist" aria-label="Módulos principales">
+					<button class="tab-btn active" role="tab" data-tab="vuelos">Vuelos</button>
+					<button class="tab-btn" role="tab" data-tab="paquetes">Paquetes</button>
+					<button class="tab-btn" role="tab" data-tab="hoteles">Hoteles</button>
+					<button class="tab-btn" role="tab" data-tab="autos">Autos</button>
+					<button class="tab-btn" role="tab" data-tab="traslado">Traslado</button>
+					<button class="tab-btn" role="tab" data-tab="eventos">Eventos</button>
+				</div>
+
+				<div class="tab-panel active" data-panel="vuelos">
+					<h2>Buscador de vuelos</h2>
+					<form id="flightSearch" class="search-grid">
+						<label>
+							Origen
+							<input id="origin" type="text" value="MTY" placeholder="MTY" />
+						</label>
+						<label>
+							Destino
+							<input id="destination" type="text" value="CDMX" placeholder="CDMX" />
+						</label>
+						<label>
+							Salida
+							<input id="departDate" type="date" />
+						</label>
+						<label>
+							Regreso
+							<input id="returnDate" type="date" />
+						</label>
+						<label>
+							Pasajeros
+							<select id="passengers">
+								<option value="1">1 pasajero</option>
+								<option value="2">2 pasajeros</option>
+								<option value="3">3 pasajeros</option>
+								<option value="4">4 pasajeros</option>
+							</select>
+						</label>
+						<div class="search-cta-wrap">
+							<button type="submit" class="primary-btn full">Buscar vuelos</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="tab-panel" data-panel="traslado">
+					<h2>Traslados integrados</h2>
+					<p class="panel-help">Usa estos módulos ya existentes en tu flujo.</p>
+					<div class="dropdown-grid">
+						<details open class="drop-card">
+							<summary>
+								Viva Transfer 1.0
+								<span class="chip real">Disponible</span>
+							</summary>
+							<p>Transporte compartido aeropuerto-destino con selección de ruta.</p>
+							<a href="../viva-transfer-1-0/" class="primary-btn inline">Abrir Viva Transfer</a>
+						</details>
+
+						<details class="drop-card">
+							<summary>
+								Viva Bus 1.0
+								<span class="chip real">Disponible</span>
+							</summary>
+							<p>Módulo compacto para elegir tipo de autobús y confirmar selección.</p>
+							<a href="../viva-bus-1-0/" class="primary-btn inline">Abrir Viva Bus</a>
+						</details>
+					</div>
+				</div>
+
+				<div class="tab-panel" data-panel="paquetes">
+					<h2>Paquetes</h2>
+					<p class="panel-help">Vista demostrativa; aún sin flujo implementado.</p>
+					<div class="fake-box">
+						<button type="button" class="secondary-btn fake">Vuelo + hotel</button>
+						<button type="button" class="secondary-btn fake">Vuelo + auto</button>
+					</div>
+				</div>
+
+				<div class="tab-panel" data-panel="hoteles">
+					<h2>Hoteles</h2>
+					<p class="panel-help">Vista demostrativa; aún sin flujo implementado.</p>
+					<div class="fake-box">
+						<button type="button" class="secondary-btn fake">Buscar hotel</button>
+					</div>
+				</div>
+
+				<div class="tab-panel" data-panel="autos">
+					<h2>Autos</h2>
+					<p class="panel-help">Vista demostrativa; aún sin flujo implementado.</p>
+					<div class="fake-box">
+						<button type="button" class="secondary-btn fake">Rentar auto</button>
+					</div>
+				</div>
+
+				<div class="tab-panel" data-panel="eventos">
+					<h2>Eventos</h2>
+					<p class="panel-help">Vista demostrativa; aún sin flujo implementado.</p>
+					<div class="fake-box">
+						<button type="button" class="secondary-btn fake">Ver experiencias</button>
+					</div>
+				</div>
+			</section>
+
+			<section class="card split">
+				<div>
+					<h3>Continuar mi compra</h3>
+					<p>Retoma rápido la etapa en la que te quedaste.</p>
+					<div class="quick-links">
+						<a href="../informacion-del-pasajero/" class="secondary-btn">Pasajeros</a>
+						<a href="../adicionales/" class="secondary-btn">Adicionales</a>
+						<a href="../pago-1-0/" class="secondary-btn">Pago</a>
+					</div>
+				</div>
+				<div class="resume-card">
+					<h4>Reserva activa</h4>
+					<p>Ruta sugerida: MTY → CDMX</p>
+					<a href="../booking/" class="primary-btn inline">Abrir reserva</a>
+				</div>
+			</section>
+
+			<section class="card">
+				<h3>Accesos rápidos</h3>
+				<div class="access-grid">
+					<a href="../adicionales/" class="access-item">Adicionales</a>
+					<a href="../viva-bus-1-0/" class="access-item">Viva Bus</a>
+					<a href="../viva-transfer-1-0/" class="access-item">Viva Transfer</a>
+					<a href="../pago-1-0/" class="access-item">Pago</a>
+				</div>
+			</section>
+
+			<section class="card split offers">
+				<div>
+					<h3>Promociones destacadas</h3>
+					<ul>
+						<li>Vuela a Cancún desde MXN $999 (visual demo)</li>
+						<li>Código sugerido en pago: VIVA2026</li>
+						<li>Ahorra en traslado con Viva Transfer</li>
+					</ul>
+				</div>
+				<div>
+					<h3>Rutas sugeridas</h3>
+					<div class="route-chips">
+						<button type="button" class="chip-btn">MTY → CDMX</button>
+						<button type="button" class="chip-btn">CDMX → CUN</button>
+						<button type="button" class="chip-btn">MTY → CUN</button>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="container footer-grid">
+				<div>
+					<h4>Ayuda</h4>
+					<p>Centro de soporte (demo visual)</p>
+				</div>
+				<div>
+					<h4>Contacto</h4>
+					<p>atencion@viva-demo.com · +52 55 0000 0000</p>
+				</div>
+				<div>
+					<h4>Legales</h4>
+					<p>Aviso de privacidad · Términos y condiciones</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			const tabButtons = document.querySelectorAll(".tab-btn");
+			const panels = document.querySelectorAll(".tab-panel");
+
+			tabButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					const selected = button.dataset.tab;
+
+					tabButtons.forEach((tab) => tab.classList.remove("active"));
+					panels.forEach((panel) => panel.classList.remove("active"));
+
+					button.classList.add("active");
+					document.querySelector(`[data-panel="${selected}"]`)?.classList.add("active");
+				});
+			});
+
+			document.getElementById("flightSearch")?.addEventListener("submit", (event) => {
+				event.preventDefault();
+				window.location.href = "../results/";
+			});
+		</script>
+	</body>
+</html>

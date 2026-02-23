@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <title>Debugging DB | Prototipo Viva</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="container header-row">
+        <div>
+          <h1>Debugging SQLite</h1>
+          <p>Vista para validar datos de la base y comprobar funcionalidad.</p>
+        </div>
+        <div class="actions">
+          <a href="/" class="btn secondary">Inicio</a>
+          <button id="reloadBtn" class="btn primary" type="button">Recargar datos</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container content">
+      <section class="status-card">
+        <div><strong>Estado:</strong> <span id="statusText">Cargando...</span></div>
+        <div><strong>Actualizado:</strong> <span id="generatedAt">--</span></div>
+      </section>
+
+      <section id="tablesContainer" class="tables-grid"></section>
+    </main>
+
+    <template id="tableTemplate">
+      <article class="table-card">
+        <div class="table-head">
+          <h2></h2>
+          <span class="count-pill"></span>
+        </div>
+        <details>
+          <summary>Ver registros</summary>
+          <pre class="rows-box"></pre>
+        </details>
+      </article>
+    </template>
+
+    <script>
+      const statusText = document.getElementById("statusText");
+      const generatedAt = document.getElementById("generatedAt");
+      const tablesContainer = document.getElementById("tablesContainer");
+      const tableTemplate = document.getElementById("tableTemplate");
+      const reloadBtn = document.getElementById("reloadBtn");
+
+      const formatDateTime = (isoString) => {
+        if (!isoString) return "--";
+        return new Date(isoString).toLocaleString("es-MX");
+      };
+
+      const renderTables = (tables) => {
+        tablesContainer.innerHTML = "";
+
+        Object.entries(tables).forEach(([tableName, payload]) => {
+          const fragment = tableTemplate.content.cloneNode(true);
+
+          fragment.querySelector("h2").textContent = tableName;
+          fragment.querySelector(".count-pill").textContent = `${payload.count} registro(s)`;
+          fragment.querySelector(".rows-box").textContent = JSON.stringify(payload.rows, null, 2);
+
+          tablesContainer.appendChild(fragment);
+        });
+      };
+
+      const loadData = async () => {
+        statusText.textContent = "Cargando...";
+        statusText.className = "loading";
+
+        try {
+          const response = await fetch("/api/debug/db");
+          if (!response.ok) {
+            throw new Error("No se pudo consultar el endpoint de debug.");
+          }
+
+          const data = await response.json();
+
+          statusText.textContent = "OK";
+          statusText.className = "ok";
+          generatedAt.textContent = formatDateTime(data.generatedAt);
+
+          renderTables(data.tables || {});
+        } catch (error) {
+          statusText.textContent = "Error";
+          statusText.className = "error";
+          generatedAt.textContent = "--";
+          tablesContainer.innerHTML = `<p class="error-msg">${error.message}</p>`;
+        }
+      };
+
+      reloadBtn.addEventListener("click", loadData);
+      loadData();
+    </script>
+  </body>
+</html>

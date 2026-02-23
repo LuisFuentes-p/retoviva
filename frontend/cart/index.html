@@ -1,22 +1,407 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-    <title>Carrito de vuelos | Prototipo Viva</title>
-  </head>
-  <body>
-    <h1>Carrito</h1>
-    <p>Pantalla base para revisar vuelos seleccionados y costos.</p>
-    <nav>
-      <a href="/">Inicio</a> |
-      <a href="/results/">Resultados</a> |
-      <a href="/booking/">Booking</a>
-    </nav>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+		<link rel="manifest" href="/assets/favicon/site.webmanifest" />
+		<title>Carrito de compras | Viva Aerobus</title>
+		<link rel="stylesheet" href="../assets/css/global.css" />
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<!-- Header superior -->
+		<header class="top-header">
+			<div class="container top-header-row">
+				<nav class="top-links" aria-label="Navegación superior principal">
+					<button type="button" class="ghost-link">Reservar</button>
+					<button type="button" class="ghost-link">Información</button>
+					<button type="button" class="ghost-link">Doters</button>
+					<a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+				</nav>
+				<nav class="top-links right" aria-label="Utilidades superiores">
+					<button type="button" class="ghost-link">Estatus de vuelo</button>
+					<button type="button" class="ghost-link">Promociones</button>
+					<button type="button" class="icon-btn" aria-label="Buscar">🔎</button>
+					<button type="button" class="ghost-link">MXN</button>
+					<a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Header principal -->
+		<header class="main-header">
+			<div class="container main-header-row">
+				<div class="brand-block">
+					<button type="button" class="profile-btn" aria-label="Perfil">👤</button>
+					<div>
+						<a href="../pantalla-principal/" class="logo">VIVA AEROBUS</a>
+						<p class="logo-sub">Tu carrito de compras</p>
+					</div>
+				</div>
+				<div class="main-actions">
+					<a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+					<a href="../booking/" class="primary-btn">Mi reserva</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- Barra de progreso -->
+		<div class="progress-bar">
+			<div class="container">
+				<div class="progress-steps">
+					<div class="step">
+						<div class="step-number">1</div>
+						<span class="step-label">Vuelos</span>
+					</div>
+					<div class="step-line"></div>
+					<div class="step active">
+						<div class="step-number">2</div>
+						<span class="step-label">Carrito</span>
+					</div>
+					<div class="step-line"></div>
+					<div class="step">
+						<div class="step-number">3</div>
+						<span class="step-label">Pasajeros</span>
+					</div>
+					<div class="step-line"></div>
+					<div class="step">
+						<div class="step-number">4</div>
+						<span class="step-label">Adicionales</span>
+					</div>
+					<div class="step-line"></div>
+					<div class="step">
+						<div class="step-number">5</div>
+						<span class="step-label">Pago</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Contenido principal -->
+		<main class="container main-content">
+			<div class="cart-layout">
+				<!-- Columna izquierda: Detalles -->
+				<div class="cart-details">
+					<h1 class="page-title">Tu carrito de compras</h1>
+					<p class="page-subtitle">Revisa los detalles de tu viaje antes de continuar</p>
+
+					<!-- Vuelos seleccionados -->
+					<section class="cart-section">
+						<h2 class="section-title">
+							<span class="icon">✈️</span>
+							Vuelos seleccionados
+						</h2>
+
+						<!-- Vuelo de ida -->
+						<div class="flight-card">
+							<div class="flight-header">
+								<span class="flight-type">Vuelo de ida</span>
+								<button type="button" class="btn-change">Cambiar vuelo</button>
+							</div>
+							<div class="flight-details">
+								<div class="flight-route">
+									<div class="airport">
+										<div class="airport-code">MTY</div>
+										<div class="airport-name">Monterrey</div>
+										<div class="flight-time">08:30</div>
+									</div>
+									<div class="flight-duration">
+										<div class="duration-line"></div>
+										<div class="duration-text">2h 15m</div>
+										<div class="plane-icon">✈</div>
+									</div>
+									<div class="airport">
+										<div class="airport-code">CUN</div>
+										<div class="airport-name">Cancún</div>
+										<div class="flight-time">10:45</div>
+									</div>
+								</div>
+								<div class="flight-info">
+									<span class="info-item">📅 Lun 24 Feb 2026</span>
+									<span class="info-item">💺 1 Adulto</span>
+									<span class="info-item">🎒 Equipaje personal incluido</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Vuelo de regreso -->
+						<div class="flight-card">
+							<div class="flight-header">
+								<span class="flight-type">Vuelo de regreso</span>
+								<button type="button" class="btn-change">Cambiar vuelo</button>
+							</div>
+							<div class="flight-details">
+								<div class="flight-route">
+									<div class="airport">
+										<div class="airport-code">CUN</div>
+										<div class="airport-name">Cancún</div>
+										<div class="flight-time">18:15</div>
+									</div>
+									<div class="flight-duration">
+										<div class="duration-line"></div>
+										<div class="duration-text">2h 20m</div>
+										<div class="plane-icon">✈</div>
+									</div>
+									<div class="airport">
+										<div class="airport-code">MTY</div>
+										<div class="airport-name">Monterrey</div>
+										<div class="flight-time">20:35</div>
+									</div>
+								</div>
+								<div class="flight-info">
+									<span class="info-item">📅 Vie 28 Feb 2026</span>
+									<span class="info-item">💺 1 Adulto</span>
+									<span class="info-item">🎒 Equipaje personal incluido</span>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Adicionales seleccionados -->
+					<section class="cart-section" id="addons-section">
+						<h2 class="section-title">
+							<span class="icon">🎁</span>
+							Servicios adicionales
+						</h2>
+						
+						<div class="addons-empty" id="addons-empty">
+							<p>No has agregado servicios adicionales aún</p>
+							<a href="../adicionales/" class="btn-add-services">Agregar servicios</a>
+						</div>
+
+						<div class="addons-list" id="addons-list" style="display: none;">
+							<!-- Se llenarán dinámicamente desde el API -->
+						</div>
+
+						<div class="add-services-link">
+							<a href="../adicionales/" class="link-btn">➕ Agregar más servicios</a>
+						</div>
+					</section>
+
+					<!-- Información importante -->
+					<section class="cart-section info-box">
+						<h3 class="info-title">📋 Información importante</h3>
+						<ul class="info-list">
+							<li>Los precios están sujetos a disponibilidad</li>
+							<li>Verifica los horarios y fechas antes de continuar</li>
+							<li>Puedes agregar servicios adicionales en el siguiente paso</li>
+							<li>Los impuestos y cargos ya están incluidos en el precio final</li>
+						</ul>
+					</section>
+				</div>
+
+				<!-- Columna derecha: Resumen -->
+				<aside class="cart-summary">
+					<div class="summary-card">
+						<h2 class="summary-title">Resumen de tu compra</h2>
+
+						<div class="summary-section">
+							<h3 class="summary-subtitle">Vuelos</h3>
+							<div class="summary-row">
+								<span>Tarifa base (2 vuelos)</span>
+								<span id="base-fare">$2,499.00</span>
+							</div>
+							<div class="summary-row">
+								<span>Impuestos y cargos</span>
+								<span id="taxes">$1,250.00</span>
+							</div>
+						</div>
+
+						<div class="summary-section" id="addons-summary" style="display: none;">
+							<h3 class="summary-subtitle">Servicios adicionales</h3>
+							<div id="addons-breakdown">
+								<!-- Se llenará dinámicamente -->
+							</div>
+						</div>
+
+						<div class="summary-section promo-section">
+							<h3 class="summary-subtitle">¿Tienes un código de descuento?</h3>
+							<div class="promo-input-group">
+								<input type="text" class="promo-input" placeholder="Código" id="promo-code" />
+								<button type="button" class="promo-btn" id="apply-promo">Aplicar</button>
+							</div>
+							<div class="promo-message" id="promo-message"></div>
+						</div>
+
+						<div class="summary-total">
+							<div class="total-row">
+								<span class="total-label">Total a pagar</span>
+								<span class="total-amount" id="total-amount">$3,749.00</span>
+							</div>
+							<p class="total-currency">MXN • Pesos mexicanos</p>
+						</div>
+
+						<div class="summary-actions">
+							<a href="../informacion-del-pasajero/" class="btn-continue">Continuar con la compra</a>
+							<a href="../results/" class="btn-back">Volver a resultados</a>
+						</div>
+
+						<div class="security-badges">
+							<span class="badge">🔒 Compra segura</span>
+							<span class="badge">💳 Múltiples formas de pago</span>
+						</div>
+					</div>
+
+					<!-- Banner de promoción -->
+					<div class="promo-banner">
+						<div class="promo-icon">💎</div>
+						<div class="promo-content">
+							<h4>¿Viajero frecuente?</h4>
+							<p>Únete a Viva Rewards y acumula puntos en cada vuelo</p>
+							<a href="#" class="promo-link">Más información →</a>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="main-footer">
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-col">
+						<h4>Viva Aerobus</h4>
+						<ul>
+							<li><a href="#">Acerca de</a></li>
+							<li><a href="#">Sala de prensa</a></li>
+							<li><a href="#">Trabaja con nosotros</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Ayuda</h4>
+						<ul>
+							<li><a href="#">Centro de ayuda</a></li>
+							<li><a href="#">Políticas</a></li>
+							<li><a href="#">Contacto</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Legal</h4>
+						<ul>
+							<li><a href="#">Términos y condiciones</a></li>
+							<li><a href="#">Privacidad</a></li>
+							<li><a href="#">Cookies</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p>&copy; 2026 Viva Aerobus. Prototipo educativo.</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Cargar datos del carrito desde el API
+			async function loadCartData() {
+				try {
+					const response = await fetch('/api/cart');
+					if (!response.ok) {
+						console.warn('No se pudo cargar el carrito desde el API');
+						return;
+					}
+
+					const data = await response.json();
+					
+					// Actualizar precios
+					if (data.subtotal) {
+						document.getElementById('base-fare').textContent = 
+							`$${(data.subtotal - (data.subtotal * 0.33)).toFixed(2)}`;
+						document.getElementById('taxes').textContent = 
+							`$${(data.subtotal * 0.33).toFixed(2)}`;
+					}
+
+					// Mostrar adicionales si existen
+					if (data.selectedAddons && data.selectedAddons.length > 0) {
+						const addonsList = document.getElementById('addons-list');
+						const addonsEmpty = document.getElementById('addons-empty');
+						const addonsSummary = document.getElementById('addons-summary');
+						const addonsBreakdown = document.getElementById('addons-breakdown');
+
+						addonsEmpty.style.display = 'none';
+						addonsList.style.display = 'block';
+						addonsSummary.style.display = 'block';
+
+						// Renderizar adicionales en la lista
+						addonsList.innerHTML = data.selectedAddons.map(addon => `
+							<div class="addon-item">
+								<div class="addon-info">
+									<span class="addon-name">${addon.name}</span>
+									<button type="button" class="btn-remove" onclick="removeAddon(${addon.id})">Eliminar</button>
+								</div>
+								<span class="addon-price">$${addon.price.toFixed(2)}</span>
+							</div>
+						`).join('');
+
+						// Renderizar en el resumen
+						addonsBreakdown.innerHTML = data.selectedAddons.map(addon => `
+							<div class="summary-row">
+								<span>${addon.name}</span>
+								<span>$${addon.price.toFixed(2)}</span>
+							</div>
+						`).join('');
+					}
+
+					// Actualizar total
+					if (data.total) {
+						document.getElementById('total-amount').textContent = 
+							`$${data.total.toFixed(2)}`;
+					}
+
+				} catch (error) {
+					console.error('Error al cargar el carrito:', error);
+				}
+			}
+
+			// Aplicar código promocional
+			document.getElementById('apply-promo').addEventListener('click', async () => {
+				const promoCode = document.getElementById('promo-code').value.trim();
+				const promoMessage = document.getElementById('promo-message');
+
+				if (!promoCode) {
+					promoMessage.textContent = 'Por favor ingresa un código';
+					promoMessage.className = 'promo-message error';
+					return;
+				}
+
+				try {
+					const response = await fetch('/api/promo', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ code: promoCode })
+					});
+
+					const data = await response.json();
+
+					if (response.ok && data.discount) {
+						promoMessage.textContent = `¡Código aplicado! Descuento: $${data.discount}`;
+						promoMessage.className = 'promo-message success';
+						// Recargar datos para actualizar precios
+						loadCartData();
+					} else {
+						promoMessage.textContent = data.message || 'Código inválido';
+						promoMessage.className = 'promo-message error';
+					}
+				} catch (error) {
+					promoMessage.textContent = 'Error al aplicar el código';
+					promoMessage.className = 'promo-message error';
+				}
+			});
+
+			// Función para remover adicional
+			function removeAddon(addonId) {
+				if (confirm('¿Deseas eliminar este servicio adicional?')) {
+					// Aquí iría la llamada al API para eliminar
+					console.log('Eliminando addon:', addonId);
+					loadCartData();
+				}
+			}
+
+			// Cargar datos al inicio
+			loadCartData();
+		</script>
+	</body>
 </html>

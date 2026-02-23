@@ -2,9 +2,10 @@
   background-color: #ffffff;
   overflow: hidden;
   width: 100%;
-  min-width: 1440px;
+  max-width: 1440px;
   min-height: 3600px;
   position: relative;
+  margin: 0 auto;
 }
 
 .informacin-del .rectangle {
@@ -1067,7 +1068,7 @@
   left: 33.33%;
   font-family: "Montserrat-SemiBold", Helvetica;
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
   font-size: 24px;
   letter-spacing: 0;
   line-height: normal;
@@ -1095,8 +1096,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 57px;
+  width: 114px;
   height: 57px;
-  aspect-ratio: 1;
-  object-fit: cover;
+  object-fit: contain;
 }

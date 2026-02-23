@@ -6,6 +6,7 @@ const sqlite3 = require("sqlite3").verbose();
 const createFlightsRoutes = require("./routes/flights");
 const createCartRoutes = require("./routes/cart");
 const createBookingRoutes = require("./routes/booking");
+const createDebugRoutes = require("./routes/debug");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -161,6 +162,7 @@ app.use(express.static(frontendDir));
 app.use("/api", createFlightsRoutes({ all }));
 app.use("/api", createCartRoutes({ get, all }));
 app.use("/api", createBookingRoutes({ get, all, run }));
+app.use("/api", createDebugRoutes({ all, get }));
 
 initDb().then(() => {
   app.listen(PORT, () => {

@@ -1,9 +1,11 @@
 .iniciar-sesin {
   background-color: #ffffff;
+  overflow: hidden;
   width: 100%;
-  min-width: 1440px;
-  min-height: 1024px;
+  max-width: 1440px;
+  min-height: 1600px;
   position: relative;
+  margin: 0 auto;
 }
 
 .iniciar-sesin .rectangle {
