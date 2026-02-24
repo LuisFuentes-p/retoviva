@@ -8,43 +8,111 @@
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-    <title>Iniciar sesión | Prototipo Viva</title>
+    <title>Iniciar sesión | Viva Aerobus</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-<div class="iniciar-sesin">
-      <div class="rectangle"></div>
-      <div class="bienvenido">
-        <div class="text-wrapper">Bienvenido</div>
-        <div class="div">Inicia sesión para continuar</div>
+    <!-- Header superior -->
+    <header class="top-header">
+      <div class="container top-header-row">
+        <nav class="top-links" aria-label="Navegación superior principal">
+          <button type="button" class="ghost-link">Reservar</button>
+          <button type="button" class="ghost-link">Información</button>
+          <button type="button" class="ghost-link">Doters</button>
+          <a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+        </nav>
+        <nav class="top-links right" aria-label="Utilidades superiores">
+          <button type="button" class="ghost-link">Estatus de vuelo</button>
+          <button type="button" class="ghost-link">Promociones</button>
+          <button type="button" class="icon-btn" aria-label="Buscar"></button>
+          <button type="button" class="ghost-link">MXN</button>
+          <a href="./" class="session-btn">Iniciar sesión</a>
+        </nav>
       </div>
-      <div class="usuario">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">Usuario</div>
-        <p class="text-wrapper-3">Número de socio o email</p>
+    </header>
+
+    <!-- Header principal -->
+    <header class="main-header">
+      <div class="container main-header-row">
+        <div class="brand-block">
+          <button type="button" class="profile-btn" aria-label="Perfil"></button>
+          <div>
+            <a href="../" class="logo">VIVA AEROBUS</a>
+            <p class="logo-sub">Iniciar sesión</p>
+          </div>
+        </div>
+        <div class="main-actions">
+          <a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+          <a href="../pantalla-principal/" class="primary-btn">Reservar ahora</a>
+        </div>
       </div>
-      <div class="contrasea">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">Contraseña</div>
-        <div class="text-wrapper-3">Ingresa tu contraseña</div>
+    </header>
+
+    <div class="main-container">
+      <div class="page-section">
+        <div class="login-box">
+          <h1 class="page-title">Bienvenido</h1>
+          <p class="page-subtitle">Inicia sesión para continuar</p>
+
+          <!-- Formulario de Login -->
+          <div class="form-section">
+            <div class="form-group">
+              <label>Usuario</label>
+              <input type="text" placeholder="Número de socio o email" />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-group">
+              <label>Contraseña</label>
+              <input type="password" placeholder="Ingresa tu contraseña" />
+            </div>
+          </div>
+
+          <!-- Recordar y olvidé contraseña -->
+          <div class="remember-section">
+            <label class="checkbox-remember">
+              <input type="checkbox" />
+              <span>Recuérdame</span>
+            </label>
+            <a href="#" class="forgot-password">Olvidé mi contraseña</a>
+          </div>
+
+          <!-- Botón iniciar sesión -->
+          <div class="actions">
+            <button type="button" class="btn-iniciar-sesion">Iniciar sesión</button>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider"></div>
+
+          <!-- Crear cuenta -->
+          <div class="create-account-section">
+            <p>¿Aún no tienes cuenta?</p>
+            <a href="../crear-cuenta/" class="btn-crear-cuenta-link">Crear cuenta</a>
+          </div>
+
+          <!-- Regresar -->
+          <div class="footer-actions">
+            <button type="button" class="btn-regresar">Regresa a Viva</button>
+          </div>
+        </div>
       </div>
-      <div class="recurdame"><div class="text-wrapper-4">Recuérdame</div></div>
-      <div class="text-wrapper-5">Olvidé mi contraseña</div>
-      <div class="div-2">
-        <div class="rectangle-3"></div>
-        <div class="text-wrapper-6">Iniciar sesión</div>
-      </div>
-      <div class="text-wrapper-7">Regresa a Viva</div>
-      <div class="crear-cuenta">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-8">Crear cuenta</div>
-      </div>
-      <div class="powered">
-        <div class="rectangle-5"></div>
-        <div class="text-wrapper-9">Powered by</div>
-      </div>
-      <div class="cuadro"></div>
     </div>
+
+    <script>
+      document.addEventListener('click', function (e) {
+        const loginBtn = e.target.closest('.btn-iniciar-sesion');
+        if (loginBtn) {
+          window.location.href = '../booking/';
+        }
+
+        const regresarBtn = e.target.closest('.btn-regresar');
+        if (regresarBtn) {
+          window.location.href = '../pantalla-principal/';
+        }
+      });
+    </script>
   </body>
 </html>

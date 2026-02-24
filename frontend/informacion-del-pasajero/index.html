@@ -1,234 +1,567 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-    <title>informacion del pasajero | Prototipo Viva</title>
-    <link rel="stylesheet" href="../assets/css/global.css" />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-<div class="informacin-del">
-      <div class="rectangle"></div>
-      <div class="navbar">
-        <div class="text-wrapper">Vuelos</div>
-        <div class="div">Combos</div>
-        <div class="text-wrapper-2">Pasajeros</div>
-        <div class="text-wrapper-3">Adicionales</div>
-        <div class="text-wrapper-4">Asientos</div>
-        <div class="text-wrapper-5">Pagos</div>
-      </div>
-      <div class="pasajero">
-        <div class="text-wrapper-6">Información de pasajeros</div>
-        <p class="p">Completa los campos solicitados a continuación</p>
-      </div>
-      <div class="nuevo-pasajero">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-7">Adulto 1</div>
-        <div class="text-wrapper-8">Nuevo pasajero</div>
-      </div>
-      <div class="nuevo-pasajero-2">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-9">Adulto 2</div>
-        <div class="text-wrapper-8">Nuevo pasajero</div>
-      </div>
-      <div class="informacin">
-        <div class="rectangle-3"></div>
-        <div class="text-wrapper-10">Información personal</div>
-        <p class="text-wrapper-11">
-          Por favor, escribe los datos de cada pasajero tal como aparecen en su identificación oficial para evitar
-          incoveniente en el aeropuesrto.
-        </p>
-        <div class="asistencia-especial">
-          <img class="line" src="../assets/img/line-1.svg" />
-          <div class="asistencia-personal">
-            <div class="text-wrapper-12">Asistencia especial</div>
-            <p class="text-wrapper-13">Marca esta casilla si necesitas asistencia especial para tu viaje</p>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+		<link rel="manifest" href="/assets/favicon/site.webmanifest" />
+		<title>Información del pasajero | Viva Aerobus</title>
+		<link rel="stylesheet" href="../assets/css/global.css" />
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<!-- Header superior -->
+		<header class="top-header">
+			<div class="container top-header-row">
+				<nav class="top-links" aria-label="Navegación superior principal">
+					<button type="button" class="ghost-link">Reservar</button>
+					<button type="button" class="ghost-link">Información</button>
+					<button type="button" class="ghost-link">Doters</button>
+					<a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+				</nav>
+				<nav class="top-links right" aria-label="Utilidades superiores">
+					<button type="button" class="ghost-link">Estatus de vuelo</button>
+					<button type="button" class="ghost-link">Promociones</button>
+					<button type="button" class="icon-btn" aria-label="Buscar"></button>
+					<button type="button" class="ghost-link">MXN</button>
+					<a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Header principal -->
+		<header class="main-header">
+			<div class="container main-header-row">
+				<div class="brand-block">
+					<button type="button" class="profile-btn" aria-label="Perfil"></button>
+					<div>
+						<a href="../pantalla-principal/" class="logo">VIVA AEROBUS</a>
+						<p class="logo-sub">Información de pasajeros</p>
+					</div>
+				</div>
+				<div class="main-actions">
+					<a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+					<a href="../cart/" class="secondary-btn">Carrito</a>
+					<a href="../booking/" class="primary-btn">Mi reserva</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- Barra de progreso -->
+		<div class="viva-progress-bar" data-current-step="3">
+      <div class="viva-progress-container">
+        <div class="viva-progress-steps">
+          <div class="viva-step">
+            <div class="viva-step-number">1</div>
+            <span class="viva-step-label">Vuelos</span>
           </div>
-        </div>
-      </div>
-      <div class="informacin-2">
-        <div class="rectangle-3"></div>
-        <div class="text-wrapper-10">Información personal</div>
-        <p class="text-wrapper-11">
-          Por favor, escribe los datos de cada pasajero tal como aparecen en su identificación oficial para evitar
-          incoveniente en el aeropuesrto.
-        </p>
-        <div class="asistencia-especial">
-          <img class="line" src="../assets/img/image.svg" />
-          <div class="asistencia-personal">
-            <div class="text-wrapper-12">Asistencia especial</div>
-            <p class="text-wrapper-13">Marca esta casilla si necesitas asistencia especial para tu viaje</p>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">2</div>
+            <span class="viva-step-label">Combos</span>
           </div>
-        </div>
-      </div>
-      <div class="nombre">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-14">Nombre (s)</div>
-        <div class="text-wrapper-15">Ej. Juan</div>
-      </div>
-      <div class="nombre-2">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-14">Nombre (s)</div>
-        <div class="text-wrapper-15">Ej. Juan</div>
-      </div>
-      <div class="apellidos">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-15">Ej. Rodríguez</div>
-        <div class="text-wrapper-16">Apellidos</div>
-      </div>
-      <div class="apellidos-2">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-15">Ej. Rodríguez</div>
-        <div class="text-wrapper-16">Apellidos</div>
-      </div>
-      <div class="gnero">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-17">Género</div>
-        <div class="text-wrapper-18">Selecciona un género</div>
-      </div>
-      <div class="gnero-2">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-17">Género</div>
-        <div class="text-wrapper-18">Selecciona un género</div>
-      </div>
-      <div class="nacionalidad">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-19">Nacionalidad</div>
-        <div class="text-wrapper-20">Selecciona una nacionalidad</div>
-      </div>
-      <div class="nacionalidad-2">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-19">Nacionalidad</div>
-        <div class="text-wrapper-20">Selecciona una nacionalidad</div>
-      </div>
-      <div class="socio">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-21">Número de Socio Doters</div>
-        <div class="text-wrapper-20">123456789101</div>
-      </div>
-      <div class="socio-2">
-        <div class="rectangle-4"></div>
-        <div class="text-wrapper-21">Número de Socio Doters</div>
-        <div class="text-wrapper-20">123456789101</div>
-      </div>
-      <div class="fecha-de-nacimiento">
-        <div class="group">
-          <div class="text-wrapper-22">Adultos</div>
-          <div class="text-wrapper-23">+18 años</div>
-        </div>
-        <div class="text-wrapper-24">Fecha de nacimiento</div>
-        <div class="group-2">
-          <div class="text-wrapper-15">Día</div>
-          <div class="text-wrapper-16">Día</div>
-          <div class="rectangle-5"></div>
-        </div>
-        <div class="group-3">
-          <div class="text-wrapper-25">Mes</div>
-          <div class="text-wrapper-26">Mes</div>
-          <div class="rectangle-6"></div>
-        </div>
-        <div class="group-4">
-          <div class="text-wrapper-25">Año</div>
-          <div class="text-wrapper-26">Año</div>
-          <div class="rectangle-5"></div>
-        </div>
-      </div>
-      <div class="fecha-de-nacimiento-2">
-        <div class="group">
-          <div class="text-wrapper-22">Adultos</div>
-          <div class="text-wrapper-23">+18 años</div>
-        </div>
-        <div class="text-wrapper-24">Fecha de nacimiento</div>
-        <div class="group-2">
-          <div class="text-wrapper-15">Día</div>
-          <div class="text-wrapper-16">Día</div>
-          <div class="rectangle-5"></div>
-        </div>
-        <div class="group-3">
-          <div class="text-wrapper-25">Mes</div>
-          <div class="text-wrapper-26">Mes</div>
-          <div class="rectangle-6"></div>
-        </div>
-        <div class="group-4">
-          <div class="text-wrapper-25">Año</div>
-          <div class="text-wrapper-26">Año</div>
-          <div class="rectangle-5"></div>
-        </div>
-      </div>
-      <div class="div-2">
-        <div class="rectangle-7"></div>
-        <div class="text-wrapper-27">Información de contacto</div>
-        <p class="text-wrapper-28">
-          Usaremos estos datos para enviarte notificaciones importantes sobre tu vuelo, así como para gestionar
-          reembolsos o comprensaciones. Asegúrate de que sean correctos y que puedas acceder a ellos de forma regular,
-          ya que no podrán modificarse.
-        </p>
-      </div>
-      <div class="telfono">
-        <div class="rectangle-8"></div>
-        <div class="text-wrapper-29">Tipo de teléfono</div>
-        <div class="text-wrapper-30">Principal</div>
-      </div>
-      <div class="nmero">
-        <div class="rectangle-8"></div>
-        <div class="text-wrapper-29">Teléfono</div>
-        <div class="text-wrapper-31">+52 55 1234 5678</div>
-      </div>
-      <div class="direccin">
-        <div class="rectangle-8"></div>
-        <div class="text-wrapper-32">Dirección</div>
-        <div class="text-wrapper-33">Ej. tunombre@gmail.com</div>
-      </div>
-      <div class="motivo">
-        <div class="rectangle-8"></div>
-        <div class="text-wrapper-34">Motivo de viaje (Opcional)</div>
-        <div class="text-wrapper-35">Ej. Placer</div>
-      </div>
-      <div class="ofertas">
-        <div class="text-wrapper-36">Recibir ofertas</div>
-        <p class="text-wrapper-37">Te enviaremos promociones por correo</p>
-      </div>
-      <div class="notificaciones">
-        <div class="text-wrapper-38">Recibir notificaciones</div>
-        <p class="text-wrapper-39">Te enviaremos actualizaciones por WhatsApp</p>
-      </div>
-      <div class="privacidad">
-        <div class="rectangle-9"></div>
-        <p class="acepto-el-iso-de-mis">
-          <span class="span"
-            >Acepto el iso de mis datos personales y la recopilación de datos de todos los pasajeros para una
-            operacional, de acuerdo con la
-          </span>
-          <span class="text-wrapper-40">Política de Privacidad</span>
-        </p>
-      </div>
-      <div class="overlap-group">
-        <div class="group-5">
-          <div class="group-5">
-            <div class="rectangle-10"></div>
-            <div class="rectangle-11"></div>
-            <div class="rectangle-12"></div>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">3</div>
+            <span class="viva-step-label">Pasajeros</span>
           </div>
-          <div class="group-6">
-            <div class="text-wrapper-41">Descarga nuestra App</div>
-            <p class="text-wrapper-42">Aceptamos las siguientes formas de pago</p>
-            <p class="text-wrapper-43">Aeropuerto Internacional de Monterrey. Terminal C</p>
-            <p class="text-wrapper-44">Carretera Miguel Alemán Km 24, Apodaca, NL, México, C.P. 66600</p>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">4</div>
+            <span class="viva-step-label">Adicionales</span>
           </div>
-        </div>
-        <img class="decotracin" src="../assets/img/decotraci-n.png" />
-      </div>
-      <div class="continuar"><div class="text-wrapper-45">Continuar</div></div>
-      <div class="regreso">
-        <div class="ellipse"></div>
-        <img class="flecha-pequena" src="../assets/img/flecha-pequena-izquierda-3-1.png" />
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">5</div>
+            <span class="viva-step-label">Asientos</span>
+          </div>
+          <div class="viva-step-line"></div>
       </div>
     </div>
-  </body>
+
+    <!-- Botón de debugging -->
+    <div class="debug-button-container">
+      <button type="button" id="debugFillButton" class="debug-button" title="Rellenar formulario con datos random">Debug: Llenar</button>
+    </div>
+
+		<!-- Contenido principal -->
+		<main class="container main-content">
+			<div class="page-header">
+				<div>
+					<h1 class="page-title">Información de pasajeros</h1>
+					<p class="page-subtitle">Completa los datos de cada pasajero tal como aparecen en su identificación oficial</p>
+				</div>
+				<div class="passengers-selector">
+					<label for="numPassengers">Número de pasajeros:</label>
+					<select id="numPassengers" class="select-passengers">
+						<option value="1" selected>1 Adulto</option>
+						<option value="2">2 Adultos</option>
+						<option value="3">3 Adultos</option>
+						<option value="4">4 Adultos</option>
+					</select>
+				</div>
+			</div>
+
+			<form id="passengersForm" class="passengers-form">
+				<!-- Los formularios de pasajeros se generarán dinámicamente aquí -->
+				<div id="passengersContainer"></div>
+
+				<!-- Información de contacto -->
+				<section class="contact-section">
+					<div class="section-header-card">
+						<h2 class="section-title">Información de contacto</h2>
+						<p class="section-description">
+							Usaremos estos datos para enviarte notificaciones importantes sobre tu vuelo. 
+							Asegúrate de que sean correctos y que puedas acceder a ellos de forma regular.
+						</p>
+					</div>
+
+					<div class="form-grid">
+						<div class="form-group">
+							<label for="phoneType">Tipo de teléfono</label>
+							<select id="phoneType" name="phoneType" required>
+								<option value="">Seleccionar</option>
+								<option value="movil" selected>Móvil</option>
+								<option value="fijo">Fijo</option>
+								<option value="trabajo">Trabajo</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="phone">Teléfono</label>
+							<input type="tel" id="phone" name="phone" placeholder="+52 55 1234 5678" required />
+						</div>
+
+						<div class="form-group full-width">
+							<label for="email">Correo electrónico</label>
+							<input type="email" id="email" name="email" placeholder="tunombre@ejemplo.com" required />
+						</div>
+
+						<div class="form-group full-width">
+							<label for="travelReason">Motivo de viaje (Opcional)</label>
+							<select id="travelReason" name="travelReason">
+								<option value="">Seleccionar</option>
+								<option value="placer">Placer / Vacaciones</option>
+								<option value="negocios">Negocios</option>
+								<option value="familia">Visita familiar</option>
+								<option value="otro">Otro</option>
+							</select>
+						</div>
+
+						<div class="form-group checkbox-group full-width">
+							<label class="checkbox-label">
+								<input type="checkbox" id="receiveOffers" name="receiveOffers" />
+								<span class="checkbox-text">
+									<strong>Recibir ofertas</strong>
+									<small>Te enviaremos promociones por correo electrónico</small>
+								</span>
+							</label>
+						</div>
+
+						<div class="form-group checkbox-group full-width">
+							<label class="checkbox-label">
+								<input type="checkbox" id="receiveNotifications" name="receiveNotifications" />
+								<span class="checkbox-text">
+									<strong>Recibir notificaciones</strong>
+									<small>Te enviaremos actualizaciones por WhatsApp</small>
+								</span>
+							</label>
+						</div>
+					</div>
+				</section>
+
+				<!-- Privacidad -->
+				<div class="privacy-section">
+					<label class="checkbox-label">
+						<input type="checkbox" id="privacyPolicy" name="privacyPolicy" required />
+						<span class="checkbox-text">
+							Acepto el uso de mis datos personales y la recopilación de datos de todos los pasajeros 
+							de acuerdo con la <a href="#" class="privacy-link">Política de Privacidad</a>
+						</span>
+					</label>
+				</div>
+
+				<!-- Botones de navegación -->
+				<div class="form-actions">
+					<a href="../cart/" class="btn-back">Volver al carrito</a>
+					<button type="submit" class="btn-continue">Continuar a adicionales</button>
+				</div>
+			</form>
+		</main>
+
+		<!-- Footer -->
+		<footer class="main-footer">
+			<div class="footer-wrapper">
+				<div class="footer-content-viva">
+					<div class="footer-rectangle-25"></div>
+					<div class="footer-overlap-group">
+						<div class="footer-group">
+							<div class="footer-group">
+								<div class="footer-rectangle-26"></div>
+								<div class="footer-rectangle-27"></div>
+							</div>
+							<div class="footer-group-2">
+								<div class="footer-title">Descarga nuestra App</div>
+								<p class="footer-text">Aceptamos las siguientes formas de pago</p>
+								<p class="footer-location"><strong>Aeropuerto Internacional de Monterrey. Terminal C</strong></p>
+								<p class="footer-address">Carretera Miguel Alemán Km 24, Apodaca, NL, México, C.P. 6660</p>
+							</div>
+						</div>
+						<div class="footer-decoration">
+							<img class="decotracin" src="../assets/img/decotraci-n.png" alt="Decoración" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Datos de país y nacionalidades
+			const countries = [
+				'México', 'Estados Unidos', 'Canadá', 'España', 'Argentina', 
+				'Colombia', 'Chile', 'Perú', 'Venezuela', 'Brasil', 'Otro'
+			];
+
+			// Generar formulario para un pasajero
+			function generatePassengerForm(index, total) {
+				const passengerNumber = index + 1;
+				const isFirst = index === 0;
+
+				return `
+					<section class="passenger-card">
+						<div class="passenger-header">
+							<div>
+										<h3 class="passenger-number">Adulto ${passengerNumber}</h3>
+								<p class="passenger-subtitle">Pasajero ${passengerNumber} de ${total}</p>
+							</div>
+									${!isFirst ? `<button type="button" class="btn-remove-passenger" onclick="removePassenger(${index})">Eliminar</button>` : ''}
+						</div>
+
+						<div class="passenger-body">
+							<h4 class="subsection-title">Información personal</h4>
+							<p class="subsection-description">
+								Escribe los datos tal como aparecen en la identificación oficial para evitar inconvenientes en el aeropuerto.
+							</p>
+
+							<div class="form-grid">
+								<div class="form-group">
+									<label for="firstName${index}">Nombre(s) *</label>
+									<input 
+										type="text" 
+										id="firstName${index}" 
+										name="passengers[${index}][firstName]" 
+										placeholder="Ej. Juan" 
+										required 
+									/>
+								</div>
+
+								<div class="form-group">
+									<label for="lastName${index}">Apellidos *</label>
+									<input 
+										type="text" 
+										id="lastName${index}" 
+										name="passengers[${index}][lastName]" 
+										placeholder="Ej. Rodríguez García" 
+										required 
+									/>
+								</div>
+
+								<div class="form-group">
+									<label for="gender${index}">Género *</label>
+									<select id="gender${index}" name="passengers[${index}][gender]" required>
+										<option value="">Seleccionar</option>
+										<option value="M">Masculino</option>
+										<option value="F">Femenino</option>
+										<option value="X">Otro</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="nationality${index}">Nacionalidad *</label>
+									<select id="nationality${index}" name="passengers[${index}][nationality]" required>
+										<option value="">Seleccionar</option>
+										${countries.map(country => `<option value="${country}">${country}</option>`).join('')}
+									</select>
+								</div>
+
+								<div class="form-group full-width">
+									<label>Fecha de nacimiento *</label>
+									<div class="date-grid">
+										<select id="day${index}" name="passengers[${index}][day]" required>
+											<option value="">Día</option>
+											${Array.from({length: 31}, (_, i) => i + 1).map(day => 
+												`<option value="${day}">${day}</option>`
+											).join('')}
+										</select>
+										<select id="month${index}" name="passengers[${index}][month]" required>
+											<option value="">Mes</option>
+											<option value="1">Enero</option>
+											<option value="2">Febrero</option>
+											<option value="3">Marzo</option>
+											<option value="4">Abril</option>
+											<option value="5">Mayo</option>
+											<option value="6">Junio</option>
+											<option value="7">Julio</option>
+											<option value="8">Agosto</option>
+											<option value="9">Septiembre</option>
+											<option value="10">Octubre</option>
+											<option value="11">Noviembre</option>
+											<option value="12">Diciembre</option>
+										</select>
+										<select id="year${index}" name="passengers[${index}][year]" required>
+											<option value="">Año</option>
+											${Array.from({length: 100}, (_, i) => 2008 - i).map(year => 
+												`<option value="${year}">${year}</option>`
+											).join('')}
+										</select>
+									</div>
+									<small class="helper-text">Sólo adultos (+18 años)</small>
+								</div>
+
+								<div class="form-group full-width">
+									<label for="dotersNumber${index}">Número de Socio Doters (Opcional)</label>
+									<input 
+										type="text" 
+										id="dotersNumber${index}" 
+										name="passengers[${index}][dotersNumber]" 
+										placeholder="123456789" 
+										maxlength="15"
+									/>
+								</div>
+
+								<div class="form-group checkbox-group full-width">
+									<label class="checkbox-label">
+										<input 
+											type="checkbox" 
+											id="specialAssistance${index}" 
+											name="passengers[${index}][specialAssistance]" 
+										/>
+										<span class="checkbox-text">
+											<strong>Asistencia especial</strong>
+											<small>Marca esta casilla si necesitas asistencia especial para tu viaje</small>
+										</span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</section>
+				`;
+			}
+
+			// Datos para generar información random
+			const firstNames = ['Juan', 'María', 'Carlos', 'Ana', 'Luis', 'Laura', 'Miguel', 'Sofía', 'Roberto', 'Elena', 'Francisco', 'Isabel'];
+			const lastNames = ['García', 'Rodríguez', 'Martínez', 'López', 'González', 'Pérez', 'Sánchez', 'Ramírez', 'Torres', 'Rivera', 'Flores', 'Morales'];
+			const genders = ['M', 'F'];
+			const travelReasons = ['placer', 'negocios', 'familia', 'otro'];
+
+			// Función para generar datos random
+			function getRandomItem(array) {
+				return array[Math.floor(Math.random() * array.length)];
+			}
+
+			function getRandomPhone() {
+				return `+52 ${Math.floor(Math.random() * 9) + 1}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9999).toString().padStart(4, '0')} ${Math.floor(Math.random() * 9999).toString().padStart(4, '0')}`;
+			}
+
+			function getRandomEmail() {
+				const first = getRandomItem(firstNames).toLowerCase();
+				const last = getRandomItem(lastNames).toLowerCase();
+				const domains = ['gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com'];
+				return `${first}.${last}${Math.floor(Math.random() * 100)}@${getRandomItem(domains)}`;
+			}
+
+			function getRandomDOB() {
+				const year = Math.floor(Math.random() * (2005 - 1960) + 1960);
+				const month = Math.floor(Math.random() * 12) + 1;
+				const day = Math.floor(Math.random() * 28) + 1;
+				return { day: day.toString(), month: month.toString(), year: year.toString() };
+			}
+
+			// Llenar campos con datos random
+			function fillPassengerFormWithRandomData(index) {
+				setTimeout(() => {
+					const firstNameField = document.getElementById(`firstName${index}`);
+					const lastNameField = document.getElementById(`lastName${index}`);
+					const genderField = document.getElementById(`gender${index}`);
+					const nationalityField = document.getElementById(`nationality${index}`);
+					const dayField = document.getElementById(`day${index}`);
+					const monthField = document.getElementById(`month${index}`);
+					const yearField = document.getElementById(`year${index}`);
+					const dotersField = document.getElementById(`dotersNumber${index}`);
+
+					if (firstNameField) firstNameField.value = getRandomItem(firstNames);
+					if (lastNameField) lastNameField.value = getRandomItem(lastNames);
+					if (genderField) genderField.value = getRandomItem(genders);
+					if (nationalityField) nationalityField.value = getRandomItem(countries);
+					
+					const dob = getRandomDOB();
+					if (dayField) dayField.value = dob.day;
+					if (monthField) monthField.value = dob.month;
+					if (yearField) yearField.value = dob.year;
+
+					if (dotersField && Math.random() > 0.7) {
+						dotersField.value = Math.floor(Math.random() * 1000000000).toString();
+					}
+				}, 50);
+			}
+
+			function fillContactFormWithRandomData() {
+				setTimeout(() => {
+					const phoneTypeField = document.getElementById('phoneType');
+					const phoneField = document.getElementById('phone');
+					const emailField = document.getElementById('email');
+					const travelReasonField = document.getElementById('travelReason');
+					const receiveOffersField = document.getElementById('receiveOffers');
+					const receiveNotificationsField = document.getElementById('receiveNotifications');
+					
+					if (phoneTypeField) phoneTypeField.value = 'movil';
+					if (phoneField) phoneField.value = getRandomPhone();
+					if (emailField) emailField.value = getRandomEmail();
+					if (travelReasonField) travelReasonField.value = getRandomItem(travelReasons);
+					
+					if (receiveOffersField && Math.random() > 0.5) {
+						receiveOffersField.checked = true;
+					}
+					if (receiveNotificationsField && Math.random() > 0.5) {
+						receiveNotificationsField.checked = true;
+					}
+				}, 50);
+			}
+
+			// Renderizar pasajeros
+			function renderPassengers() {
+				const numPassengers = parseInt(document.getElementById('numPassengers').value);
+				const container = document.getElementById('passengersContainer');
+				
+				container.innerHTML = '';
+				for (let i = 0; i < numPassengers; i++) {
+					container.innerHTML += generatePassengerForm(i, numPassengers);
+				}
+			}
+
+			// Eliminar pasajero (ajustar selector)
+			function removePassenger(index) {
+				const currentNum = parseInt(document.getElementById('numPassengers').value);
+				if (currentNum > 1) {
+					document.getElementById('numPassengers').value = currentNum - 1;
+					renderPassengers();
+				}
+			}
+
+			// Manejar cambio en número de pasajeros
+			document.getElementById('numPassengers').addEventListener('change', renderPassengers);
+
+			// Debug: Botón para rellenar con datos random
+			document.getElementById('debugFillButton').addEventListener('click', function(e) {
+				e.preventDefault();
+				const numPassengers = parseInt(document.getElementById('numPassengers').value);
+				for (let i = 0; i < numPassengers; i++) {
+					fillPassengerFormWithRandomData(i);
+				}
+				fillContactFormWithRandomData();
+				console.log('Formulario rellenado con datos random');
+			});
+
+			// Manejar envío del formulario
+			document.getElementById('passengersForm').addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				// Validar formulario HTML5
+				if (!this.checkValidity()) {
+					// Si hay errores de validación, mostrar mensaje y enfocarse en el primer campo inválido
+					const invalidFields = this.querySelectorAll(':invalid');
+					if (invalidFields.length > 0) {
+						invalidFields[0].focus();
+						invalidFields[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+					}
+					return;
+				}
+				
+				// Validar política de privacidad
+				if (!document.getElementById('privacyPolicy').checked) {
+					alert('Debes aceptar la Política de Privacidad para continuar');
+					document.getElementById('privacyPolicy').focus();
+					return;
+				}
+
+				// Validar email manualmente con regex
+				const email = document.getElementById('email').value;
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if (!emailRegex.test(email)) {
+					alert('Por favor introduce una dirección de correo electrónico válida');
+					document.getElementById('email').focus();
+					return;
+				}
+
+				// Validar teléfono no esté vacío
+				const phone = document.getElementById('phone').value;
+				if (!phone || phone.trim() === '') {
+					alert('Por favor introduce un número de teléfono');
+					document.getElementById('phone').focus();
+					return;
+				}
+
+				// Recopilar datos
+				const formData = new FormData(this);
+				const data = {
+					passengers: [],
+					contact: {
+						phoneType: formData.get('phoneType'),
+						phone: formData.get('phone'),
+						email: formData.get('email'),
+						travelReason: formData.get('travelReason'),
+						receiveOffers: formData.get('receiveOffers') === 'on',
+						receiveNotifications: formData.get('receiveNotifications') === 'on'
+					}
+				};
+
+				// Extraer datos de pasajeros con validación
+				const numPassengers = parseInt(document.getElementById('numPassengers').value);
+				for (let i = 0; i < numPassengers; i++) {
+					const firstName = formData.get(`passengers[${i}][firstName]`);
+					const lastName = formData.get(`passengers[${i}][lastName]`);
+					const gender = formData.get(`passengers[${i}][gender]`);
+					const nationality = formData.get(`passengers[${i}][nationality]`);
+					const day = formData.get(`passengers[${i}][day]`);
+					const month = formData.get(`passengers[${i}][month]`);
+					const year = formData.get(`passengers[${i}][year]`);
+
+					// Validar que todos los campos obligatorios estén llenos
+					if (!firstName || !lastName || !gender || !nationality || !day || !month || !year) {
+						alert(`Por favor completa todos los datos del Adulto ${i + 1}`);
+						return;
+					}
+
+					const passenger = {
+						firstName: firstName,
+						lastName: lastName,
+						gender: gender,
+						nationality: nationality,
+						birthDate: {
+							day: day,
+							month: month,
+							year: year
+						},
+						dotersNumber: formData.get(`passengers[${i}][dotersNumber]`) || '',
+						specialAssistance: formData.get(`passengers[${i}][specialAssistance]`) === 'on'
+					};
+					data.passengers.push(passenger);
+				}
+
+				console.log('Datos del formulario:', data);
+				
+				// Guardar en localStorage para persistencia
+				localStorage.setItem('passengersData', JSON.stringify(data));
+				
+				// Redirigir a adicionales
+				window.location.href = '../adicionales/';
+			});
+
+			// Inicializar con 1 pasajero
+			renderPassengers();
+		</script>
+	</body>
 </html>

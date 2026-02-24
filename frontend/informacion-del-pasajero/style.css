@@ -1,997 +1,731 @@
-.informacin-del {
-  background-color: #ffffff;
-  overflow: hidden;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ========== VARIABLES Y RESET ========== */
+:root {
+  --viva-green: #00ae42;
+  --viva-green-strong: #068a38;
+  --viva-dark: #11301e;
+  --viva-text: #303030;
+  --viva-muted: #757575;
+  --viva-line: #d4d4d4;
+  --viva-bg: #efefef;
+  --white: #fff;
+  --error-red: #d32f2f;
+  --error-light: #ffebee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--white);
+  color: var(--viva-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== HEADER STYLES ========== */
+.top-header {
+  background: #eff7f1;
+  border-bottom: 1px solid var(--viva-line);
+}
+
+.top-header-row {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ghost-link {
+  background: none;
+  border: none;
+  color: var(--viva-text);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ghost-link:hover, .ghost-link.is-link:hover {
+  color: var(--viva-green);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.session-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.session-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+/* ===== HEADER PRINCIPAL ===== */
+.main-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--viva-line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.main-header-row {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--viva-line);
+  border-radius: 999px;
+  background: #f6fbf7;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: transform 0.2s;
+}
+
+.profile-btn:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--viva-dark);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.logo-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--viva-muted);
+  font-weight: 500;
+}
+
+.main-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.primary-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.primary-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--viva-green);
+  border: 2px solid var(--viva-green);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background: var(--viva-green);
+  color: var(--white);
+}
+
+/* ========== CONTENEDOR Y LAYOUT ========== */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
   width: 100%;
-  min-width: 1440px;
-  min-height: 3600px;
-  position: relative;
 }
 
-.informacin-del .rectangle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1440px;
-  height: 123px;
-  border: 1px solid;
-  border-color: #000000;
+.main-content {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  flex: 1;
 }
 
-.informacin-del .navbar {
-  position: absolute;
-  top: 144px;
-  left: 145px;
-  width: 1163px;
-  height: 19px;
+/* ========== HEADER (HEADERS VIVA - importado desde global.css) ========== */
+/* Los estilos del header vienen de global.css y son compartidos */
+
+/* ========== PAGE HEADER Y TITULO ========== */
+.page-header {
+  background: #f0f0f0;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.informacin-del .text-wrapper {
-  width: 55px;
-  height: 19px;
-  font-family: "Inter-Bold", Helvetica;
+.page-title {
+  font-size: 2rem;
   font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+  color: var(--viva-text);
+  margin-bottom: 0.5rem;
 }
 
-.informacin-del .div {
-  width: 66px;
-  margin-left: 149px;
-  height: 19px;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--viva-muted);
+  font-weight: 400;
 }
 
-.informacin-del .text-wrapper-2 {
-  width: 77px;
-  margin-left: 149px;
-  height: 19px;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-3 {
-  width: 92px;
-  margin-left: 149px;
-  height: 19px;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-4 {
-  width: 70px;
-  margin-left: 147px;
-  height: 19px;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-5 {
-  width: 49px;
-  margin-left: 148px;
-  height: 19px;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .pasajero {
-  position: absolute;
-  top: 225px;
-  left: 100px;
-  width: 464px;
-  height: 84px;
+.passengers-selector {
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 0.5rem;
+  min-width: 200px;
 }
 
-.informacin-del .text-wrapper-6 {
-  width: 396px;
-  height: 39px;
-  font-family: "Inter-Bold", Helvetica;
-  font-size: 32px;
+.passengers-selector label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--viva-text);
+}
+
+.select-passengers {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--viva-line);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--viva-text);
+  cursor: pointer;
+  font-weight: 500;
+  transition: border-color 0.2s ease;
+}
+
+.select-passengers:hover {
+  border-color: var(--viva-green);
+}
+
+.select-passengers:focus {
+  outline: none;
+  border-color: var(--viva-green);
+  box-shadow: 0 0 0 3px rgba(0, 174, 66, 0.1);
+}
+
+/* ========== FORMULARIO PASAJEROS ========== */
+.passengers-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#passengersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ========== TARJETA PASAJERO ========== */
+.passenger-card {
+  background: #f0f0f0;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--viva-green);
+}
+
+.passenger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  margin: -2rem -2rem 1.5rem -2rem;
+  background: #e8e8e8;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 2px solid var(--viva-line);
+}
+
+.passenger-number {
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #000000;
-  letter-spacing: 0;
-  line-height: normal;
+  color: var(--viva-text);
+  margin-bottom: 0.25rem;
 }
 
-.informacin-del .p {
-  width: 460px;
+.passenger-subtitle {
+  font-size: 0.875rem;
+  color: var(--viva-muted);
+  font-weight: 400;
+}
+
+.btn-remove-passenger {
+  background: var(--error-light);
+  color: var(--error-red);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-passenger:hover {
+  background: var(--error-red);
+  color: var(--white);
+}
+
+.passenger-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ========== SUBSECCIONES ========== */
+.subsection-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--viva-text);
+  margin-bottom: 0.25rem;
+}
+
+.subsection-description {
+  font-size: 0.875rem;
+  color: var(--viva-muted);
+  margin-bottom: 1rem;
+}
+
+/* ========== GRID DE FORMULARIO ========== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-grid.full-width {
+  grid-template-columns: 1fr;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ========== CAMPOS DE FORMULARIO ========== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--viva-text);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--viva-line);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--viva-text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--viva-green);
+  box-shadow: 0 0 0 3px rgba(0, 174, 66, 0.1);
+  background: var(--white);
+}
+
+.form-group input::placeholder {
+  color: var(--viva-muted);
+  font-weight: 400;
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group select:invalid:not(:placeholder-shown) {
+  border-color: var(--error-red);
+  background-color: var(--error-light);
+}
+
+/* ========== CAMPO DE FECHA ========== */
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.date-grid select {
+  padding: 0.75rem 0.75rem;
+  width: 100%;
+}
+
+.helper-text {
+  font-size: 0.75rem;
+  color: var(--viva-muted);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* ========== CHECKBOX PERSONALIZADO ========== */
+.checkbox-group {
+  grid-column: 1 / -1;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.checkbox-label:hover {
+  background-color: rgba(0, 174, 66, 0.05);
+}
+
+.checkbox-label input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 24px;
   height: 24px;
-  font-family: "Inter-Medium", Helvetica;
-  font-weight: 500;
-  color: #000000;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--viva-green);
 }
 
-.informacin-del .nuevo-pasajero {
-  top: 371px;
-  position: absolute;
-  left: 50px;
-  width: 1354px;
-  height: 879px;
-  overflow: hidden;
-  border-radius: 30px;
+.checkbox-label input[type='checkbox']:focus {
+  outline: 2px solid var(--viva-green);
+  outline-offset: 2px;
 }
 
-.informacin-del .nuevo-pasajero::before,
-.informacin-del .nuevo-pasajero-2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1350px;
-  height: 116px;
-  background-color: #dedede;
-  border-radius: 30px 30px 0 0;
-}
-
-.informacin-del .rectangle-2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1350px;
-  height: 879px;
-  background-color: #efefef;
-  border-radius: 30px;
-}
-
-.informacin-del .text-wrapper-7 {
-  width: 80px;
-  position: absolute;
-  top: 21px;
-  left: 227px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #646464;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-8 {
-  position: absolute;
-  top: 44px;
-  left: 227px;
-  width: 195px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .nuevo-pasajero-2 {
-  top: 1332px;
-  position: absolute;
-  left: 50px;
-  width: 1354px;
-  height: 879px;
-  overflow: hidden;
-  border-radius: 30px;
-}
-
-.informacin-del .text-wrapper-9 {
-  width: 119px;
-  position: absolute;
-  top: 21px;
-  left: 227px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #646464;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .informacin {
-  position: absolute;
-  top: 500px;
-  left: 50px;
-  width: 1354px;
-  height: 750px;
-}
-
-.informacin-del .rectangle-3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1350px;
-  height: 750px;
-  background: linear-gradient(to bottom, #dedede 0 112px, #efefef 112px 100%);
-  border-radius: 0px 0px 30px 30px;
-}
-
-.informacin-del .text-wrapper-10 {
-  top: 30px;
-  width: 270px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-  position: absolute;
-  left: 50px;
-}
-
-.informacin-del .text-wrapper-11 {
-  position: absolute;
-  top: 74px;
-  left: 50px;
-  width: 1075px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .asistencia-especial {
-  position: absolute;
-  top: 575px;
-  left: 50px;
-  width: 1175px;
-  height: 85px;
-  gap: 24px;
+.checkbox-text {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 }
 
-.informacin-del .line {
-  width: 1175px;
-  height: 1px;
-  object-fit: cover;
+.checkbox-text strong {
+  font-weight: 600;
+  color: var(--viva-text);
+  font-size: 1rem;
 }
 
-.informacin-del .asistencia-personal {
-  margin-left: 52px;
-  width: 402px;
-  height: 60px;
+.checkbox-text small {
+  font-size: 0.875rem;
+  color: var(--viva-muted);
+  font-weight: 400;
+}
+
+/* ========== SECCIÓN DE CONTACTO ========== */
+.contact-section {
+  background: #f0f0f0;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid var(--viva-green);
+}
+
+.section-header-card {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  margin: -2rem -2rem 1.5rem -2rem;
+  background: #e8e8e8;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 2px solid var(--viva-line);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--viva-text);
+  margin-bottom: 0.5rem;
+}
+
+.section-description {
+  font-size: 0.95rem;
+  color: var(--viva-muted);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ========== SECCIÓN PRIVACIDAD ========== */
+.privacy-section {
+  background: #f0f7f4;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 2px solid var(--viva-green);
+  margin-bottom: 2rem;
+}
+
+.privacy-section .checkbox-label {
+  gap: 1rem;
+  padding: 0;
+}
+
+.privacy-section .checkbox-text {
+  gap: 0.5rem;
+}
+
+.privacy-section .checkbox-text strong {
+  font-size: 1.05rem;
+  color: var(--viva-dark);
+}
+
+.privacy-section .checkbox-text small {
+  font-size: 0.95rem;
+}
+
+.privacy-link {
+  color: var(--viva-green);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid var(--viva-green);
+  transition: color 0.2s ease;
+}
+
+.privacy-link:hover {
+  color: var(--viva-green-strong);
+}
+
+/* ========== BOTONES DE NAVEGACIÓN ========== */
+.form-actions {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--viva-line);
 }
 
-.informacin-del .text-wrapper-12 {
-  width: 156px;
-  height: 20px;
-  font-family: "Montserrat-SemiBold", Helvetica;
+.btn-back {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid var(--viva-line);
+  background: var(--white);
+  color: var(--viva-text);
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 600;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-13 {
-  width: 398px;
-  height: 40px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .informacin-2 {
-  top: 1461px;
-  width: 1354px;
-  height: 750px;
-  position: absolute;
-  left: 50px;
-}
-
-.informacin-del .nombre {
-  position: absolute;
-  top: 675px;
-  left: 100px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .rectangle-4 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: 75px;
-  border-radius: 15px;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.informacin-del .text-wrapper-14 {
-  position: absolute;
-  top: 8px;
-  left: 25px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-15 {
-  top: 38px;
-  left: 22px;
-  font-size: 20px;
-  position: absolute;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: #646464;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .nombre-2 {
-  position: absolute;
-  top: 1636px;
-  left: 100px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .apellidos {
-  position: absolute;
-  top: 675px;
-  left: 653px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .text-wrapper-16 {
-  position: absolute;
-  top: 8px;
-  left: 22px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .apellidos-2 {
-  position: absolute;
-  top: 1636px;
-  left: 653px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .gnero {
-  top: 832px;
-  position: absolute;
-  left: 100px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .text-wrapper-17 {
-  position: absolute;
-  top: 9px;
-  left: 25px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-18 {
-  position: absolute;
-  top: 39px;
-  left: 22px;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: #646464;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .gnero-2 {
-  top: 1793px;
-  position: absolute;
-  left: 100px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .nacionalidad {
-  top: 962px;
-  position: absolute;
-  left: 100px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .text-wrapper-19 {
-  position: absolute;
-  top: 13px;
-  left: 25px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-20 {
-  position: absolute;
-  top: 35px;
-  left: 22px;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: #646464;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .nacionalidad-2 {
-  top: 1923px;
-  position: absolute;
-  left: 100px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .socio {
-  position: absolute;
-  top: 962px;
-  left: 653px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .text-wrapper-21 {
-  position: absolute;
-  top: 13px;
-  left: 22px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .socio-2 {
-  position: absolute;
-  top: 1923px;
-  left: 653px;
-  width: 504px;
-  height: 75px;
-}
-
-.informacin-del .fecha-de-nacimiento {
-  top: 800px;
-  position: absolute;
-  left: 653px;
-  width: 591px;
-  height: 107px;
-}
-
-.informacin-del .group {
-  position: absolute;
-  top: 49px;
-  left: 522px;
-  width: 71px;
-  height: 45px;
+  cursor: pointer;
+  transition: all 0.2s ease;
   display: flex;
-  flex-direction: column;
-  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.informacin-del .text-wrapper-22 {
-  width: 62px;
-  height: 18px;
-  font-family: "Montserrat-Bold", Helvetica;
+.btn-back:hover {
+  border-color: var(--viva-green);
+  color: var(--viva-green);
+  background-color: rgba(0, 174, 66, 0.05);
+}
+
+.btn-continue {
+  flex: 2;
+  padding: 0.875rem 1.5rem;
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 700;
-  color: #49ba4c;
-  font-size: 15px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.3);
 }
 
-.informacin-del .text-wrapper-23 {
-  width: 67px;
-  height: 18px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 15px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+.btn-continue:hover:not(:disabled) {
+  background: var(--viva-green-strong);
+  box-shadow: 0 6px 20px rgba(0, 174, 66, 0.4);
+  transform: translateY(-2px);
 }
 
-.informacin-del .text-wrapper-24 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
+.btn-continue:active:not(:disabled) {
+  transform: translateY(0);
 }
 
-.informacin-del .group-2 {
-  position: absolute;
-  top: 32px;
-  left: 0;
-  width: 157px;
-  height: 75px;
+.btn-continue:disabled {
+  background: var(--viva-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
 }
 
-.informacin-del .rectangle-5 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 153px;
-  height: 75px;
-  border-radius: 15px;
-  border: 1px solid;
-  border-color: #000000;
+/* ========== FOOTER ========== */
+.main-footer {
+  background: var(--white);
+  color: var(--white);
+  padding: 0;
+  margin-top: auto;
+  border-top: none;
 }
 
-.informacin-del .group-3 {
-  position: absolute;
-  top: 32px;
-  left: 174px;
-  width: 156px;
-  height: 75px;
-}
-
-.informacin-del .text-wrapper-25 {
-  position: absolute;
-  top: 38px;
-  left: 12px;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: #646464;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-26 {
-  top: 8px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 14px;
-  position: absolute;
-  left: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .rectangle-6 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 152px;
-  height: 75px;
-  border-radius: 15px;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.informacin-del .group-4 {
-  position: absolute;
-  top: 32px;
-  left: 347px;
-  width: 157px;
-  height: 75px;
-}
-
-.informacin-del .fecha-de-nacimiento-2 {
-  top: 1761px;
-  position: absolute;
-  left: 653px;
-  width: 591px;
-  height: 107px;
-}
-
-.informacin-del .div-2 {
-  position: absolute;
-  top: 2305px;
-  left: 50px;
-  width: 1354px;
-  height: 495px;
-}
-
-.informacin-del .rectangle-7 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1350px;
-  height: 495px;
-  background-color: #eeeeee;
-  border-radius: 30px;
-}
-
-.informacin-del .text-wrapper-27 {
-  position: absolute;
-  top: 45px;
-  left: 50px;
-  width: 325px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-size: 24px;
-  white-space: nowrap;
-  font-weight: 700;
-  color: #000000;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-28 {
-  position: absolute;
-  top: 89px;
-  left: 50px;
-  width: 1213px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .telfono {
-  position: absolute;
-  top: 2471px;
-  left: 78px;
-  width: 379px;
-  height: 56px;
-}
-
-.informacin-del .rectangle-8 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 375px;
-  height: 56px;
-  border-radius: 15px;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.informacin-del .text-wrapper-29 {
-  position: absolute;
-  top: 10px;
-  left: 74px;
-  width: 140px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-30 {
-  position: absolute;
-  top: 26px;
-  left: 74px;
-  width: 84px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .nmero {
-  position: absolute;
-  top: 2471px;
-  left: 528px;
-  width: 379px;
-  height: 56px;
-}
-
-.informacin-del .text-wrapper-31 {
-  position: absolute;
-  top: 26px;
-  left: 74px;
-  width: 151px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #646464;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .direccin {
-  position: absolute;
-  top: 2577px;
-  left: 78px;
-  width: 379px;
-  height: 56px;
-}
-
-.informacin-del .text-wrapper-32 {
-  position: absolute;
-  top: 13px;
-  left: 74px;
-  width: 140px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-33 {
-  top: 30px;
-  left: 74px;
-  width: 238px;
-  font-size: 16px;
-  position: absolute;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: #646464;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .motivo {
-  position: absolute;
-  top: 2682px;
-  left: 78px;
-  width: 379px;
-  height: 56px;
-}
-
-.informacin-del .text-wrapper-34 {
-  position: absolute;
-  top: 13px;
-  left: 19px;
-  width: 160px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .text-wrapper-35 {
-  top: 30px;
-  left: 17px;
-  width: 108px;
-  font-size: 16px;
-  position: absolute;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: #646464;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.informacin-del .ofertas {
-  position: absolute;
-  top: 2585px;
-  left: 578px;
-  width: 317px;
-  height: 40px;
-  display: flex;
-  flex-direction: column;
-}
-
-.informacin-del .text-wrapper-36 {
-  width: 120px;
-  height: 20px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-37 {
-  width: 313px;
-  height: 20px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .notificaciones {
-  position: absolute;
-  top: 2479px;
-  left: 978px;
-  width: 368px;
-  height: 40px;
-  display: flex;
-  flex-direction: column;
-}
-
-.informacin-del .text-wrapper-38 {
-  width: 178px;
-  height: 20px;
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .text-wrapper-39 {
-  width: 364px;
-  height: 20px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .privacidad {
-  position: absolute;
-  top: 2850px;
-  left: 50px;
-  width: 1352px;
-  height: 125px;
-}
-
-.informacin-del .rectangle-9 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1350px;
-  height: 125px;
-  background-color: #124734;
-  border-radius: 30px;
-}
-
-.informacin-del .acepto-el-iso-de-mis {
-  position: absolute;
-  top: 43px;
-  left: 103px;
-  width: 711px;
-  font-family: "Montserrat-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.informacin-del .span {
-  color: #ffffff;
-}
-
-.informacin-del .text-wrapper-40 {
-  font-family: "Montserrat-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.informacin-del .overlap-group {
-  position: absolute;
-  width: 1450px;
-  height: 550px;
-  top: 3050px;
-  left: 0;
-}
-
-.informacin-del .group-5 {
-  position: absolute;
-  width: 1450px;
-  height: 550px;
-  top: 0;
-  left: 0;
-}
-
-.informacin-del .rectangle-10 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1440px;
-  height: 550px;
+.footer-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 500px;
   background-color: #0a241b;
 }
 
-.informacin-del .rectangle-11 {
+.footer-content-viva {
+  position: relative;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 500px;
+  margin: 0 auto;
+}
+
+.footer-overlap-group {
+  height: auto;
+  min-height: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-group {
+  position: absolute;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 500px;
+  top: 0;
+  left: 0;
+}
+
+.footer-group .footer-group {
+  position: absolute;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 300px;
+  top: 0;
+  left: 0;
+}
+
+.footer-rectangle-25 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background-color: transparent;
+  z-index: 0;
+  display: none;
+}
+
+.footer-rectangle-26 {
   position: absolute;
   top: 519px;
   left: 0;
-  width: 1450px;
+  width: 100%;
   height: 31px;
   background-color: #ffffff;
+  display: none;
 }
 
-.informacin-del .rectangle-12 {
+.footer-rectangle-27 {
   position: absolute;
   top: 50px;
   left: 50px;
-  width: 1325px;
-  height: 200px;
+  right: 50px;
+  width: auto;
+  max-width: 1325px;
+  height: auto;
+  min-height: 200px;
   background-color: #10402f;
   border-radius: 30px;
+  z-index: 1;
 }
 
-.informacin-del .group-6 {
+.footer-group-2 {
   position: absolute;
-  top: 122px;
-  left: 50px;
+  top: 140px;
+  left: 70px;
   width: 542px;
-  height: 336px;
+  height: auto;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
-.informacin-del .text-wrapper-41 {
+.footer-title {
   margin-left: 45px;
   width: 367px;
   height: 39px;
@@ -1001,35 +735,36 @@
   font-size: 32px;
   letter-spacing: 0;
   line-height: normal;
+  margin-bottom: 0;
 }
 
-.informacin-del .text-wrapper-42 {
+.footer-text {
   width: 418px;
   height: 24px;
-  margin-top: 140px;
+  margin-top: 100px;
   font-family: "Montserrat-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
-  white-space: nowrap;
+  margin-bottom: 0;
 }
 
-.informacin-del .text-wrapper-43 {
+.footer-location {
   width: 534px;
   height: 24px;
-  margin-top: 85px;
+  margin-top: 15px;
   font-family: "Montserrat-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
-  white-space: nowrap;
+  margin-bottom: 0;
 }
 
-.informacin-del .text-wrapper-44 {
+.footer-address {
   width: 529px;
   height: 20px;
   margin-top: 4px;
@@ -1039,64 +774,207 @@
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
+  margin-bottom: 0;
 }
 
-.informacin-del .decotracin {
+.footer-decoration {
   position: absolute;
   width: 517px;
   height: 185px;
-  top: 54px;
-  left: 775px;
+  top: 60px;
+  right: 150px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.informacin-del .continuar {
-  position: absolute;
-  top: 2878px;
-  left: 987px;
-  width: 375px;
-  height: 70px;
-  background-color: #d9d9d9;
-  border-radius: 60px;
+.footer-decoration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.informacin-del .text-wrapper-45 {
-  position: absolute;
-  width: 33.07%;
-  height: 41.43%;
-  top: 30.00%;
-  left: 33.33%;
-  font-family: "Montserrat-SemiBold", Helvetica;
+/* ========== RESPONSIVE MOBILE ========== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .passengers-selector {
+    min-width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .date-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1.5rem;
+    flex-direction: column;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .passenger-card {
+    padding: 1.5rem;
+  }
+
+  .passenger-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .btn-remove-passenger {
+    align-self: flex-start;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .date-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 16px; /* Previene zoom en iOS */
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-back,
+  .btn-continue {
+    width: 100%;
+  }
+
+  .btn-continue {
+    flex: 1;
+  }
+
+  .contact-section {
+    padding: 1.5rem;
+  }
+
+  .privacy-section {
+    padding: 1rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .main-content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .passenger-number {
+    font-size: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.125rem;
+  }
+
+  .form-actions {
+    gap: 0.75rem;
+  }
+
+  .main-content {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .passenger-card {
+    padding: 1rem;
+  }
+
+  .date-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .date-grid select {
+    font-size: 16px;
+  }
+}
+
+/* ========== OVERRIDE BARRA DE PROGRESO ========== */
+.viva-progress-bar {
+  background-color: #f5f5f5;
+}
+
+/* ========== DEBUG BUTTON ========== */
+.debug-button-container {
+  text-align: center;
+  padding: 1rem 0;
+  background: rgba(0, 174, 66, 0.05);
+  border-bottom: 1px dashed var(--viva-line);
+}
+
+.debug-button {
+  background: rgba(0, 174, 66, 0.15);
+  color: var(--viva-green);
+  border: 1px dashed var(--viva-green);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #000000;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: normal;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
 }
 
-.informacin-del .regreso {
-  position: absolute;
-  top: 2885px;
-  left: 901px;
-  width: 57px;
-  height: 57px;
+.debug-button:hover {
+  background: var(--viva-green);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 174, 66, 0.3);
 }
 
-.informacin-del .ellipse {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 53px;
-  height: 53px;
-  background-color: #386555;
-  border-radius: 26.5px;
+.debug-button:active {
+  transform: scale(0.98);
 }
 
-.informacin-del .flecha-pequena {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 57px;
-  height: 57px;
-  aspect-ratio: 1;
-  object-fit: cover;
+/* ========== PRINT STYLES ========== */
+@media print {
+  .form-actions {
+    display: none;
+  }
+
+  .main-footer {
+    display: none;
+  }
+
+  body {
+    background: var(--white);
+  }
 }

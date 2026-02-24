@@ -1,29 +1,229 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ========== VARIABLES ========== */
+:root {
+  --viva-green: #00ae42;
+  --viva-green-strong: #068a38;
+  --viva-dark: #11301e;
+  --viva-text: #303030;
+  --viva-muted: #5d6d65;
+  --viva-line: #d8e3dc;
+  --viva-bg: #f4f8f5;
+  --white: #fff;
+}
+
+/* ========== HEADER STYLES ========== */
+.top-header {
+  background: #eff7f1;
+  border-bottom: 1px solid var(--viva-line);
+}
+
+.top-header-row {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ghost-link {
+  background: none;
+  border: none;
+  color: var(--viva-text);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.ghost-link:hover, .ghost-link.is-link:hover {
+  color: var(--viva-green);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.session-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.session-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+/* ===== HEADER PRINCIPAL ===== */
+.main-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--viva-line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.main-header-row {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--viva-line);
+  border-radius: 999px;
+  background: #f6fbf7;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: transform 0.2s;
+}
+
+.profile-btn:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--viva-dark);
+  text-decoration: none;
+  line-height: 1;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.logo-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--viva-muted);
+  font-weight: 500;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.main-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.primary-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.primary-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--viva-green);
+  border: 2px solid var(--viva-green);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.secondary-btn:hover {
+  background: var(--viva-green);
+  color: var(--white);
+}
+
+/* ========== CONTENEDOR ========== */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
 .adicionales {
   background-color: #ffffff;
   overflow: hidden;
   width: 100%;
-  min-width: 1440px;
-  min-height: 3980px;
+  max-width: 1440px;
+  min-height: auto;
   position: relative;
+  margin: 0 auto;
 }
 
+/* ========== ESTILOS ANTIGUOS DEL NAVBAR (COMENTADOS - REEMPLAZADOS POR HEADER FUNCIONAL) ========== */
+/*
 .adicionales .rectangle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1440px;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
   height: 123px;
   border: 1px solid;
   border-color: #000000;
+  margin: 0 auto;
 }
 
 .adicionales .navbar {
-  position: absolute;
-  top: 144px;
-  left: 145px;
-  width: 1163px;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 1163px;
   height: 19px;
   display: flex;
+  margin: 20px auto;
+  justify-content: center;
 }
 
 .adicionales .text-wrapper {
@@ -102,14 +302,18 @@
   line-height: normal;
   white-space: nowrap;
 }
+*/
 
 .adicionales .servicios {
-  position: absolute;
-  top: 225px;
-  left: 75px;
-  width: 335px;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 1290px;
   height: 39px;
   display: flex;
+  margin: 40px auto 20px;
+  padding-left: 75px;
 }
 
 .adicionales .text-wrapper-6 {
@@ -124,12 +328,15 @@
 }
 
 .adicionales .div-wrapper {
-  position: absolute;
-  top: 1437px;
-  left: 52px;
-  width: 461px;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 1290px;
   height: 39px;
   display: flex;
+  margin: 40px auto 20px;
+  padding-left: 52px;
 }
 
 .adicionales .p {
@@ -144,12 +351,15 @@
 }
 
 .adicionales .servicios-2 {
-  position: absolute;
-  top: 2387px;
-  left: 52px;
-  width: 241px;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 1290px;
   height: 39px;
   display: flex;
+  margin: 40px auto 20px;
+  padding-left: 52px;
 }
 
 .adicionales .text-wrapper-7 {
@@ -163,10 +373,34 @@
   line-height: normal;
 }
 
+.adicionales .servicios-principales-grid {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 1340px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  margin: 30px auto;
+}
+
+.adicionales .otros-servicios-grid {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 1340px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin: 30px auto;
+}
+
 .adicionales .rectangle-2 {
-  position: absolute;
-  top: 300px;
-  left: 75px;
+  position: relative;
+  top: auto;
+  left: auto;
   width: 350px;
   height: 50px;
   border-radius: 50px;
@@ -175,11 +409,28 @@
     rgba(235, 106, 16, 1) 0%,
     rgba(252, 75, 74, 1) 100%
   );
+  margin: 20px auto 30px 75px;
+}
+
+.adicionales .seccion-equipaje {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 525px;
+  margin: 20px auto;
+}
+
+.adicionales .seccion-documentado {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 400px;
+  margin: 20px auto;
 }
 
 .adicionales .rectangle-3 {
   position: absolute;
-  top: 400px;
+  top: 0;
   left: 50px;
   width: 1350px;
   height: 525px;
@@ -190,7 +441,7 @@
 
 .adicionales .rectangle-4 {
   position: absolute;
-  top: 975px;
+  top: 0;
   left: 50px;
   width: 1350px;
   height: 400px;
@@ -201,7 +452,7 @@
 
 .adicionales .seleccin {
   position: absolute;
-  top: 456px;
+  top: 56px;
   left: 77px;
   width: 360px;
   height: 353px;
@@ -283,7 +534,7 @@
 }
 
 .adicionales .opciones {
-  top: 450px;
+  top: 50px;
   height: 275px;
   position: absolute;
   left: 450px;
@@ -296,13 +547,57 @@
   width: 426px;
   height: 275px;
   border-radius: 15px;
-  border: 1px solid;
-  border-color: #000000;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.adicionales .rectangle-6:hover {
+  border-color: var(--viva-green, #00ae42);
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.15);
+}
+
+.adicionales .rectangle-6.selected {
+  border-color: var(--viva-green, #00ae42);
+  background-color: rgba(0, 174, 66, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.25);
+}
+
+.adicionales .option-label {
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.adicionales .option-status {
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #999999;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  transition: color 0.3s ease;
+}
+
+.adicionales .rectangle-6.selected .option-status {
+  color: var(--viva-green, #00ae42);
+  font-weight: 600;
 }
 
 .adicionales .text-wrapper-13 {
   position: absolute;
-  top: 778px;
+  top: 378px;
   left: 671px;
   font-family: "Montserrat-Regular", Helvetica;
   font-weight: 400;
@@ -314,7 +609,7 @@
 
 .adicionales .agregar-maleta {
   position: absolute;
-  top: 750px;
+  top: 350px;
   left: 949px;
   width: 430px;
   height: 75px;
@@ -357,7 +652,7 @@
 
 .adicionales .ellipse {
   position: absolute;
-  top: 775px;
+  top: 375px;
   left: 638px;
   width: 25px;
   height: 25px;
@@ -367,7 +662,7 @@
 
 .adicionales .ida-y-regreso {
   position: absolute;
-  top: 875px;
+  top: 475px;
   left: 1025px;
   width: 352px;
   height: 25px;
@@ -397,7 +692,7 @@
 
 .adicionales .seleccin-de-equipaje {
   position: absolute;
-  top: 1025px;
+  top: 50px;
   left: 75px;
   width: 333px;
   height: 288px;
@@ -451,7 +746,7 @@
 }
 
 .adicionales .opciones-2 {
-  top: 1078px;
+  top: 103px;
   height: 194px;
   position: absolute;
   left: 450px;
@@ -464,33 +759,92 @@
   width: 426px;
   height: 194px;
   border-radius: 15px;
-  border: 1px solid;
-  border-color: #000000;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.adicionales .rectangle-10:hover {
+  border-color: var(--viva-green, #00ae42);
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.15);
+}
+
+.adicionales .rectangle-10.selected {
+  border-color: var(--viva-green, #00ae42);
+  background-color: rgba(0, 174, 66, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.25);
+}
+
+.adicionales .rectangle-10 .option-label {
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.adicionales .rectangle-10 .option-status {
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #999999;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  transition: color 0.3s ease;
+}
+
+.adicionales .rectangle-10.selected .option-status {
+  color: var(--viva-green, #00ae42);
+  font-weight: 600;
 }
 
 .adicionales .uber {
-  position: absolute;
-  top: 1525px;
-  left: 50px;
-  width: 758px;
-  height: 375px;
+  position: relative;
+  width: 100%;
+  min-height: 375px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .uber:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .uber.service-selected {
+  z-index: 10;
+}
+
+.adicionales .uber.service-selected .rectangle-11 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .rectangle-11 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 750px;
+  width: 100%;
   height: 375px;
   border-radius: 30px;
   border: 1px solid;
   border-color: #000000;
+  transition: all 0.3s ease;
 }
 
 .adicionales .rectangle-12 {
   position: absolute;
   top: 45px;
-  left: 293px;
+  left: 29px;
   width: 213px;
   height: 30px;
   border-radius: 50px;
@@ -499,6 +853,18 @@
     rgba(235, 106, 16, 1) 0%,
     rgba(252, 75, 74, 1) 100%
   );
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.adicionales .rectangle-12:hover,
+.adicionales .rectangle-14:hover,
+.adicionales .rectangle-17:hover,
+.adicionales .rectangle-20:hover,
+.adicionales .rectangle-22:hover,
+.adicionales .rectangle-21:hover,
+.adicionales .rectangle-23:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .adicionales .line {
@@ -508,12 +874,13 @@
   width: 1px;
   height: 375px;
   object-fit: cover;
+  display: none;
 }
 
 .adicionales .text-wrapper-20 {
   position: absolute;
   top: 100px;
-  left: 375px;
+  left: 107px;
   font-family: "Inter-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -525,7 +892,7 @@
 .adicionales .text-wrapper-21 {
   position: absolute;
   top: 154px;
-  left: 286px;
+  left: 29px;
   width: 407px;
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
@@ -538,7 +905,7 @@
 .adicionales .rectangle-13 {
   position: absolute;
   top: 308px;
-  left: 550px;
+  left: 324px;
   width: 125px;
   height: 42px;
   background-color: #02af42;
@@ -547,7 +914,7 @@
 
 .adicionales .desde-MXN {
   top: 270px;
-  left: 302px;
+  left: 49px;
   position: absolute;
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
@@ -559,7 +926,7 @@
 
 .adicionales .text-wrapper-22 {
   top: 286px;
-  left: 293px;
+  left: 37px;
   position: absolute;
   font-family: "Inter-Bold", Helvetica;
   font-weight: 700;
@@ -570,17 +937,27 @@
 }
 
 .adicionales .coco-bongo {
-  position: absolute;
-  top: 1950px;
-  left: 50px;
-  width: 758px;
-  height: 375px;
+  position: relative;
+  width: 100%;
+  min-height: 375px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .coco-bongo:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .coco-bongo.service-selected .rectangle-11 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .rectangle-14 {
   position: absolute;
   top: 44px;
-  left: 293px;
+  left: 29px;
   width: 213px;
   height: 30px;
   border-radius: 50px;
@@ -594,7 +971,7 @@
 .adicionales .text-wrapper-23 {
   position: absolute;
   top: 161px;
-  left: 302px;
+  left: 29px;
   width: 407px;
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
@@ -607,7 +984,7 @@
 .adicionales .text-wrapper-24 {
   position: absolute;
   top: 110px;
-  left: 375px;
+  left: 107px;
   font-family: "Inter-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -619,7 +996,7 @@
 .adicionales .rectangle-15 {
   position: absolute;
   top: 315px;
-  left: 550px;
+  left: 324px;
   width: 125px;
   height: 42px;
   background-color: #02af42;
@@ -628,7 +1005,7 @@
 
 .adicionales .desde-MXN-2 {
   top: 292px;
-  left: 302px;
+  left: 49px;
   position: absolute;
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
@@ -640,7 +1017,7 @@
 
 .adicionales .text-wrapper-25 {
   top: 311px;
-  left: 293px;
+  left: 37px;
   position: absolute;
   font-family: "Inter-Bold", Helvetica;
   font-weight: 700;
@@ -651,18 +1028,28 @@
 }
 
 .adicionales .viva-express {
-  position: absolute;
-  top: 1525px;
-  left: 876px;
-  width: 507px;
-  height: 375px;
+  position: relative;
+  width: 100%;
+  min-height: 375px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .viva-express:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .viva-express.service-selected .rectangle-16 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .rectangle-16 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 499px;
+  width: 100%;
   height: 375px;
   border-radius: 30px;
   border: 1px solid;
@@ -743,18 +1130,28 @@
 }
 
 .adicionales .viva-transfer {
-  position: absolute;
-  top: 2494px;
-  left: 50px;
-  width: 435px;
-  height: 337px;
+  position: relative;
+  width: 100%;
+  min-height: 337px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .viva-transfer:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .viva-transfer.service-selected .rectangle-19 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .rectangle-19 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 427px;
+  width: 100%;
   height: 337px;
   border-radius: 20px;
   border: 1px solid;
@@ -822,11 +1219,21 @@
 }
 
 .adicionales .mascota-carga {
-  position: absolute;
-  top: 2880px;
-  left: 50px;
-  width: 435px;
-  height: 337px;
+  position: relative;
+  width: 100%;
+  min-height: 337px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .mascota-carga:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .mascota-carga.service-selected .rectangle-19 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .desde-MXN-5 {
@@ -890,11 +1297,21 @@
 }
 
 .adicionales .viva-bus {
-  position: absolute;
-  top: 2494px;
-  left: 499px;
-  width: 435px;
-  height: 337px;
+  position: relative;
+  width: 100%;
+  min-height: 337px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .viva-bus:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .viva-bus.service-selected .rectangle-19 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .text-wrapper-35 {
@@ -958,11 +1375,21 @@
 }
 
 .adicionales .mascota-en-cabina {
-  position: absolute;
-  top: 2494px;
-  left: 948px;
-  width: 435px;
-  height: 337px;
+  position: relative;
+  width: 100%;
+  min-height: 337px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adicionales .mascota-en-cabina:hover {
+  transform: translateY(-5px);
+}
+
+.adicionales .mascota-en-cabina.service-selected .rectangle-19 {
+  border-color: var(--viva-green, #00ae42);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(0, 174, 66, 0.3);
 }
 
 .adicionales .text-wrapper-38 {
@@ -1002,11 +1429,12 @@
 }
 
 .adicionales .relleno {
-  position: absolute;
-  width: 1450px;
-  height: 705px;
-  top: 3275px;
-  left: 0;
+  position: relative;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 150px;
+  margin: 40px auto 0;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -1014,32 +1442,127 @@
 
 .adicionales .privacidad {
   margin-left: 50px;
-  width: 1352px;
-  height: 125px;
+  margin-right: 50px;
+  width: auto;
+  max-width: 1352px;
+  height: auto;
+  min-height: 125px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  box-sizing: border-box;
 }
 
 .adicionales .rectangle-24 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1350px;
-  height: 125px;
+  width: 100%;
+  height: 100%;
+  min-height: 125px;
   background-color: #124734;
   border-radius: 30px;
+  z-index: 0;
 }
 
 .adicionales .acepto-el-iso-de-mis {
-  position: absolute;
-  top: 43px;
-  left: 103px;
-  width: 711px;
+  position: relative;
+  width: auto;
+  max-width: 600px;
   font-family: "Montserrat-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
+  z-index: 1;
+}
+
+.adicionales .botones-footer {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.adicionales .privacidad .continuar {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 180px;
+  height: 50px;
+  margin: 0;
+  background: linear-gradient(90deg, var(--viva-green, #00ae42), var(--viva-green-strong, #068a38));
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adicionales .privacidad .continuar:hover {
+  box-shadow: 0 6px 20px rgba(0, 174, 66, 0.3);
+  transform: translateY(-2px);
+}
+
+.adicionales .privacidad .text-wrapper-45 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: auto;
+  left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.adicionales .privacidad .regreso {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.adicionales .privacidad .regreso:hover {
+  transform: scale(1.1);
+}
+
+.adicionales .privacidad .ellipse-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--viva-green, #00ae42), var(--viva-green-strong, #068a38));
+  border-radius: 23px;
+  box-shadow: 0 4px 12px rgba(56, 101, 85, 0.3);
+}
+
+.adicionales .privacidad .flecha-pequena {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: brightness(0) invert(1);
 }
 
 .adicionales .span {
@@ -1053,15 +1576,46 @@
   text-decoration: underline;
 }
 
-.adicionales .overlap-group {
-  height: 550px;
+.adicionales .relleno-footer-wrapper {
   position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  background-color: #0a241b;
+}
+
+.adicionales .relleno-footer {
+  position: relative;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 500px;
+  margin: 0 auto;
+}
+
+.adicionales .overlap-group {
+  height: auto;
+  min-height: 500px;
+  position: relative;
+  z-index: 1;
 }
 
 .adicionales .group {
   position: absolute;
-  width: 1450px;
-  height: 550px;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 500px;
+  top: 0;
+  left: 0;
+}
+
+.adicionales .group .group {
+  position: absolute;
+  width: 100%;
+  max-width: 1450px;
+  height: auto;
+  min-height: 300px;
   top: 0;
   left: 0;
 }
@@ -1070,16 +1624,20 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1440px;
-  height: 550px;
-  background-color: #0a241b;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background-color: transparent;
+  z-index: 0;
+  display: none;
 }
 
 .adicionales .rectangle-26 {
   position: absolute;
   top: 519px;
   left: 0;
-  width: 1450px;
+  width: 100%;
   height: 31px;
   background-color: #ffffff;
 }
@@ -1088,18 +1646,21 @@
   position: absolute;
   top: 50px;
   left: 50px;
-  width: 1325px;
-  height: 200px;
+  right: 50px;
+  width: auto;
+  max-width: 1325px;
+  height: auto;
+  min-height: 200px;
   background-color: #10402f;
   border-radius: 30px;
 }
 
 .adicionales .group-2 {
   position: absolute;
-  top: 122px;
-  left: 50px;
+  top: 140px;
+  left: 70px;
   width: 542px;
-  height: 336px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -1119,27 +1680,25 @@
 .adicionales .text-wrapper-42 {
   width: 418px;
   height: 24px;
-  margin-top: 140px;
+  margin-top: 100px;
   font-family: "Montserrat-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
-  white-space: nowrap;
 }
 
 .adicionales .text-wrapper-43 {
   width: 534px;
   height: 24px;
-  margin-top: 85px;
+  margin-top: 15px;
   font-family: "Montserrat-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
-  white-space: nowrap;
 }
 
 .adicionales .text-wrapper-44 {
@@ -1163,35 +1722,59 @@
 }
 
 .adicionales .continuar {
-  position: absolute;
-  top: 3302px;
-  left: 994px;
+  position: relative;
+  top: auto;
+  left: auto;
   width: 375px;
   height: 70px;
-  background-color: #d9d9d9;
+  background: linear-gradient(90deg, var(--viva-green, #00ae42), var(--viva-green-strong, #068a38));
   border-radius: 60px;
+  margin: 30px auto 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 174, 66, 0.2);
+}
+
+.adicionales .continuar:hover {
+  box-shadow: 0 6px 20px rgba(0, 174, 66, 0.3);
+  transform: translateY(-2px);
+}
+
+.adicionales .continuar:active {
+  transform: translateY(0);
 }
 
 .adicionales .text-wrapper-45 {
   position: absolute;
-  width: 33.07%;
-  height: 41.43%;
-  top: 30.00%;
-  left: 33.33%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Montserrat-SemiBold", Helvetica;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
   font-size: 24px;
   letter-spacing: 0;
   line-height: normal;
 }
 
 .adicionales .regreso {
-  position: absolute;
-  top: 3310px;
-  left: 903px;
+  position: relative;
+  top: auto;
+  left: auto;
   width: 57px;
   height: 57px;
+  margin: -80px auto 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.adicionales .regreso:hover {
+  transform: scale(1.1);
 }
 
 .adicionales .ellipse-2 {
@@ -1200,8 +1783,9 @@
   left: 2px;
   width: 53px;
   height: 53px;
-  background-color: #386555;
+  background: linear-gradient(135deg, var(--viva-green, #00ae42), var(--viva-green-strong, #068a38));
   border-radius: 26.5px;
+  box-shadow: 0 4px 12px rgba(56, 101, 85, 0.3);
 }
 
 .adicionales .flecha-pequena {
@@ -1212,4 +1796,4 @@
   height: 57px;
   aspect-ratio: 1;
   object-fit: cover;
-}
+  filter: brightness(0) invert(1);

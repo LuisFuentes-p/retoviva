@@ -13,6 +13,44 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <!-- Header superior -->
+    <header class="top-header">
+      <div class="container top-header-row">
+        <nav class="top-links" aria-label="Navegación superior principal">
+          <button type="button" class="ghost-link">Reservar</button>
+          <button type="button" class="ghost-link">Información</button>
+          <button type="button" class="ghost-link">Doters</button>
+          <a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+        </nav>
+        <nav class="top-links right" aria-label="Utilidades superiores">
+          <button type="button" class="ghost-link">Estatus de vuelo</button>
+          <button type="button" class="ghost-link">Promociones</button>
+          <button type="button" class="icon-btn" aria-label="Buscar"></button>
+          <button type="button" class="ghost-link">MXN</button>
+          <a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Header principal -->
+    <header class="main-header">
+      <div class="container main-header-row">
+        <div class="brand-block">
+          <button type="button" class="profile-btn" aria-label="Perfil"></button>
+          <div>
+            <a href="../" class="logo">VIVA AEROBUS</a>
+            <p class="logo-sub">Confirmación</p>
+          </div>
+        </div>
+        <div class="main-actions">
+          <a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+          <a href="../cart/" class="secondary-btn">Carrito</a>
+          <a href="../booking/" class="primary-btn">Mi reserva</a>
+        </div>
+      </div>
+    </header>
+
+<div class="main-container">
 <div class="pago-confirmado">
   <div class="rectangle-120"></div>
   <div class="reservaci-n-confirmada">Reservación confirmada</div>
@@ -21,8 +59,8 @@
   >
     El pago de tu reservación fue exitoso. Gracias por volar con Viva Aerobus
   </div>
-  <div class="imprimir">Imprimir</div>
-  <div class="imprimir2">Imprimir</div>
+  <button type="button" class="action-btn imprimir" id="print-reserva">Imprimir</button>
+  <button type="button" class="action-btn imprimir2" id="go-home">Ir al inicio</button>
   <div class="rectangle-122"></div>
   <div class="rectangle-121"></div>
   <div class="rectangle-123"></div>
@@ -80,11 +118,11 @@
   <div class="equipaje-y-adicionales">Equipaje y adicionales</div>
   <div class="zero2">Zero</div>
   <div class="_1-art-culo-personal2">1 artículo personal</div>
-  <div class="modificar-mi-resrvaci-n">Modificar mi resrvación</div>
+  <button type="button" class="modificar-mi-resrvaci-n" id="editar-reserva">Modificar mi reservación</button>
   <div class="rectangle-126"></div>
-  <div class="check-in-disponible-en-48-d-a-s">
+  <button type="button" class="check-in-disponible-en-48-d-a-s" id="checkin-action">
     Check - in disponible en 48 día(s)
-  </div>
+  </button>
   <div class="pasajeros">Pasajeros</div>
   <div class="_1-pasajero">1 pasajero</div>
   <div class="asientos">Asientos</div>
@@ -208,7 +246,49 @@
       sobre la TUA.
     </div>
   </div>
-  <div class="saber-m-s">Saber más</div>
+  <button type="button" class="saber-m-s" id="toggle-detalles">Saber más</button>
 </div>
+    </div>
   </body>
+
+  <script>
+    const printButton = document.getElementById('print-reserva');
+    const homeButton = document.getElementById('go-home');
+    const editButton = document.getElementById('editar-reserva');
+    const checkinButton = document.getElementById('checkin-action');
+    const detailsButton = document.getElementById('toggle-detalles');
+    const detailsGroup = document.querySelector('.group-143');
+
+    if (printButton) {
+      printButton.addEventListener('click', function () {
+        window.print();
+      });
+    }
+
+    if (homeButton) {
+      homeButton.addEventListener('click', function () {
+        window.location.href = '../pantalla-principal/';
+      });
+    }
+
+    if (editButton) {
+      editButton.addEventListener('click', function () {
+        window.location.href = '../booking/';
+      });
+    }
+
+    if (checkinButton) {
+      checkinButton.addEventListener('click', function () {
+        window.location.href = '../iniciar-sesion/';
+      });
+    }
+
+    if (detailsButton && detailsGroup) {
+      detailsButton.textContent = 'Ocultar';
+      detailsButton.addEventListener('click', function () {
+        detailsGroup.classList.toggle('details-collapsed');
+        detailsButton.textContent = detailsGroup.classList.contains('details-collapsed') ? 'Saber más' : 'Ocultar';
+      });
+    }
+  </script>
 </html>

@@ -1,3 +1,181 @@
+.main-container {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* ===== HEADER SUPERIOR ===== */
+.top-header {
+  background: #eff7f1;
+  border-bottom: 1px solid var(--viva-line);
+}
+
+.top-header-row {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ghost-link {
+  background: none;
+  border: none;
+  color: var(--viva-text);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.ghost-link:hover,
+.ghost-link.is-link:hover {
+  color: var(--viva-green);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.session-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.session-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+/* ===== HEADER PRINCIPAL ===== */
+.main-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--viva-line);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.main-header-row {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--viva-line);
+  border-radius: 999px;
+  background: #f6fbf7;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: transform 0.2s;
+}
+
+.profile-btn:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--viva-dark);
+  text-decoration: none;
+  line-height: 1;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.logo-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--viva-muted);
+  font-weight: 500;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.main-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.primary-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.primary-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--viva-green);
+  border: 2px solid var(--viva-green);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.secondary-btn:hover {
+  background: var(--viva-green);
+  color: var(--white);
+}
+
 .pago-confirmado,
 .pago-confirmado * {
   box-sizing: border-box;
@@ -57,6 +235,25 @@
   position: absolute;
   left: 1167px;
   top: 255px;
+}
+.action-btn {
+  position: absolute;
+  border: 1px solid #c5b8b8;
+  border-radius: 12px;
+  background: #ffffff;
+  min-width: 140px;
+  height: 40px;
+  padding: 0 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  border-color: #00ae42;
+  color: #00ae42;
 }
 .rectangle-122 {
   background: #d9d9d9;
@@ -442,6 +639,9 @@
   position: absolute;
   left: 487px;
   top: 1308px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 .group-122 {
   position: absolute;
@@ -465,6 +665,9 @@
   position: absolute;
   left: 810px;
   top: 1308px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 .group-134 {
   position: absolute;
@@ -1145,4 +1348,16 @@
   position: absolute;
   left: 1050px;
   top: 3893px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.group-143 {
+  transition: opacity 0.2s ease;
+}
+
+.group-143.details-collapsed {
+  opacity: 0;
+  pointer-events: none;
 }

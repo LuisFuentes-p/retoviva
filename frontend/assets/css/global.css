@@ -17,3 +17,103 @@ a {
   text-decoration: none;
 }
 p, [class^="text-wrapper"], [class*=" text-wrapper"] { white-space: normal !important; overflow-wrap: anywhere; word-break: break-word; }
+
+/* ===== BARRA DE PROGRESO GLOBAL ===== */
+:root {
+  --viva-green: #00ae42;
+  --viva-green-strong: #068a38;
+  --viva-dark: #11301e;
+  --viva-text: #183326;
+  --viva-muted: #5d6d65;
+  --viva-line: #d8e3dc;
+  --viva-bg: #f4f8f5;
+  --white: #ffffff;
+}
+
+.viva-progress-bar {
+  background: var(--white, #ffffff);
+  border-bottom: 1px solid var(--viva-line, #d8e3dc);
+  padding: 1.5rem 0;
+}
+
+.viva-progress-container {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.viva-progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.viva-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.viva-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--viva-bg, #f4f8f5);
+  border: 2px solid var(--viva-line, #d8e3dc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--viva-muted, #5d6d65);
+  font-size: 0.875rem;
+  transition: all 0.3s;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.viva-step-label {
+  font-size: 0.75rem;
+  color: var(--viva-muted, #5d6d65);
+  font-weight: 500;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.viva-step-line {
+  width: 60px;
+  height: 2px;
+  background: var(--viva-line, #d8e3dc);
+  margin-top: -1.5rem;
+}
+
+/* Estados activos mediante data-attribute */
+.viva-progress-bar[data-current-step="1"] .viva-step:nth-child(1) .viva-step-number,
+.viva-progress-bar[data-current-step="2"] .viva-step:nth-child(3) .viva-step-number,
+.viva-progress-bar[data-current-step="3"] .viva-step:nth-child(5) .viva-step-number,
+.viva-progress-bar[data-current-step="4"] .viva-step:nth-child(7) .viva-step-number,
+.viva-progress-bar[data-current-step="5"] .viva-step:nth-child(9) .viva-step-number,
+.viva-progress-bar[data-current-step="6"] .viva-step:nth-child(11) .viva-step-number {
+  background: var(--viva-green, #00ae42);
+  border-color: var(--viva-green, #00ae42);
+  color: var(--white, #ffffff);
+}
+
+.viva-progress-bar[data-current-step="1"] .viva-step:nth-child(1) .viva-step-label,
+.viva-progress-bar[data-current-step="2"] .viva-step:nth-child(3) .viva-step-label,
+.viva-progress-bar[data-current-step="3"] .viva-step:nth-child(5) .viva-step-label,
+.viva-progress-bar[data-current-step="4"] .viva-step:nth-child(7) .viva-step-label,
+.viva-progress-bar[data-current-step="5"] .viva-step:nth-child(9) .viva-step-label,
+.viva-progress-bar[data-current-step="6"] .viva-step:nth-child(11) .viva-step-label {
+  color: var(--viva-green, #00ae42);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .viva-step-line {
+    display: none;
+  }
+  
+  .viva-progress-steps {
+    gap: 0.75rem;
+  }
+}

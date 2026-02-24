@@ -14,21 +14,84 @@
   </head>
   <body>
 <div class="adicionales">
-      <div class="rectangle"></div>
-      <div class="navbar">
-        <div class="text-wrapper">Vuelos</div>
-        <div class="div">Combos</div>
-        <div class="text-wrapper-2">Pasajeros</div>
-        <div class="text-wrapper-3">Adicionales</div>
-        <div class="text-wrapper-4">Asientos</div>
-        <div class="text-wrapper-5">Pagos</div>
+      <!-- Header superior -->
+      <header class="top-header">
+        <div class="container top-header-row">
+          <nav class="top-links" aria-label="Navegación superior principal">
+            <button type="button" class="ghost-link">Reservar</button>
+            <button type="button" class="ghost-link">Información</button>
+            <button type="button" class="ghost-link">Doters</button>
+            <a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+          </nav>
+          <nav class="top-links right" aria-label="Utilidades superiores">
+            <button type="button" class="ghost-link">Estatus de vuelo</button>
+            <button type="button" class="ghost-link">Promociones</button>
+            <button type="button" class="icon-btn" aria-label="Buscar"></button>
+            <button type="button" class="ghost-link">MXN</button>
+            <a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+          </nav>
+        </div>
+      </header>
+      
+      <!-- Header principal -->
+      <header class="main-header">
+        <div class="container main-header-row">
+          <div class="brand-block">
+            <button type="button" class="profile-btn" aria-label="Perfil"></button>
+            <div>
+              <a href="../" class="logo">VIVA AEROBUS</a>
+              <p class="logo-sub">Servicios adicionales</p>
+            </div>
+          </div>
+          <div class="main-actions">
+            <a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+            <a href="../cart/" class="secondary-btn">Carrito</a>
+            <a href="../booking/" class="primary-btn">Mi reserva</a>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Barra de progreso -->
+      <div class="viva-progress-bar" data-current-step="4">
+        <div class="viva-progress-container">
+          <div class="viva-progress-steps">
+            <div class="viva-step">
+              <div class="viva-step-number">1</div>
+              <span class="viva-step-label">Vuelos</span>
+            </div>
+            <div class="viva-step-line"></div>
+            <div class="viva-step">
+              <div class="viva-step-number">2</div>
+              <span class="viva-step-label">Combos</span>
+            </div>
+            <div class="viva-step-line"></div>
+            <div class="viva-step">
+              <div class="viva-step-number">3</div>
+              <span class="viva-step-label">Pasajeros</span>
+            </div>
+            <div class="viva-step-line"></div>
+            <div class="viva-step">
+              <div class="viva-step-number">4</div>
+              <span class="viva-step-label">Adicionales</span>
+            </div>
+            <div class="viva-step-line"></div>
+            <div class="viva-step">
+              <div class="viva-step-number">5</div>
+              <span class="viva-step-label">Asientos</span>
+            </div>
+            <div class="viva-step-line"></div>
+            <div class="viva-step">
+              <div class="viva-step-number">6</div>
+              <span class="viva-step-label">Pagos</span>
+            </div>
+          </div>
+        </div>
       </div>
+      
       <div class="servicios"><div class="text-wrapper-6">Servicios adicionales</div></div>
-      <div class="div-wrapper"><p class="p">Personaliza tu viaje a Cancún</p></div>
-      <div class="servicios-2"><div class="text-wrapper-7">Otros servicios</div></div>
       <div class="rectangle-2"></div>
+      <div class="seccion-equipaje">
       <div class="rectangle-3"></div>
-      <div class="rectangle-4"></div>
       <div class="seleccin">
         <div class="text-wrapper-8">Selección de equipaje</div>
         <div class="text-wrapper-9">A bordo</div>
@@ -38,8 +101,14 @@
         <div class="text-wrapper-12">Your name</div>
       </div>
       <div class="opciones">
-        <div class="rectangle-6"></div>
-        <div class="rectangle-6"></div>
+        <div class="rectangle-6 option-equipaje" data-option="zero">
+          <div class="option-label">Sin equipaje adicional</div>
+          <div class="option-status">No seleccionado</div>
+        </div>
+        <div class="rectangle-6 option-equipaje" data-option="uno">
+          <div class="option-label">1 maleta adicional</div>
+          <div class="option-status">No seleccionado</div>
+        </div>
       </div>
       <div class="text-wrapper-13">Artículo personal incluido</div>
       <div class="agregar-maleta">
@@ -52,6 +121,9 @@
         <p class="text-wrapper-16">Aplicar para vuelo de ida y regreso</p>
         <div class="rectangle-8"></div>
       </div>
+      </div>
+      <div class="seccion-documentado">
+      <div class="rectangle-4"></div>
       <div class="seleccin-de-equipaje">
         <div class="text-wrapper-17">Selección de equipaje</div>
         <div class="text-wrapper-18">Domentado</div>
@@ -60,9 +132,18 @@
         <p class="text-wrapper-11">* Aplica únicamente para el titular de la tarjeta</p>
       </div>
       <div class="opciones-2">
-        <div class="rectangle-10"></div>
-        <div class="rectangle-10"></div>
+        <div class="rectangle-10 option-documentado" data-option="zero-doc">
+          <div class="option-label">Sin equipaje documentado</div>
+          <div class="option-status">No seleccionado</div>
+        </div>
+        <div class="rectangle-10 option-documentado" data-option="uno-doc">
+          <div class="option-label">1 maleta documentada</div>
+          <div class="option-status">No seleccionado</div>
+        </div>
       </div>
+      </div>
+      <div class="div-wrapper"><p class="p">Personaliza tu viaje a Cancún</p></div>
+      <div class="servicios-principales-grid">
       <div class="uber">
         <div class="rectangle-11"></div>
         <div class="rectangle-12"></div>
@@ -94,6 +175,9 @@
         <div class="desde-MXN-3">desde<br /><br /><br />MXN</div>
         <div class="text-wrapper-28">$11111</div>
       </div>
+      </div>
+      <div class="servicios-2"><div class="text-wrapper-7">Otros servicios</div></div>
+      <div class="otros-servicios-grid">
       <div class="viva-transfer">
         <div class="rectangle-19"></div>
         <div class="text-wrapper-29">Viva Transfer</div>
@@ -103,6 +187,14 @@
           Asegura tu transporte desde el aeropuerto hasta destino con nuestro servicio de traslado compartido,
         </p>
         <div class="rectangle-20"></div>
+      </div>
+      <div class="viva-bus">
+        <div class="rectangle-19"></div>
+        <div class="text-wrapper-35">Viva Bus</div>
+        <div class="desde-MXN-6">desde<br /><br /><br />MXN</div>
+        <div class="text-wrapper-36">$11111</div>
+        <p class="text-wrapper-37">Te transportaremos del aeropuerto a diferentes puntos de la ciudad y de regreso</p>
+        <div class="rectangle-22"></div>
       </div>
       <div class="mascota-carga">
         <div class="rectangle-19"></div>
@@ -115,14 +207,6 @@
         </p>
         <div class="rectangle-21"></div>
       </div>
-      <div class="viva-bus">
-        <div class="rectangle-19"></div>
-        <div class="text-wrapper-35">Viva Bus</div>
-        <div class="desde-MXN-6">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-36">$11111</div>
-        <p class="text-wrapper-37">Te transportaremos del aeropuerto a diferentes puntos de la ciudad y de regreso</p>
-        <div class="rectangle-22"></div>
-      </div>
       <div class="mascota-en-cabina">
         <div class="rectangle-19"></div>
         <div class="desde-MXN-6">desde<br /><br /><br />MXN</div>
@@ -132,6 +216,7 @@
           Disfruta de la compañía de tu mascota llevándola contigo debajo del asiento que tengas enfrente
         </p>
         <div class="rectangle-23"></div>
+      </div>
       </div>
       <div class="relleno">
         <div class="privacidad">
@@ -143,29 +228,115 @@
             </span>
             <span class="text-wrapper-40">Política de Privacidad</span>
           </p>
-        </div>
-        <div class="overlap-group">
-          <div class="group">
-            <div class="group">
-              <div class="rectangle-25"></div>
-              <div class="rectangle-26"></div>
-              <div class="rectangle-27"></div>
+          <div class="botones-footer">
+            <div class="regreso">
+              <div class="ellipse-2"></div>
+              <img class="flecha-pequena" src="../assets/img/flecha-pequena-izquierda-3-1.png" alt="Regresar" />
             </div>
-            <div class="group-2">
-              <div class="text-wrapper-41">Descarga nuestra App</div>
-              <p class="text-wrapper-42">Aceptamos las siguientes formas de pago</p>
-              <p class="text-wrapper-43">Aeropuerto Internacional de Monterrey. Terminal C</p>
-              <p class="text-wrapper-44">Carretera Miguel Alemán Km 24, Apodaca, NL, México, C.P. 66600</p>
+            <div class="continuar">
+              <div class="text-wrapper-45">Continuar</div>
             </div>
           </div>
-          <img class="decotracin" src="../assets/img/decotraci-n.png" />
         </div>
-      </div>
-      <div class="continuar"><div class="text-wrapper-45">Continuar</div></div>
-      <div class="regreso">
-        <div class="ellipse-2"></div>
-        <img class="flecha-pequena" src="../assets/img/flecha-pequena-izquierda-3-1.png" />
+        </div>
+        <div class="relleno-footer-wrapper">
+          <div class="relleno-footer">
+            <div class="rectangle-25"></div>
+            <div class="overlap-group">
+              <div class="group">
+                <div class="group">
+                  <div class="rectangle-26"></div>
+                  <div class="rectangle-27"></div>
+                </div>
+                <div class="group-2">
+                  <div class="text-wrapper-41">Descarga nuestra App</div>
+                  <p class="text-wrapper-42">Aceptamos las siguientes formas de pago</p>
+                  <p class="text-wrapper-43">Aeropuerto Internacional de Monterrey. Terminal C</p>
+                  <p class="text-wrapper-44">Carretera Miguel Alemán Km 24, Apodaca, NL, México, C.P. 66600</p>
+                </div>
+              </div>
+              <img class="decotracin" src="../assets/img/decotraci-n.png" alt="Decoración" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
+  <script>
+    // Servicio adicional seleccionado
+    let selectedService = null;
+
+    // Manejo de selección de opciones de equipaje
+    document.querySelectorAll('.option-equipaje').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.option-equipaje').forEach(opt => {
+          opt.classList.remove('selected');
+          opt.querySelector('.option-status').textContent = 'No seleccionado';
+        });
+        this.classList.add('selected');
+        this.querySelector('.option-status').textContent = 'Seleccionado';
+      });
+    });
+
+    // Manejo de selección de opciones de documentado
+    document.querySelectorAll('.option-documentado').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.option-documentado').forEach(opt => {
+          opt.classList.remove('selected');
+          opt.querySelector('.option-status').textContent = 'No seleccionado';
+        });
+        this.classList.add('selected');
+        this.querySelector('.option-status').textContent = 'Seleccionado';
+      });
+    });
+
+    // Manejo de selección de servicios adicionales usando event delegation
+    document.addEventListener('click', function(e) {
+      const serviceCard = e.target.closest('.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina');
+      
+      if (serviceCard) {
+        // No activar si clickeamos en el badge/button específico
+        if (e.target.closest('.rectangle-13, .rectangle-15, .rectangle-18, .rectangle-20, .rectangle-22, .rectangle-21, .rectangle-23')) {
+          return;
+        }
+        
+        // Remover selección anterior de todos los servicios
+        document.querySelectorAll('.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina').forEach(c => {
+          c.classList.remove('service-selected');
+        });
+        
+        // Seleccionar actual
+        serviceCard.classList.add('service-selected');
+        selectedService = serviceCard.className;
+        
+        console.log('Servicio seleccionado:', selectedService);
+      }
+    });
+
+    // Botones de servicios (badges) usando event delegation
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('.rectangle-13, .rectangle-15, .rectangle-18, .rectangle-20, .rectangle-22, .rectangle-21, .rectangle-23');
+      if (btn) {
+        e.stopPropagation();
+        // Solo marca visualmente que se va a añadir después de continuar
+        const service = btn.closest('.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina');
+        if (service && !service.classList.contains('service-selected')) {
+          service.click();
+        }
+      }
+    });
+
+    // Botón continuar
+    document.querySelector('.continuar').addEventListener('click', function() {
+      if (selectedService) {
+        // Proceder con la adición después de continuar
+        window.location.href = '../asientos/';
+      }
+    });
+
+    // Botón regreso
+    document.querySelector('.regreso').addEventListener('click', function() {
+      window.history.back();
+    });
+  </script>
 </html>

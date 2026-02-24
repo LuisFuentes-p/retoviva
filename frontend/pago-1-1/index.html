@@ -13,21 +13,84 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-<div class="pago-1-1">
+    <!-- Header superior -->
+    <header class="top-header">
+      <div class="container top-header-row">
+        <nav class="top-links" aria-label="Navegación superior principal">
+          <button type="button" class="ghost-link">Reservar</button>
+          <button type="button" class="ghost-link">Información</button>
+          <button type="button" class="ghost-link">Doters</button>
+          <a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+        </nav>
+        <nav class="top-links right" aria-label="Utilidades superiores">
+          <button type="button" class="ghost-link">Estatus de vuelo</button>
+          <button type="button" class="ghost-link">Promociones</button>
+          <button type="button" class="icon-btn" aria-label="Buscar"></button>
+          <button type="button" class="ghost-link">MXN</button>
+          <a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Header principal -->
+    <header class="main-header">
+      <div class="container main-header-row">
+        <div class="brand-block">
+          <button type="button" class="profile-btn" aria-label="Perfil"></button>
+          <div>
+            <a href="../" class="logo">VIVA AEROBUS</a>
+            <p class="logo-sub">Pagos</p>
+          </div>
+        </div>
+        <div class="main-actions">
+          <a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+          <a href="../cart/" class="secondary-btn">Carrito</a>
+          <a href="../booking/" class="primary-btn">Mi reserva</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Barra de progreso -->
+    <div class="viva-progress-bar" data-current-step="6">
+      <div class="viva-progress-container">
+        <div class="viva-progress-steps">
+          <div class="viva-step">
+            <div class="viva-step-number">1</div>
+            <span class="viva-step-label">Vuelos</span>
+          </div>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">2</div>
+            <span class="viva-step-label">Combos</span>
+          </div>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">3</div>
+            <span class="viva-step-label">Pasajeros</span>
+          </div>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">4</div>
+            <span class="viva-step-label">Adicionales</span>
+          </div>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">5</div>
+            <span class="viva-step-label">Asientos</span>
+          </div>
+          <div class="viva-step-line"></div>
+          <div class="viva-step">
+            <div class="viva-step-number">6</div>
+            <span class="viva-step-label">Pagos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="main-container">
+<div class="pago-1-1 selected-option-1">
   <div class="rectangle-1"></div>
-  <div class="vuelos">Vuelos</div>
-  <div class="combos">Combos</div>
-  <div class="pasajeros">Pasajeros</div>
-  <div class="adicionales">Adicionales</div>
-  <div class="asientos">Asientos</div>
-  <div class="pagos">Pagos</div>
   <div class="rectangle-120"></div>
-  <div class="vuelos">Vuelos</div>
-  <div class="combos">Combos</div>
-  <div class="pasajeros">Pasajeros</div>
-  <div class="adicionales">Adicionales</div>
-  <div class="asientos">Asientos</div>
-  <div class="pagos">Pagos</div>
   <div class="ida">
     <img class="group-92" src="../assets/img/group-920.svg" />
     <div class="_7-00-am">
@@ -282,6 +345,13 @@
       <div class="mxn5">MXN</div>
     </div>
   </div>
+
+  <button type="button" class="payment-option-hitbox option-1" data-option="1" aria-label="Seleccionar tarjeta de crédito o débito"></button>
+  <button type="button" class="payment-option-hitbox option-2" data-option="2" aria-label="Seleccionar ClickToPay"></button>
+  <button type="button" class="payment-option-hitbox option-3" data-option="3" aria-label="Seleccionar pago en efectivo o depósito bancario"></button>
+  <button type="button" class="payment-option-hitbox option-4" data-option="4" aria-label="Seleccionar MercadoPago"></button>
+  <button type="button" class="payment-option-hitbox option-5" data-option="5" aria-label="Seleccionar otras formas de pago"></button>
+
   <div class="pagar-con-certificado-de-vuelo">
     Pagar con certificado de vuelo
   </div>
@@ -330,9 +400,14 @@
     <div class="total-a-pagar">Total a pagar</div>
   </div>
   <div class="line-19"></div>
-  <div class="continuar">
-    <div class="rectangle-14"></div>
-    <div class="continuar2">Continuar</div>
+  <div class="botones-container">
+    <div class="regreso-btn" role="button" tabindex="0" aria-label="Regresar">
+      <div class="ellipse-2"></div>
+      <img class="flecha-pequena" src="../assets/img/flecha-pequena-izquierda-3-1.png" alt="Regresar" />
+    </div>
+    <div class="continuar-btn" role="button" tabindex="0" aria-label="Continuar">
+      <div class="continuar-btn-text">Continuar</div>
+    </div>
   </div>
   <div class="cuadro-gris">
     <div class="rectangle-50"></div>
@@ -353,5 +428,51 @@
     <div class="rectangle-502"></div>
   </div>
 </div>
+    </div>
   </body>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      const paymentOption = e.target.closest('.payment-option-hitbox');
+      if (paymentOption) {
+        const option = paymentOption.dataset.option;
+        const page = document.querySelector('.pago-1-1');
+        if (page) {
+          page.classList.remove('selected-option-1', 'selected-option-2', 'selected-option-3', 'selected-option-4', 'selected-option-5');
+          page.classList.add(`selected-option-${option}`);
+        }
+      }
+
+      const backButton = e.target.closest('.regreso-btn');
+      if (backButton) {
+        window.location.href = '../pago-1-0/';
+      }
+
+      const continueButton = e.target.closest('.continuar-btn');
+      if (continueButton) {
+        window.location.href = '../pago-confirmado/';
+      }
+
+      const signInButton = e.target.closest('.rectangle-116, .iniciar-sesi-n');
+      if (signInButton) {
+        window.location.href = '../iniciar-sesion/';
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+
+      const backButton = e.target.closest('.regreso-btn');
+      if (backButton) {
+        e.preventDefault();
+        window.location.href = '../pago-1-0/';
+      }
+
+      const continueButton = e.target.closest('.continuar-btn');
+      if (continueButton) {
+        e.preventDefault();
+        window.location.href = '../pago-confirmado/';
+      }
+    });
+  </script>
 </html>
