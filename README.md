@@ -17,11 +17,12 @@ Sobre esta base, se desarrollarán mejoras de funcionalidad y experiencia de usu
 
 Las definiciones de pantallas se movieron a [pantallas.txt](pantallas.txt).
 
-## Funcionalidades añadidas (pendiente de definir)
+## Funcionalidades añadidas
 
--
--
--
+- Funcionalidad intermodal de **Viva Transfer** y **Viva Bus** integrada al flujo de reserva.
+- Comparativas intermodales para apoyar la decisión entre opciones de traslado.
+- Chatbot de ayuda en la pantalla principal con flujo guiado por opciones predefinidas.
+- Servicios adicionales únicos y paquetes de promoción intermodal.
 
 ## Generación de pantallas desde input
 
