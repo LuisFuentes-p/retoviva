@@ -2,6 +2,15 @@
 .viva-bus-1-0 * {
   box-sizing: border-box;
 }
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8px 0;
+}
 .page-wrapper {
   position: fixed;
   top: 0;
@@ -11,11 +20,21 @@
   background: #f5f5f5;
   z-index: -1;
 }
-.viva-bus-1-0 {
-  background: #ffffff;
+
+.bus-scale-host {
+  width: 595px;
   height: 1297px;
   position: relative;
-  overflow-x: auto;
+  margin: 0 auto;
+}
+
+.viva-bus-1-0 {
+  background: #ffffff;
+  width: 595px;
+  height: 1297px;
+  position: relative;
+  overflow: hidden;
+  transform-origin: top left;
 }
 .rectangle-41 {
   background: #d9d9d9;
@@ -405,4 +424,83 @@
   top: 782.1px;
   width: 138.72px;
   height: 19.38px;
+}
+
+.bus-option-card {
+  position: absolute;
+  width: 180.47px;
+  height: 142.43px;
+  border-radius: 20px;
+  border: 1px solid #000000;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.bus-option-card.family {
+  left: 43px;
+  top: 589px;
+}
+
+.bus-option-card.couple {
+  left: 280.47px;
+  top: 589px;
+}
+
+.bus-option-card.normal {
+  left: 43px;
+  top: 760px;
+}
+
+.bus-option-title {
+  color: #000000;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.bus-option-price {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  background: #d6f2e1;
+  color: #037d31;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 9px;
+}
+
+.bus-option-card:hover {
+  border-color: #00ae42;
+}
+
+.bus-option-card.is-selected {
+  border-color: #00ae42;
+  box-shadow: 0 0 0 2px rgba(0, 174, 66, 0.18);
+  background: #f2fbf5;
+}
+
+.rectangle-34,
+.rectangle-35,
+.rectangle-36,
+.rectangle-32,
+.rectangle-38,
+.rectangle-39,
+.autob-s-familiar,
+.autob-s-en-pareja,
+.autob-s-normal {
+  display: none;
+}
+
+.line-4,
+.line-5,
+.rectangle-93,
+.no-gracias {
+  display: none;
 }

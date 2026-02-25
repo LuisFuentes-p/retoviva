@@ -2,6 +2,17 @@
 .viva-transfer-1-0 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
 .page-wrapper {
   position: fixed;
   top: 0;
@@ -11,11 +22,21 @@
   background: #f5f5f5;
   z-index: -1;
 }
+
+.transfer-scale-host {
+  width: 595px;
+  height: 917px;
+  position: relative;
+  margin: 0 auto;
+}
+
 .viva-transfer-1-0 {
   background: #ffffff;
+  width: 595px;
   height: 917px;
   position: relative;
   overflow: hidden;
+  transform-origin: top left;
 }
 .rectangle-41 {
   background: #d9d9d9;
@@ -179,6 +200,10 @@
   position: absolute;
   left: 55px;
   top: 480px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
 }
 ._000 {
   color: #000000;
@@ -252,6 +277,10 @@
   position: absolute;
   left: 55px;
   top: 616px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
 }
 ._0002 {
   color: #000000;
@@ -311,4 +340,12 @@
   top: 729px;
   width: 105px;
   height: 18px;
+}
+
+.route-select:hover {
+  color: #00ae42;
+}
+
+.route-select.is-selected {
+  color: #00ae42;
 }

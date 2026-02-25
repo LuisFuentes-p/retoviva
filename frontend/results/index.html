@@ -10,8 +10,44 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
     <title>Resultados de vuelos | Prototipo Viva</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <header class="top-header">
+      <div class="container top-header-row">
+        <nav class="top-links" aria-label="Navegación superior principal">
+          <button type="button" class="ghost-link">Reservar</button>
+          <button type="button" class="ghost-link">Información</button>
+          <button type="button" class="ghost-link">Doters</button>
+          <a href="../booking/" class="ghost-link is-link">Mi Reserva</a>
+        </nav>
+        <nav class="top-links right" aria-label="Utilidades superiores">
+          <button type="button" class="ghost-link">Estatus de vuelo</button>
+          <button type="button" class="ghost-link">Promociones</button>
+          <button type="button" class="icon-btn" aria-label="Buscar"></button>
+          <button type="button" class="ghost-link">MXN</button>
+          <a href="../iniciar-sesion/" class="session-btn">Iniciar sesión</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="main-header">
+      <div class="container main-header-row">
+        <div class="brand-block">
+          <button type="button" class="profile-btn" aria-label="Perfil"></button>
+          <div>
+            <a href="../" class="logo">VIVA AEROBUS</a>
+            <p class="logo-sub">Resultados de vuelos</p>
+          </div>
+        </div>
+        <div class="main-actions">
+          <a href="../crear-cuenta/" class="secondary-btn">Crear cuenta</a>
+          <a href="../cart/" class="secondary-btn">Carrito</a>
+          <a href="../booking/" class="primary-btn">Mi reserva</a>
+        </div>
+      </div>
+    </header>
+
     <!-- Barra de progreso -->
     <div class="viva-progress-bar" data-current-step="1">
       <div class="viva-progress-container">
@@ -49,12 +85,165 @@
       </div>
     </div>
 
-    <h1>Resultados de vuelos</h1>
-    <p>Pantalla base para listar opciones de vuelo.</p>
-    <nav>
-      <a href="/">Inicio</a> |
-      <a href="/booking/">Booking</a> |
-      <a href="/cart/">Carrito</a>
-    </nav>
+    <main class="results-main">
+      <div class="container">
+        <section class="search-card">
+          <h1>Resultados de vuelos</h1>
+          <form id="resultsSearchForm" class="search-grid">
+            <div class="field-block">
+              <label for="resultsOrigin">Origen</label>
+              <div id="resultsOrigin"></div>
+              <input type="hidden" id="resultsOriginValue" name="origin" />
+            </div>
+            <div class="field-block">
+              <label for="resultsDestination">Destino</label>
+              <div id="resultsDestination"></div>
+              <input type="hidden" id="resultsDestinationValue" name="destination" />
+            </div>
+            <label>
+              Salida
+              <input id="resultsDepartDate" name="departDate" type="date" />
+            </label>
+            <label>
+              Regreso
+              <input id="resultsReturnDate" name="returnDate" type="date" />
+            </label>
+            <label>
+              Pasajeros
+              <select id="resultsPassengers" name="passengers">
+                <option value="1">1 pasajero</option>
+                <option value="2">2 pasajeros</option>
+                <option value="3">3 pasajeros</option>
+                <option value="4">4 pasajeros</option>
+              </select>
+            </label>
+            <label>
+              Tipo
+              <select id="resultsTypeFilter" aria-label="Filtrar destinos">
+                <option value="">Todos</option>
+                <option value="nacional">Nacionales</option>
+                <option value="internacional">Internacionales</option>
+              </select>
+            </label>
+            <div class="search-cta-wrap">
+              <button type="submit" class="primary-btn full">Buscar</button>
+            </div>
+          </form>
+          <p id="searchStatus" class="search-status">Puedes cambiar origen y destino para volver a generar resultados.</p>
+          <div class="fare-strip" aria-label="Tarifas por días cercanos">
+            <div id="fareStripDays" class="fare-strip-days"></div>
+          </div>
+        </section>
+
+        <section class="results-layout">
+          <div class="results-column">
+            <article id="intermodalCompare" class="list-card compare-top-card" hidden>
+              <h2>Comparativa de trayecto</h2>
+              <div class="compare-grid">
+                <div class="compare-card normal">
+                  <h4>Vuelo seleccionado</h4>
+                  <div id="compareNormalTimeline" class="compare-timeline">Selecciona un vuelo para ver el trayecto.</div>
+                  <p id="compareNormalTotal">$0</p>
+                </div>
+                <div class="compare-card intermodal">
+                  <h4>Alternativa intermodal</h4>
+                  <div id="compareIntermodalTimeline" class="compare-timeline">Se mostrará alternativa por avión/camión según destino.</div>
+                  <p id="compareIntermodalTotal">$0</p>
+                </div>
+              </div>
+              <p id="compareDelta" class="compare-delta">Selecciona vuelos para ver comparativa.</p>
+            </article>
+
+            <article class="list-card" id="outboundSection">
+              <div class="list-card-head">
+                <h2>Vuelos de ida</h2>
+                <button type="button" class="list-toggle-btn" id="toggleOutbound" aria-expanded="true">Minimizar</button>
+              </div>
+              <div id="outboundList" class="flights-list"></div>
+            </article>
+
+            <article class="list-card" id="returnSection" hidden>
+              <div class="list-card-head">
+                <h2>Vuelos de vuelta</h2>
+                <button type="button" class="list-toggle-btn" id="toggleReturn" aria-expanded="true">Minimizar</button>
+              </div>
+              <div id="returnList" class="flights-list"></div>
+            </article>
+          </div>
+
+          <aside class="preview-column">
+            <article class="preview-card">
+              <h3>Carrito / Preview</h3>
+              <p id="routeSummary" class="preview-route">Ruta: -</p>
+              <div class="access-badges-row">
+                <span id="originAccessBadge" class="access-badge">Origen: -</span>
+                <span id="destinationAccessBadge" class="access-badge">Destino: -</span>
+              </div>
+              <div class="preview-block">
+                <p><strong>Ida:</strong> <span id="selectedOutbound">Sin seleccionar</span></p>
+                <p><strong>Vuelta:</strong> <span id="selectedReturn">No aplica</span></p>
+              </div>
+
+              <div class="preview-block cost-lines">
+                <p><span>Tarifa base:</span> <strong id="baseTotal">$0</strong></p>
+                <p><span>TUA:</span> <strong id="tuaTotal">$0</strong></p>
+                <p><span>Transporte intermodals:</span> <strong id="groundTotal">$0</strong></p>
+                <p class="grand-total"><span>Total estimado:</span> <strong id="grandTotal">$0</strong></p>
+              </div>
+
+              <div class="preview-actions">
+                <button type="button" class="add-order-btn" id="addOrderBtn" disabled>Agregar</button>
+                <p id="addOrderHint" class="add-order-hint">Selecciona tus vuelos para agregar el pedido al carrito.</p>
+              </div>
+            </article>
+
+            <article class="ground-card">
+              <h3>Transporte intermodals</h3>
+              <div class="intermodal-summary">
+                <p>Seleccionado: <strong id="intermodalSelection">Sin intermodal</strong></p>
+                <button type="button" class="intermodal-clear-btn" data-ground="none">Quitar intermodal</button>
+              </div>
+
+              <div class="intermodal-dropdown-grid">
+                <details class="drop-card intermodal-card">
+                  <summary>
+                    Viva Transfer
+                    <span class="chip real" id="transferChip">+$320</span>
+                  </summary>
+                  <p>Haz clic para revisar el módulo embebido y seleccionarlo para tu viaje.</p>
+                  <iframe
+                    class="intermodal-frame"
+                    src="../viva-transfer-1-0/"
+                    title="Viva Transfer embebido"
+                    loading="lazy"
+                  ></iframe>
+                  <button type="button" class="select-intermodal-btn" id="transferSelectBtn" data-ground="transfer">Usar Viva Transfer (+$320)</button>
+                </details>
+
+                <details class="drop-card intermodal-card">
+                  <summary>
+                    Viva Bus
+                    <span class="chip real" id="busChip">+$240</span>
+                  </summary>
+                  <p>Haz clic para revisar el módulo embebido y seleccionarlo para tu viaje.</p>
+                  <iframe
+                    class="intermodal-frame"
+                    src="../viva-bus-1-0/"
+                    title="Viva Bus embebido"
+                    loading="lazy"
+                  ></iframe>
+                  <button type="button" class="select-intermodal-btn" id="busSelectBtn" data-ground="bus">Usar Viva Bus (+$240)</button>
+                </details>
+              </div>
+
+              <p class="ground-help">Puedes desplegar cada opción y elegir la que quieres agregar al total.</p>
+            </article>
+          </aside>
+        </section>
+      </div>
+    </main>
+
+    <script src="../assets/js/destination-dropdown.js"></script>
+    <script src="./results.js"></script>
   </body>
 </html>

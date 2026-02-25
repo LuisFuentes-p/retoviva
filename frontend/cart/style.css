@@ -219,6 +219,23 @@ body {
 	gap: 1.5rem;
 }
 
+.temp-order {
+	border-color: #9fd8b3;
+	background: #f2fbf5;
+}
+
+.temp-order-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.7rem 1rem;
+}
+
+.temp-order-grid p {
+	margin: 0;
+	font-size: 0.95rem;
+	color: var(--viva-text);
+}
+
 .cart-section {
 	background: var(--white);
 	border: 1px solid var(--viva-line);

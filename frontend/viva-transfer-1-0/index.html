@@ -14,7 +14,8 @@
   </head>
   <body>
 <div class="page-wrapper"></div>
-<div class="viva-transfer-1-0">
+<div class="transfer-scale-host" id="transferScaleHost">
+<div class="viva-transfer-1-0" id="transferCanvas">
   <div class="rectangle-41"></div>
   <div class="conectividad-para-tu-viaje">Conectividad para tu viaje</div>
   <div
@@ -30,23 +31,27 @@
   <div class="line-4"></div>
   <div class="line-5"></div>
   <div class="total2">Total</div>
-  <div class="_0">$0</div>
+  <div class="_0" id="total-amount">$0</div>
   <div class="mxn">MXN</div>
   <div class="ciudad-de-m-xico">Ciudad de México</div>
   <div class="group-13">
     <div class="rectangle-42"></div>
     <div class="elige-la-ruta">Elige la ruta</div>
-    <div class="seleccionar">Seleccionar</div>
+    <button type="button" class="seleccionar route-select" data-route="cdmx" data-price="189">
+      Seleccionar
+    </button>
   </div>
-  <div class="_000">$000</div>
+  <div class="_000">$189</div>
   <div class="mxn2">MXN</div>
   <div class="canc-n">Cancún</div>
   <div class="group-14">
     <div class="rectangle-422"></div>
     <div class="elige-la-ruta2">Elige la ruta</div>
-    <div class="seleccionar2">Seleccionar</div>
+    <button type="button" class="seleccionar2 route-select" data-route="cancun" data-price="249">
+      Seleccionar
+    </button>
   </div>
-  <div class="_0002">$000</div>
+  <div class="_0002">$249</div>
   <div class="mxn3">MXN</div>
   <div class="es-tu-primera-vez-con-nosotros">
     ¿Es tu primera vez con nosotros?
@@ -54,7 +59,68 @@
   <div class="registrate-y-escoge-tu-asiento-sin-costo">
     Registrate y escoge tu asiento sin costo
   </div>
-  <div class="iniciar-sesi-n">Iniciar sesión</div>
+  <a class="iniciar-sesi-n" href="../iniciar-sesion/">Iniciar sesión</a>
 </div>
+</div>
+
+<script>
+  (function () {
+    const baseWidth = 595;
+    const baseHeight = 917;
+    const host = document.getElementById('transferScaleHost');
+    const canvas = document.getElementById('transferCanvas');
+    const totalAmount = document.getElementById('total-amount');
+    const routeButtons = document.querySelectorAll('.route-select');
+    let selectedRoute = null;
+
+    function applyResponsiveScale() {
+      if (!host || !canvas) {
+        return;
+      }
+
+      const availableWidth = Math.max(280, window.innerWidth - 16);
+      const scale = Math.min(1, availableWidth / baseWidth);
+
+      host.style.width = `${Math.round(baseWidth * scale)}px`;
+      host.style.height = `${Math.round(baseHeight * scale)}px`;
+      canvas.style.transform = `scale(${scale})`;
+    }
+
+    routeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const route = button.dataset.route;
+        const label = route === 'cdmx' ? 'Transporte de ida' : 'Llegada a destino';
+
+        selectedRoute = {
+          route,
+          price: Number(button.dataset.price || 0),
+          label,
+        };
+
+        routeButtons.forEach((item) => {
+          item.classList.remove('is-selected');
+          item.textContent = 'Seleccionar';
+        });
+
+        button.classList.add('is-selected');
+        button.textContent = 'Seleccionado';
+        totalAmount.textContent = `$${selectedRoute.price}`;
+
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'viva-intermodal-selection',
+            service: 'transfer',
+            option: selectedRoute.route,
+            label: selectedRoute.label,
+            price: selectedRoute.price,
+          }, '*');
+        }
+      });
+    });
+
+    applyResponsiveScale();
+    window.addEventListener('resize', applyResponsiveScale);
+  })();
+</script>
   </body>
 </html>

@@ -94,6 +94,21 @@
 					<h1 class="page-title">Tu carrito de compras</h1>
 					<p class="page-subtitle">Revisa los detalles de tu viaje antes de continuar</p>
 
+					<section class="cart-section temp-order" id="temp-order" style="display: none;">
+						<h2 class="section-title">
+							<span class="icon">🛒</span>
+							Pedido agregado desde vuelos
+						</h2>
+						<div class="temp-order-grid">
+							<p><strong>Ruta:</strong> <span id="temp-route">-</span></p>
+							<p><strong>Pasajeros:</strong> <span id="temp-passengers">-</span></p>
+							<p><strong>Ida:</strong> <span id="temp-outbound">-</span></p>
+							<p><strong>Vuelta:</strong> <span id="temp-return">No aplica</span></p>
+							<p><strong>Intermodal:</strong> <span id="temp-ground">Sin intermodal</span></p>
+							<p><strong>Total:</strong> <span id="temp-total">$0</span></p>
+						</div>
+					</section>
+
 					<!-- Vuelos seleccionados -->
 					<section class="cart-section">
 						<h2 class="section-title">
@@ -102,7 +117,7 @@
 						</h2>
 
 						<!-- Vuelo de ida -->
-						<div class="flight-card">
+						<div class="flight-card" id="outbound-card">
 							<div class="flight-header">
 								<span class="flight-type">Vuelo de ida</span>
 								<button type="button" class="btn-change">Cambiar vuelo</button>
@@ -110,31 +125,31 @@
 							<div class="flight-details">
 								<div class="flight-route">
 									<div class="airport">
-										<div class="airport-code">MTY</div>
-										<div class="airport-name">Monterrey</div>
-										<div class="flight-time">08:30</div>
+										<div class="airport-code" id="outbound-from-code">MTY</div>
+										<div class="airport-name" id="outbound-from-name">Monterrey</div>
+										<div class="flight-time" id="outbound-depart-time">08:30</div>
 									</div>
 									<div class="flight-duration">
 										<div class="duration-line"></div>
-										<div class="duration-text">2h 15m</div>
+										<div class="duration-text" id="outbound-duration">2h 15m</div>
 										<div class="plane-icon">✈</div>
 									</div>
 									<div class="airport">
-										<div class="airport-code">CUN</div>
-										<div class="airport-name">Cancún</div>
-										<div class="flight-time">10:45</div>
+										<div class="airport-code" id="outbound-to-code">CUN</div>
+										<div class="airport-name" id="outbound-to-name">Cancún</div>
+										<div class="flight-time" id="outbound-arrive-time">10:45</div>
 									</div>
 								</div>
-								<div class="flight-info">
-									<span class="info-item">📅 Lun 24 Feb 2026</span>
-									<span class="info-item">💺 1 Adulto</span>
+								<div class="flight-info" id="outbound-info">
+									<span class="info-item" id="outbound-date">📅 Lun 24 Feb 2026</span>
+									<span class="info-item" id="outbound-passengers">💺 1 Adulto</span>
 									<span class="info-item">🎒 Equipaje personal incluido</span>
 								</div>
 							</div>
 						</div>
 
 						<!-- Vuelo de regreso -->
-						<div class="flight-card">
+						<div class="flight-card" id="return-card">
 							<div class="flight-header">
 								<span class="flight-type">Vuelo de regreso</span>
 								<button type="button" class="btn-change">Cambiar vuelo</button>
@@ -142,24 +157,24 @@
 							<div class="flight-details">
 								<div class="flight-route">
 									<div class="airport">
-										<div class="airport-code">CUN</div>
-										<div class="airport-name">Cancún</div>
-										<div class="flight-time">18:15</div>
+										<div class="airport-code" id="return-from-code">CUN</div>
+										<div class="airport-name" id="return-from-name">Cancún</div>
+										<div class="flight-time" id="return-depart-time">18:15</div>
 									</div>
 									<div class="flight-duration">
 										<div class="duration-line"></div>
-										<div class="duration-text">2h 20m</div>
+										<div class="duration-text" id="return-duration">2h 20m</div>
 										<div class="plane-icon">✈</div>
 									</div>
 									<div class="airport">
-										<div class="airport-code">MTY</div>
-										<div class="airport-name">Monterrey</div>
-										<div class="flight-time">20:35</div>
+										<div class="airport-code" id="return-to-code">MTY</div>
+										<div class="airport-name" id="return-to-name">Monterrey</div>
+										<div class="flight-time" id="return-arrive-time">20:35</div>
 									</div>
 								</div>
-								<div class="flight-info">
-									<span class="info-item">📅 Vie 28 Feb 2026</span>
-									<span class="info-item">💺 1 Adulto</span>
+								<div class="flight-info" id="return-info">
+									<span class="info-item" id="return-date">📅 Vie 28 Feb 2026</span>
+									<span class="info-item" id="return-passengers">💺 1 Adulto</span>
 									<span class="info-item">🎒 Equipaje personal incluido</span>
 								</div>
 							</div>
@@ -207,7 +222,7 @@
 						<div class="summary-section">
 							<h3 class="summary-subtitle">Vuelos</h3>
 							<div class="summary-row">
-								<span>Tarifa base (2 vuelos)</span>
+								<span id="base-fare-label">Tarifa base (2 vuelos)</span>
 								<span id="base-fare">$2,499.00</span>
 							</div>
 							<div class="summary-row">
@@ -300,8 +315,158 @@
 		</footer>
 
 		<script>
+			function currency(value) {
+				return `$${Number(value || 0).toLocaleString('es-MX')}`;
+			}
+
+			function shortCode(place) {
+				const clean = String(place || '')
+					.replace(/\(.*?\)/g, '')
+					.replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]/g, ' ')
+					.trim();
+				if (!clean) return '---';
+				const words = clean.split(/\s+/).filter(Boolean);
+				if (words.length >= 2) {
+					return `${words[0][0] || ''}${words[1][0] || ''}${words[2]?.[0] || ''}`.toUpperCase();
+				}
+				return clean.slice(0, 3).toUpperCase();
+			}
+
+			function formatFlightDate(isoDate) {
+				if (!isoDate) return 'Fecha pendiente';
+				const date = new Date(`${isoDate}T12:00:00`);
+				if (Number.isNaN(date.getTime())) return 'Fecha pendiente';
+				return date.toLocaleDateString('es-MX', {
+					weekday: 'short',
+					day: '2-digit',
+					month: 'short',
+					year: 'numeric'
+				});
+			}
+
+			function setText(id, value) {
+				const node = document.getElementById(id);
+				if (node) node.textContent = value;
+			}
+
+			function renderFlightCard(direction, flight, date, passengers) {
+				if (!flight) return;
+
+				const prefix = direction === 'outbound' ? 'outbound' : 'return';
+				setText(`${prefix}-from-code`, shortCode(flight.from));
+				setText(`${prefix}-from-name`, flight.from || '-');
+				setText(`${prefix}-depart-time`, flight.departTime || '--:--');
+				setText(`${prefix}-duration`, flight.duration || '-');
+				setText(`${prefix}-to-code`, shortCode(flight.to));
+				setText(`${prefix}-to-name`, flight.to || '-');
+				setText(`${prefix}-arrive-time`, flight.arriveTime || '--:--');
+				setText(`${prefix}-date`, `📅 ${formatFlightDate(date)}`);
+				setText(`${prefix}-passengers`, `💺 ${passengers} ${passengers === 1 ? 'Adulto' : 'Adultos'}`);
+			}
+
+			function loadTemporaryOrder() {
+				const raw = sessionStorage.getItem('flightCartOrder');
+				if (!raw) {
+					return false;
+				}
+
+				try {
+					const order = JSON.parse(raw);
+					if (!order || !order.search || !order.totals) {
+						return false;
+					}
+
+					const tempOrder = document.getElementById('temp-order');
+					const returnCard = document.getElementById('return-card');
+					const baseFareLabel = document.getElementById('base-fare-label');
+					const addonsSummary = document.getElementById('addons-summary');
+					const addonsBreakdown = document.getElementById('addons-breakdown');
+					const addonsList = document.getElementById('addons-list');
+					const addonsEmpty = document.getElementById('addons-empty');
+
+					if (tempOrder) {
+						tempOrder.style.display = 'block';
+					}
+
+					const route = `${order.search.origin || '-'} → ${order.search.destination || '-'}`;
+					const outboundLabel = order.selectedOutbound
+						? `${order.selectedOutbound.airline || 'Viva'} ${order.selectedOutbound.number || ''} ${order.selectedOutbound.departTime || ''}`.trim()
+						: 'Sin seleccionar';
+					const returnLabel = order.roundTrip
+						? (order.selectedReturn
+							? `${order.selectedReturn.airline || 'Viva'} ${order.selectedReturn.number || ''} ${order.selectedReturn.departTime || ''}`.trim()
+							: 'Sin seleccionar')
+						: 'No aplica';
+
+					document.getElementById('temp-route').textContent = route;
+					document.getElementById('temp-passengers').textContent = `${order.passengers || 1}`;
+					document.getElementById('temp-outbound').textContent = outboundLabel;
+					document.getElementById('temp-return').textContent = returnLabel;
+					document.getElementById('temp-ground').textContent = order.intermodal?.label || 'Sin intermodal';
+					document.getElementById('temp-total').textContent = currency(order.totals.grand);
+
+					renderFlightCard('outbound', order.selectedOutbound, order.search.departDate, Number(order.passengers || 1));
+
+					if (order.roundTrip && order.selectedReturn) {
+						renderFlightCard('return', order.selectedReturn, order.search.returnDate, Number(order.passengers || 1));
+						if (returnCard) returnCard.style.display = 'block';
+					} else if (returnCard) {
+						returnCard.style.display = 'none';
+					}
+
+					if (baseFareLabel) {
+						baseFareLabel.textContent = `Tarifa base (${order.roundTrip ? '2 vuelos' : '1 vuelo'})`;
+					}
+
+					document.getElementById('base-fare').textContent = currency(order.totals.base);
+					document.getElementById('taxes').textContent = currency(order.totals.tua);
+					document.getElementById('total-amount').textContent = currency(order.totals.grand);
+
+					const selectedAddons = Array.isArray(order.selectedAddons)
+						? order.selectedAddons.filter((addon) => Number(addon?.price || 0) > 0)
+						: [];
+
+					if (addonsSummary && addonsBreakdown && selectedAddons.length > 0) {
+						addonsSummary.style.display = 'block';
+						addonsBreakdown.innerHTML = selectedAddons.map((addon) => `
+							<div class="summary-row">
+								<span>${addon.name || 'Intermodal'}</span>
+								<span>${currency(addon.price)}</span>
+							</div>
+						`).join('');
+
+						if (addonsList && addonsEmpty) {
+							addonsEmpty.style.display = 'none';
+							addonsList.style.display = 'block';
+							addonsList.innerHTML = selectedAddons.map((addon) => `
+								<div class="addon-item">
+									<div class="addon-info">
+										<span class="addon-name">${addon.name || 'Intermodal'}</span>
+									</div>
+									<span class="addon-price">${currency(addon.price)}</span>
+								</div>
+							`).join('');
+						}
+					} else {
+						if (addonsSummary) addonsSummary.style.display = 'none';
+						if (addonsList && addonsEmpty) {
+							addonsList.style.display = 'none';
+							addonsEmpty.style.display = 'block';
+						}
+					}
+
+					return true;
+				} catch (error) {
+					return false;
+				}
+			}
+
 			// Cargar datos del carrito desde el API
 			async function loadCartData() {
+				if (loadTemporaryOrder()) {
+					return;
+				}
+
 				try {
 					const response = await fetch('/api/cart');
 					if (!response.ok) {

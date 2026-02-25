@@ -14,7 +14,8 @@
   </head>
   <body>
 <div class="page-wrapper"></div>
-<div class="viva-bus-1-0">
+<div class="bus-scale-host" id="busScaleHost">
+<div class="viva-bus-1-0" id="busCanvas">
   <div class="rectangle-41"></div>
   <div class="haz-tu-viaje-m-s-sencillo">Haz tu viaje más sencillo</div>
   <div class="te-ofrecemos-conectividad-total-en-tu-viaje">
@@ -33,7 +34,7 @@
   <div class="line-4"></div>
   <div class="line-5"></div>
   <div class="total2">Total</div>
-  <div class="_0">$0</div>
+  <div class="_0" id="bus-total-amount">$0</div>
   <div class="mxn">MXN</div>
   <div class="canc-n">Cancún</div>
   <div class="group-14">
@@ -66,6 +67,77 @@
   <div class="rectangle-36"></div>
   <div class="rectangle-39"></div>
   <div class="autob-s-normal">Autobús normal</div>
+
+  <button type="button" class="bus-option-card family" data-option="familiar" data-price="289" data-label="Autobús familiar">
+    <span class="bus-option-title">Autobús familiar</span>
+    <span class="bus-option-price">$289 MXN promo</span>
+  </button>
+
+  <button type="button" class="bus-option-card couple" data-option="pareja" data-price="229" data-label="Autobús en pareja">
+    <span class="bus-option-title">Autobús en pareja</span>
+    <span class="bus-option-price">$229 MXN promo</span>
+  </button>
+
+  <button type="button" class="bus-option-card normal" data-option="normal" data-price="179" data-label="Autobús normal">
+    <span class="bus-option-title">Autobús normal</span>
+    <span class="bus-option-price">$179 MXN promo</span>
+  </button>
 </div>
+</div>
+
+<script>
+  (function () {
+    const baseWidth = 595;
+    const baseHeight = 1297;
+    const host = document.getElementById('busScaleHost');
+    const canvas = document.getElementById('busCanvas');
+    const totalAmount = document.getElementById('bus-total-amount');
+    const optionCards = document.querySelectorAll('.bus-option-card');
+    let selectedBusOption = null;
+
+    function applyResponsiveScale() {
+      if (!host || !canvas) {
+        return;
+      }
+
+      const availableWidth = Math.max(280, window.innerWidth - 16);
+      const scale = Math.min(1, availableWidth / baseWidth);
+
+      host.style.width = `${Math.round(baseWidth * scale)}px`;
+      host.style.height = `${Math.round(baseHeight * scale)}px`;
+      canvas.style.transform = `scale(${scale})`;
+    }
+
+    optionCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const option = card.dataset.option || 'normal';
+        const label = card.dataset.label || 'Autobús';
+        const price = Number(card.dataset.price || 0);
+
+        selectedBusOption = { option, label, price };
+
+        optionCards.forEach((item) => item.classList.remove('is-selected'));
+        card.classList.add('is-selected');
+
+        if (totalAmount) {
+          totalAmount.textContent = `$${selectedBusOption.price}`;
+        }
+
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'viva-intermodal-selection',
+            service: 'bus',
+            option: selectedBusOption.option,
+            label: selectedBusOption.label,
+            price: selectedBusOption.price,
+          }, '*');
+        }
+      });
+    });
+
+    applyResponsiveScale();
+    window.addEventListener('resize', applyResponsiveScale);
+  })();
+</script>
   </body>
 </html>
