@@ -182,9 +182,21 @@
 }
 .pago-1-0 {
   background: #ffffff;
-  height: 2620px;
+  min-height: 2620px;
+  height: auto;
   position: relative;
-  overflow-x: auto;
+  overflow: visible;
+}
+
+.legacy-cart-node {
+  display: none !important;
+}
+
+.payment-cart-host {
+  position: absolute;
+  left: 900px;
+  top: 240px;
+  width: 480px;
 }
 .rectangle-1 {
   border-style: solid;
@@ -1267,6 +1279,9 @@
   position: absolute;
   left: 930px;
   top: 852px;
+  max-width: 250px;
+  white-space: normal;
+  line-height: 1.2;
 }
 .ida-tab {
   width: 480px;
@@ -1323,6 +1338,9 @@
   position: absolute;
   left: 990px;
   top: 330px;
+  max-width: 260px;
+  white-space: normal;
+  line-height: 1.1;
 }
 .regreso-tab {
   width: 480px;
@@ -1349,6 +1367,9 @@
   position: absolute;
   left: 990px;
   top: 479px;
+  max-width: 260px;
+  white-space: normal;
+  line-height: 1.1;
 }
 .s-b-28-feb-06-10-am-directo {
   color: #646464;

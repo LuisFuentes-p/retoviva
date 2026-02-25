@@ -252,6 +252,128 @@
   </body>
 
   <script>
+    function readOrder() {
+      try {
+        const raw = sessionStorage.getItem('flightCartOrder');
+        return raw ? JSON.parse(raw) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function setText(selector, value) {
+      const node = document.querySelector(selector);
+      if (node && typeof value === 'string') node.textContent = value;
+    }
+
+    function money(value) {
+      return `$${Number(value || 0).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function shortCode(place) {
+      const clean = String(place || '').replace(/\(.*?\)/g, '').replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]/g, ' ').trim();
+      if (!clean) return '---';
+      const words = clean.split(/\s+/).filter(Boolean);
+      if (words.length >= 2) return `${words[0][0] || ''}${words[1][0] || ''}${words[2]?.[0] || ''}`.toUpperCase();
+      return clean.slice(0, 3).toUpperCase();
+    }
+
+    function formatTime24(hhmm) {
+      if (!hhmm || !hhmm.includes(':')) return '--:--';
+      const [h, m] = hhmm.split(':');
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    }
+
+    function formatShortDate(isoDate) {
+      if (!isoDate) return '-';
+      const d = new Date(`${isoDate}T12:00:00`);
+      if (Number.isNaN(d.getTime())) return '-';
+      return d.toLocaleDateString('es-MX', { weekday: 'short', day: '2-digit', month: 'short' });
+    }
+
+    function countSelectedSeats(order) {
+      const outbound = Array.isArray(order?.seats?.outbound) ? order.seats.outbound : [];
+      const incoming = Array.isArray(order?.seats?.return) ? order.seats.return : [];
+      return outbound.filter((item) => item?.seat).length + incoming.filter((item) => item?.seat).length;
+    }
+
+    function toggleReturnSections(showReturn) {
+      const selectors = ['.group-130', '.group-1262', '.group-124', '.group-127', '.group-128', '._1-x-tarifa-zero2', '._1-x-maleta-de-mano2'];
+      selectors.forEach((selector) => {
+        const node = document.querySelector(selector);
+        if (!node) return;
+        node.style.display = showReturn ? '' : 'none';
+      });
+    }
+
+    function hydrateConfirmedInfo() {
+      const order = readOrder();
+      if (!order) return;
+
+      const outbound = order.selectedOutbound;
+      const incoming = order.selectedReturn;
+
+      setText('.m-xico', order.search?.origin || 'Origen');
+      setText('.canc-n', order.search?.destination || 'Destino');
+      setText('.mex', shortCode(order.search?.origin));
+      setText('.mex2', shortCode(order.search?.origin));
+      setText('.cun', shortCode(order.search?.destination));
+      setText('.cun2', shortCode(order.search?.destination));
+      setText('.mex-cun', `${shortCode(order.search?.origin)} - ${shortCode(order.search?.destination)}`);
+      setText('.cun-mex', `${shortCode(order.search?.destination)} - ${shortCode(order.search?.origin)}`);
+      toggleReturnSections(Boolean(order.roundTrip));
+
+      setText('.s-b-21-feb', formatShortDate(order.search?.departDate));
+      setText('.s-b-29-feb', order.roundTrip ? formatShortDate(order.search?.returnDate) : 'Sin regreso');
+      setText('._7-00', formatTime24(outbound?.departTime));
+      setText('._10-15', formatTime24(outbound?.arriveTime));
+      setText('._6-10', formatTime24(incoming?.departTime));
+      setText('._7-35', formatTime24(incoming?.arriveTime));
+
+      const passengers = Number(order.passengers || 1);
+      const selectedSeatCount = countSelectedSeats(order);
+
+      setText('._1-pasajero', `${passengers} ${passengers === 1 ? 'pasajero' : 'pasajeros'}`);
+      setText('._1-asiento-seleccionado', `${selectedSeatCount} ${selectedSeatCount === 1 ? 'asiento seleccionado' : 'asientos seleccionados'}`);
+
+      setText('.your-name', 'Adulto 1');
+      setText('.your-name2', passengers > 1 ? 'Adulto 2' : '-');
+      setText('.your-name3', 'Adulto 1');
+      setText('.your-name4', passengers > 1 ? 'Adulto 2' : '-');
+      setText('.your-name5', 'Adulto 1');
+      setText('.your-name6', passengers > 1 ? 'Adulto 2' : '-');
+
+      const firstOutboundSeat = Array.isArray(order?.seats?.outbound) ? order.seats.outbound[0]?.seat : null;
+      const secondOutboundSeat = Array.isArray(order?.seats?.outbound) ? order.seats.outbound[1]?.seat : null;
+      const firstReturnSeat = Array.isArray(order?.seats?.return) ? order.seats.return[0]?.seat : null;
+      const secondReturnSeat = Array.isArray(order?.seats?.return) ? order.seats.return[1]?.seat : null;
+
+      setText('.asiento-sin-seleccionar', firstOutboundSeat || 'Asiento sin seleccionar');
+      setText('.asiento-sin-seleccionar2', secondOutboundSeat || 'Asiento sin seleccionar');
+      setText('.asiento-sin-seleccionar3', firstOutboundSeat || 'Asiento sin seleccionar');
+      setText('.asiento-sin-seleccionar4', secondOutboundSeat || 'Asiento sin seleccionar');
+      setText('.asiento-sin-seleccionar5', firstReturnSeat || 'Asiento sin seleccionar');
+      setText('.asiento-sin-seleccionar6', secondReturnSeat || 'Asiento sin seleccionar');
+
+      const finalTotal = Number(order.totals?.final || order.totals?.payable || order.totals?.grand || 0);
+      const tua = Number(order.totals?.tua || 0);
+      const basePlusServices = Number(order.totals?.base || 0)
+        + Number(order.totals?.ground || 0)
+        + Number(order.totals?.extras || 0)
+        + Number(order.totals?.seats || 0)
+        + Number(order.totals?.protection || 0);
+
+      setText('._4-221-30', money(finalTotal));
+      setText('._592-25', money(tua));
+      setText('.tu-reservaci-n-con-viva-3-702', `*Tu reservación con Viva\n${money(basePlusServices)}`);
+      setText('.lo-que-cobran-los-aeropuertos-2-456', `**Lo que cobran los aeropuertos\n${money(tua)}`);
+      setText('.lo-que-cobran-el-gobierno-593', `***Lo que cobran el gobierno\n${money(Number(tua * 0.16))}`);
+
+      if (order.paymentMethod?.label) {
+        setText('.reservaci-n-pagada', `Reservación pagada · ${order.paymentMethod.label}`);
+      }
+    }
+
     const printButton = document.getElementById('print-reserva');
     const homeButton = document.getElementById('go-home');
     const editButton = document.getElementById('editar-reserva');
@@ -290,5 +412,7 @@
         detailsButton.textContent = detailsGroup.classList.contains('details-collapsed') ? 'Saber más' : 'Ocultar';
       });
     }
+
+    hydrateConfirmedInfo();
   </script>
 </html>

@@ -304,13 +304,7 @@
 
 						<!-- Pasajeros -->
 						<div class="passengers-list" id="passengersList">
-							<div class="passenger-item">
-								<div class="passenger-info">
-									<span class="passenger-name">👤 Adulto 1</span>
-									<span class="seat-assigned" id="seat-p1">Sin asiento</span>
-								</div>
-								<span class="seat-price" id="price-p1">$0.00</span>
-							</div>
+							<!-- Se llena dinámicamente según cantidad de pasajeros -->
 						</div>
 
 						<div class="summary-section">
@@ -386,87 +380,326 @@
 		</footer>
 
 		<script>
-			// Estado de la aplicación
-			let currentFlight = 'outbound'; // 'outbound' o 'return'
-			let selectedSeats = {};
+			let currentFlight = 'outbound';
+			let roundTrip = false;
+			let passengerCount = 1;
+			let currentPassengerIndex = 0;
+			const seatSelection = {
+				outbound: [],
+				return: [],
+			};
+			const seatButtons = Array.from(document.querySelectorAll('.seat'));
+			const baseDisabledSeats = new Set(
+				seatButtons.filter((button) => button.disabled).map((button) => button.dataset.seat)
+			);
 
-			// Selección de asientos
-			document.querySelectorAll('.seat:not(.occupied)').forEach(seat => {
-				seat.addEventListener('click', function() {
-					const seatNumber = this.dataset.seat;
-					const seatPrice = parseFloat(this.dataset.price);
+			function readOrder() {
+				try {
+					const raw = sessionStorage.getItem('flightCartOrder');
+					return raw ? JSON.parse(raw) : null;
+				} catch (error) {
+					return null;
+				}
+			}
 
-					// Toggle selección
-					if (this.classList.contains('selected')) {
-						this.classList.remove('selected');
-						delete selectedSeats[seatNumber];
-					} else {
-						// Si ya hay un asiento seleccionado para este pasajero, deseleccionarlo
-						const previousSeat = document.querySelector('.seat.selected');
-						if (previousSeat) {
-							previousSeat.classList.remove('selected');
-						}
+			function writeOrder(order) {
+				try {
+					sessionStorage.setItem('flightCartOrder', JSON.stringify(order));
+				} catch (error) {
+				}
+			}
 
-						this.classList.add('selected');
-						selectedSeats[seatNumber] = seatPrice;
+			function needsIntermodalSeatStep(order) {
+				const intermodalService = String(order?.intermodal?.service || '').toLowerCase();
+				if (intermodalService === 'transfer' || intermodalService === 'bus') {
+					return true;
+				}
+
+				const addons = Array.isArray(order?.selectedAddons) ? order.selectedAddons : [];
+				return addons.some((addon) => {
+					if (String(addon?.type || '').toLowerCase() !== 'intermodal') return false;
+					const service = String(addon?.service || '').toLowerCase();
+					return service === 'transfer' || service === 'bus';
+				});
+			}
+
+			function resolveNextStepRoute(order) {
+				return needsIntermodalSeatStep(order)
+					? '../viva-transfer-1-1/'
+					: '../pago-1-0/';
+			}
+
+			function ensureSeatArrays() {
+				const normalize = (value) => {
+					if (Array.isArray(value)) {
+						return Array.from({ length: passengerCount }, (_, index) => value[index] || null);
 					}
 
+					if (value && typeof value === 'object' && value.seat) {
+						const fallback = Array.from({ length: passengerCount }, () => null);
+						fallback[0] = value;
+						return fallback;
+					}
+
+					return Array.from({ length: passengerCount }, () => null);
+				};
+
+				seatSelection.outbound = normalize(seatSelection.outbound);
+				seatSelection.return = normalize(seatSelection.return);
+			}
+
+			function formatDate(isoDate) {
+				if (!isoDate) return '';
+				const date = new Date(`${isoDate}T12:00:00`);
+				if (Number.isNaN(date.getTime())) return '';
+				return date.toLocaleDateString('es-MX', {
+					day: '2-digit',
+					month: 'short',
+					year: 'numeric',
+				});
+			}
+
+			function currentFlightSubtitle(order) {
+				if (!order || !order.search) {
+					return currentFlight === 'outbound'
+						? 'Vuelo de ida: MTY → CUN'
+						: 'Vuelo de regreso: CUN → MTY';
+				}
+
+				const origin = order.search.origin || 'Origen';
+				const destination = order.search.destination || 'Destino';
+				const departDate = formatDate(order.search.departDate);
+				const returnDate = formatDate(order.search.returnDate);
+
+				const paxLabel = ` • Pasajero ${currentPassengerIndex + 1} de ${passengerCount}`;
+
+				if (currentFlight === 'outbound') {
+					return `Vuelo de ida: ${origin} → ${destination}${departDate ? ` • ${departDate}` : ''}${paxLabel}`;
+				}
+
+				return `Vuelo de regreso: ${destination} → ${origin}${returnDate ? ` • ${returnDate}` : ''}${paxLabel}`;
+			}
+
+			function renderFlightHeader() {
+				const order = readOrder();
+				roundTrip = Boolean(order?.roundTrip);
+
+				const subtitleNode = document.querySelector('.page-subtitle');
+				if (subtitleNode) {
+					subtitleNode.textContent = currentFlightSubtitle(order);
+				}
+
+				const switchBtn = document.getElementById('switchFlight');
+				if (!switchBtn) return;
+
+				if (!roundTrip) {
+					switchBtn.style.display = 'none';
+					return;
+				}
+
+				switchBtn.style.display = 'inline-flex';
+				switchBtn.textContent = currentFlight === 'outbound'
+					? 'Cambiar a vuelo de regreso →'
+					: '← Cambiar a vuelo de ida';
+			}
+
+			function clearSeatVisualSelection() {
+				document.querySelectorAll('.seat.selected').forEach((seat) => {
+					seat.classList.remove('selected');
+				});
+			}
+
+			function applyPassengerSeatLocks() {
+				seatButtons.forEach((button) => {
+					const seatCode = button.dataset.seat;
+					const isBaseDisabled = baseDisabledSeats.has(seatCode);
+					button.disabled = isBaseDisabled;
+					button.classList.remove('passenger-locked');
+				});
+
+				const selectedInCurrentLeg = (seatSelection[currentFlight] || [])
+					.map((item, index) => ({ item, index }))
+					.filter(({ item, index }) => item?.seat && index !== currentPassengerIndex);
+
+				selectedInCurrentLeg.forEach(({ item }) => {
+					const button = document.querySelector(`.seat[data-seat="${item.seat}"]`);
+					if (!button) return;
+					button.disabled = true;
+					button.classList.add('passenger-locked');
+				});
+			}
+
+			function renderCurrentFlightSeat() {
+				clearSeatVisualSelection();
+				applyPassengerSeatLocks();
+				const currentSeat = seatSelection[currentFlight][currentPassengerIndex];
+				if (!currentSeat?.seat) return;
+
+				const node = document.querySelector(`.seat[data-seat="${currentSeat.seat}"]`);
+				if (node && !node.disabled) {
+					node.classList.add('selected');
+				}
+			}
+
+			function syncOrderSeatTotals(order) {
+				if (!order) return;
+
+				const outboundPrice = seatSelection.outbound.reduce((sum, item) => sum + Number(item?.price || 0), 0);
+				const returnPrice = seatSelection.return.reduce((sum, item) => sum + Number(item?.price || 0), 0);
+				const seatsTotal = outboundPrice + returnPrice;
+
+				order.seats = {
+					passengerCount,
+					outbound: seatSelection.outbound,
+					return: seatSelection.return,
+					total: seatsTotal,
+				};
+
+				order.totals = order.totals || {};
+				order.totals.seats = seatsTotal;
+				order.totals.grand = Number(order.totals.base || 0)
+					+ Number(order.totals.tua || 0)
+					+ Number(order.totals.ground || 0)
+					+ Number(order.totals.extras || 0)
+					+ seatsTotal;
+			}
+
+			function renderPassengersList() {
+				const container = document.getElementById('passengersList');
+				if (!container) return;
+
+				container.innerHTML = '';
+
+				for (let index = 0; index < passengerCount; index += 1) {
+					const outboundSeat = seatSelection.outbound[index];
+					const returnSeat = seatSelection.return[index];
+					const seatLabel = roundTrip
+						? `Ida: ${outboundSeat?.seat || 'Sin asiento'} · Vuelta: ${returnSeat?.seat || 'Sin asiento'}`
+						: (outboundSeat?.seat || 'Sin asiento');
+					const passengerTotal = Number(outboundSeat?.price || 0) + Number(returnSeat?.price || 0);
+
+					const item = document.createElement('div');
+					item.className = `passenger-item ${index === currentPassengerIndex ? 'is-active' : ''}`;
+					item.dataset.index = String(index);
+					item.innerHTML = `
+						<div class="passenger-info">
+							<span class="passenger-name">👤 Adulto ${index + 1}</span>
+							<span class="seat-assigned">${seatLabel}</span>
+						</div>
+						<span class="seat-price">$${passengerTotal.toFixed(2)}</span>
+					`;
+
+					item.addEventListener('click', () => {
+						currentPassengerIndex = index;
+						renderFlightHeader();
+						renderPassengersList();
+						renderCurrentFlightSeat();
+					});
+
+					container.appendChild(item);
+				}
+			}
+
+			function updateSummary() {
+				const totalOutbound = seatSelection.outbound.reduce((sum, item) => sum + Number(item?.price || 0), 0);
+				const totalReturn = seatSelection.return.reduce((sum, item) => sum + Number(item?.price || 0), 0);
+				const total = totalOutbound + totalReturn;
+
+				renderPassengersList();
+
+				document.getElementById('totalSeats').textContent = `$${total.toFixed(2)}`;
+
+				const order = readOrder() || {};
+				syncOrderSeatTotals(order);
+				writeOrder(order);
+			}
+
+			function hydrateFromOrder() {
+				const order = readOrder();
+				const continueBtn = document.getElementById('continueBtn');
+				if (continueBtn) {
+					continueBtn.setAttribute('href', resolveNextStepRoute(order || {}));
+				}
+
+				if (!order) {
+					passengerCount = 1;
+					ensureSeatArrays();
+					renderFlightHeader();
+					renderPassengersList();
+					renderCurrentFlightSeat();
+					updateSummary();
+					return;
+				}
+
+				roundTrip = Boolean(order.roundTrip);
+				passengerCount = Math.max(1, Number(order.passengers || order.seats?.passengerCount || 1));
+				if (order.seats) {
+					seatSelection.outbound = order.seats.outbound || [];
+					seatSelection.return = order.seats.return || [];
+				}
+				ensureSeatArrays();
+
+				renderFlightHeader();
+				renderPassengersList();
+				renderCurrentFlightSeat();
+				updateSummary();
+			}
+
+			document.querySelectorAll('.seat:not(.occupied)').forEach((seatNode) => {
+				seatNode.addEventListener('click', function() {
+					const seatNumber = this.dataset.seat;
+					const seatPrice = Number.parseFloat(this.dataset.price || '0');
+					const existing = seatSelection[currentFlight][currentPassengerIndex];
+
+					if (existing?.seat === seatNumber) {
+						seatSelection[currentFlight][currentPassengerIndex] = null;
+						this.classList.remove('selected');
+						updateSummary();
+						return;
+					}
+
+					seatSelection[currentFlight][currentPassengerIndex] = { seat: seatNumber, price: seatPrice };
+					renderCurrentFlightSeat();
 					updateSummary();
 				});
 			});
 
-			// Actualizar resumen
-			function updateSummary() {
-				const seatNumbers = Object.keys(selectedSeats);
-				const total = Object.values(selectedSeats).reduce((sum, price) => sum + price, 0);
-
-				if (seatNumbers.length > 0) {
-					document.getElementById('seat-p1').textContent = seatNumbers[0];
-					document.getElementById('price-p1').textContent = `$${selectedSeats[seatNumbers[0]].toFixed(2)}`;
-				} else {
-					document.getElementById('seat-p1').textContent = 'Sin asiento';
-					document.getElementById('price-p1').textContent = '$0.00';
-				}
-
-				document.getElementById('totalSeats').textContent = `$${total.toFixed(2)}`;
-			}
-
-			// Cambiar vuelo
 			document.getElementById('switchFlight').addEventListener('click', function() {
-				if (currentFlight === 'outbound') {
-					currentFlight = 'return';
-					document.querySelector('.page-subtitle').textContent = 'Vuelo de regreso: CUN → MTY • 28 Feb 2026';
-					this.textContent = '← Cambiar a vuelo de ida';
-				} else {
-					currentFlight = 'outbound';
-					document.querySelector('.page-subtitle').textContent = 'Vuelo de ida: MTY → CUN • 24 Feb 2026';
-					this.textContent = 'Cambiar a vuelo de regreso →';
-				}
-
-				// Limpiar selecciones
-				document.querySelectorAll('.seat.selected').forEach(seat => {
-					seat.classList.remove('selected');
-				});
-				selectedSeats = {};
-				updateSummary();
+				if (!roundTrip) return;
+				currentFlight = currentFlight === 'outbound' ? 'return' : 'outbound';
+				renderFlightHeader();
+				renderCurrentFlightSeat();
 			});
 
-			// Omitir selección
 			document.getElementById('skipSeats').addEventListener('click', function() {
 				if (confirm('Se te asignará un asiento automáticamente sin costo adicional. ¿Deseas continuar?')) {
-					window.location.href = '../pago-1-0/';
+					seatSelection.outbound = Array.from({ length: passengerCount }, () => null);
+					seatSelection.return = Array.from({ length: passengerCount }, () => null);
+					updateSummary();
+					const order = readOrder() || {};
+					window.location.href = resolveNextStepRoute(order);
 				}
 			});
 
-			// Continuar (validar que haya selección)
 			document.getElementById('continueBtn').addEventListener('click', function(e) {
-				if (Object.keys(selectedSeats).length === 0) {
-					e.preventDefault();
-					if (confirm('No has seleccionado ningún asiento. ¿Deseas que se te asigne uno automáticamente?')) {
-						window.location.href = '../pago-1-0/';
+				e.preventDefault();
+				const hasOutbound = seatSelection.outbound.every((item) => Boolean(item?.seat));
+				const hasReturn = !roundTrip || seatSelection.return.every((item) => Boolean(item?.seat));
+				const order = readOrder() || {};
+				const nextRoute = resolveNextStepRoute(order);
+				if (!hasOutbound || !hasReturn) {
+					if (confirm('Aún hay pasajeros o tramos sin asiento seleccionado. ¿Deseas continuar con asignación automática?')) {
+						window.location.href = nextRoute;
 					}
+					return;
 				}
+
+				syncOrderSeatTotals(order);
+				writeOrder(order);
+				window.location.href = nextRoute;
 			});
+
+			hydrateFromOrder();
 		</script>
 	</body>
 </html>

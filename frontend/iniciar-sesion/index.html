@@ -102,15 +102,51 @@
     </div>
 
     <script>
+      function resolvePostAuthRedirect() {
+        const fallback = '../pantalla-principal/';
+        const blockedPaths = ['/iniciar-sesion/', '/crear-cuenta/'];
+
+        function sanitize(candidate) {
+          if (!candidate) return null;
+
+          try {
+            const target = new URL(candidate, window.location.origin);
+            if (target.origin !== window.location.origin) return null;
+            if (blockedPaths.some((path) => target.pathname.includes(path))) return null;
+            return `${target.pathname}${target.search}${target.hash}`;
+          } catch (error) {
+            return null;
+          }
+        }
+
+        try {
+          const current = new URL(window.location.href);
+          const fromParam = current.searchParams.get('redirect');
+          const fromStorage = sessionStorage.getItem('postAuthRedirect');
+          const fromReferrer = document.referrer;
+
+          const target =
+            sanitize(fromParam) ||
+            sanitize(fromStorage) ||
+            sanitize(fromReferrer) ||
+            fallback;
+
+          sessionStorage.removeItem('postAuthRedirect');
+          return target;
+        } catch (error) {
+          return fallback;
+        }
+      }
+
       document.addEventListener('click', function (e) {
         const loginBtn = e.target.closest('.btn-iniciar-sesion');
         if (loginBtn) {
-          window.location.href = '../booking/';
+          window.location.href = resolvePostAuthRedirect();
         }
 
         const regresarBtn = e.target.closest('.btn-regresar');
         if (regresarBtn) {
-          window.location.href = '../pantalla-principal/';
+          window.location.href = resolvePostAuthRedirect();
         }
       });
     </script>

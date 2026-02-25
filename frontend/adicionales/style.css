@@ -1451,6 +1451,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
   padding: 20px 30px;
   box-sizing: border-box;
 }
@@ -1473,7 +1475,7 @@ body {
   max-width: 600px;
   font-family: "Montserrat-Regular", Helvetica;
   font-weight: 400;
-  color: #000000;
+  color: #ffffff;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -1486,6 +1488,40 @@ body {
   align-items: center;
   justify-content: flex-end;
   z-index: 1;
+}
+
+.adicionales .addons-total-box {
+  margin: 0;
+  width: 100%;
+  max-width: 430px;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 1;
+}
+
+.adicionales .addons-total-label {
+  color: #ffffff;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.adicionales .addons-total-value {
+  color: #ffffff;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.adicionales .botones-footer {
+  margin-left: auto;
 }
 
 .adicionales .privacidad .continuar {

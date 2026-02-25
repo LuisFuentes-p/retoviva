@@ -198,7 +198,12 @@ const buildSeedDestinations = () => {
     };
   });
 
-  return [...baseNational, ...baseInternational, ...BUS_PROFITABLE_DESTINATIONS];
+  const busProfitableDestinations = BUS_PROFITABLE_DESTINATIONS.map((destination) => ({
+    ...destination,
+    is_popular: destination.popular ?? destination.is_popular ?? 0,
+  }));
+
+  return [...baseNational, ...baseInternational, ...busProfitableDestinations];
 };
 
 const initDb = async () => {
@@ -351,7 +356,7 @@ const initDb = async () => {
         destination.name,
         destination.country,
         destination.type,
-        destination.is_popular,
+        destination.is_popular ?? destination.popular ?? 0,
         destination.latitude,
         destination.longitude,
         destination.access_mode,
@@ -362,6 +367,9 @@ const initDb = async () => {
 };
 
 app.use(express.json());
+app.get("/", (_req, res) => {
+  res.redirect("/pantalla-principal");
+});
 app.use(express.static(frontendDir));
 
 app.use("/api", createFlightsRoutes({ all }));

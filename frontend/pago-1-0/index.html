@@ -10,6 +10,7 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
     <title>Pago 1.0 | Prototipo Viva</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/payment-cart-summary.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -234,9 +235,9 @@
     <div class="rectangle-113"></div>
     <div class="viaje-sin-protecci-n2">Viaje sin protección</div>
   </div>
-  <div class="rectangle-98"></div>
-  <div class="carrito-de-compra">Carrito de compra</div>
-  <div class="tarifa-de-uso">
+  <div class="rectangle-98 legacy-cart-node"></div>
+  <div class="carrito-de-compra legacy-cart-node">Carrito de compra</div>
+  <div class="tarifa-de-uso legacy-cart-node">
     <img class="rectangle-105" src="../assets/img/rectangle-1050.svg" />
     <div class="tarifa-de-uso-de-aeropuerto">Tarifa de Uso de Aeropuerto</div>
     <div class="tua-mex">TUA MEX</div>
@@ -244,13 +245,13 @@
     <div class="_351-00">$351.00</div>
     <div class="tua-cun">TUA CUN</div>
   </div>
-  <div class="otros-cargos">
+  <div class="otros-cargos legacy-cart-node">
     <div class="rectangle-106"></div>
     <div class="otros-cargos2">Otros cargos</div>
     <div class="_1-016-00">$1,016.00</div>
     <div class="transfer">Transfer</div>
   </div>
-  <div class="ida-tab">
+  <div class="ida-tab legacy-cart-node">
     <div class="rectangle-103"></div>
     <div class="s-b-21-feb-07-00-am-directo">
       Sáb, 21 Feb ° 07:00 AM ° Directo
@@ -259,7 +260,7 @@
     <div class="_1-082-66">$1,082.66</div>
     <div class="cd-m-xico-mex-canc-n-cun">Cd. México (MEX) - Cancún (CUN)</div>
   </div>
-  <div class="regreso-tab">
+  <div class="regreso-tab legacy-cart-node">
     <div class="rectangle-104"></div>
     <div class="canc-n-cun-cd-m-xico-mex">Cancún (CUN) - Cd. México (MEX)</div>
     <div class="s-b-28-feb-06-10-am-directo">
@@ -268,7 +269,7 @@
     <div class="_1-x-tarifa-zero2">1x Tarifa Zero</div>
     <div class="_753-35">$753.35</div>
   </div>
-  <div class="group-113">
+  <div class="group-113 legacy-cart-node">
     <div class="group-112">
       <div class="rectangle-108"></div>
       <div class="total">Total</div>
@@ -277,7 +278,7 @@
     <div class="impuestos-y-cargos-incluidos">Impuestos y cargos incluidos</div>
     <div class="_380-75">$380.75</div>
   </div>
-  <div class="group-111">
+  <div class="group-111 legacy-cart-node">
     <div class="rectangle-114"></div>
     <div class="cambia-a-switch-o-smart-y-pago-hasta-en-14-msi">
       Cambia a Switch o Smart y pago hasta en 14 MSI
@@ -303,26 +304,224 @@
   <div class="cuadro-gris3">
     <div class="rectangle-50"></div>
   </div>
+  <div id="paymentCartHost" class="payment-cart-host"></div>
 </div>
     </div>
   </body>
+  <script src="../assets/js/payment-cart-summary.js"></script>
   <script>
-    // Selección de opciones de protección
+    const protectionOptions = {
+      interruption: { price: 165, label: 'Protección por interrupción de vuelo' },
+      refundable: { price: 553, label: 'Tarifa reembolsable' },
+      none: { price: 0, label: 'Viaje sin protección' },
+    };
+
+    let selectedProtection = 'none';
+
+    function readOrder() {
+      try {
+        const raw = sessionStorage.getItem('flightCartOrder');
+        return raw ? JSON.parse(raw) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeOrder(order) {
+      try {
+        sessionStorage.setItem('flightCartOrder', JSON.stringify(order));
+      } catch (error) {
+      }
+    }
+
+    function setText(selector, value) {
+      const node = document.querySelector(selector);
+      if (node && typeof value === 'string') {
+        node.textContent = value;
+      }
+    }
+
+    function setScopedText(parentSelector, childSelector, value) {
+      const parent = document.querySelector(parentSelector);
+      if (!parent || typeof value !== 'string') return;
+      const node = parent.querySelector(childSelector);
+      if (node) node.textContent = value;
+    }
+
+    function money(value) {
+      return `$${Number(value || 0).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function shortCode(place) {
+      const clean = String(place || '')
+        .replace(/\(.*?\)/g, '')
+        .replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]/g, ' ')
+        .trim();
+      if (!clean) return '---';
+      const words = clean.split(/\s+/).filter(Boolean);
+      if (words.length >= 2) return `${words[0][0] || ''}${words[1][0] || ''}${words[2]?.[0] || ''}`.toUpperCase();
+      return clean.slice(0, 3).toUpperCase();
+    }
+
+    function formatTime12h(hhmm) {
+      if (!hhmm || !hhmm.includes(':')) return '--:--';
+      const [hStr, mStr] = hhmm.split(':');
+      const h = Number(hStr);
+      const m = Number(mStr);
+      if (Number.isNaN(h) || Number.isNaN(m)) return '--:--';
+      const period = h >= 12 ? 'PM' : 'AM';
+      const h12 = h % 12 === 0 ? 12 : h % 12;
+      return `${h12}:${String(m).padStart(2, '0')} ${period}`;
+    }
+
+    function formatDateLong(isoDate) {
+      if (!isoDate) return '-';
+      const d = new Date(`${isoDate}T12:00:00`);
+      if (Number.isNaN(d.getTime())) return '-';
+      return d.toLocaleDateString('es-MX', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function computeBaseGrand(order) {
+      const totals = order?.totals || {};
+      const additive = Number(totals.base || 0)
+        + Number(totals.tua || 0)
+        + Number(totals.ground || 0)
+        + Number(totals.extras || 0)
+        + Number(totals.seats || 0);
+      return additive > 0 ? additive : Number(totals.grand || 0);
+    }
+
+    function toggleReturnSections(showReturn) {
+      const returnSelectors = ['.regreso', '.regreso-tab'];
+      returnSelectors.forEach((selector) => {
+        const node = document.querySelector(selector);
+        if (!node) return;
+        node.style.display = showReturn ? '' : 'none';
+      });
+    }
+
+    function adjustCartPanelHeight() {
+      const panel = document.querySelector('.rectangle-98');
+      if (!panel) return;
+
+      const selectors = [
+        '.carrito-de-compra',
+        '.ida-tab',
+        '.regreso-tab',
+        '.tarifa-de-uso',
+        '.otros-cargos',
+        '.group-113',
+      ];
+
+      const panelTop = panel.offsetTop;
+      let maxBottom = panelTop + 846;
+
+      selectors.forEach((selector) => {
+        const node = document.querySelector(selector);
+        if (!node || node.style.display === 'none') return;
+        const bottom = node.offsetTop + node.offsetHeight;
+        if (bottom > maxBottom) maxBottom = bottom;
+      });
+
+      panel.style.height = `${Math.max(846, maxBottom - panelTop + 28)}px`;
+    }
+
+    function renderModularCart(order, totalOverride) {
+      const host = document.getElementById('paymentCartHost');
+      if (!host || !window.renderPaymentCartSummary || !order) return;
+      window.renderPaymentCartSummary({ root: host, order, totalOverride });
+    }
+
+    function applyProtectionVisual() {
+      const map = {
+        interruption: '.protecci-n-por-interrupci-n',
+        refundable: '.tarifa-reembolsable',
+        none: '.group-110',
+      };
+
+      document.querySelectorAll('.protecci-n-por-interrupci-n, .tarifa-reembolsable, .group-110').forEach((card) => {
+        card.classList.remove('protection-selected');
+      });
+
+      const selectedNode = document.querySelector(map[selectedProtection] || map.none);
+      selectedNode?.classList.add('protection-selected');
+    }
+
+    function hydrateTripInfo() {
+      const order = readOrder();
+      if (!order) return;
+
+      const outbound = order.selectedOutbound;
+      const incoming = order.selectedReturn;
+
+      setScopedText('.infor', '.ciudad-de-m-xico', order.search?.origin || 'Origen');
+      setScopedText('.infor', '.canc-n', order.search?.destination || 'Destino');
+      setScopedText('.infor', '.mex3', shortCode(order.search?.origin));
+
+      setScopedText('.ida', '.cun', shortCode(order.search?.destination));
+      setScopedText('.regreso', '.cun2', shortCode(order.search?.destination));
+      setScopedText('.regreso', '.mex2', shortCode(order.search?.origin));
+
+      setText('.cd-m-xico-mex-canc-n-cun', `${order.search?.origin || 'Origen'} - ${order.search?.destination || 'Destino'}`);
+      setText('.canc-n-cun-cd-m-xico-mex', `${order.search?.destination || 'Destino'} - ${order.search?.origin || 'Origen'}`);
+
+      setText('._7-00-am', formatTime12h(outbound?.departTime));
+      setText('._10-15-am', formatTime12h(outbound?.arriveTime));
+      setText('._6-10-am', formatTime12h(incoming?.departTime));
+      setText('._7-35-am', formatTime12h(incoming?.arriveTime));
+
+      setText('.s-b-21-feb-2026', formatDateLong(order.search?.departDate));
+      setText('.s-b-28-feb-2026', order.roundTrip ? formatDateLong(order.search?.returnDate) : 'Sin regreso');
+      toggleReturnSections(Boolean(order.roundTrip));
+
+      const passengerCount = Number(order.passengers || 1);
+      setText('.your-name', `${passengerCount} ${passengerCount === 1 ? 'pasajero' : 'pasajeros'}`);
+
+      const baseGrand = computeBaseGrand(order);
+      const protectionPrice = protectionOptions[selectedProtection]?.price || 0;
+      const payable = baseGrand + protectionPrice;
+
+      setText('._1-016-00', money(Number(order.totals?.ground || 0) + Number(order.totals?.extras || 0)));
+      setText('.transfer', order.intermodal?.label || 'Sin intermodal');
+      setText('._3-813', money(payable));
+      setText('._380-75', money(Number(order.totals?.tua || 0)));
+
+      order.protection = {
+        option: selectedProtection,
+        label: protectionOptions[selectedProtection]?.label || protectionOptions.none.label,
+        price: protectionPrice,
+      };
+      order.totals = order.totals || {};
+      order.totals.protection = protectionPrice;
+      order.totals.payable = payable;
+      writeOrder(order);
+
+      renderModularCart(order, payable);
+      adjustCartPanelHeight();
+    }
+
+    const orderAtLoad = readOrder();
+    if (orderAtLoad?.protection?.option && protectionOptions[orderAtLoad.protection.option]) {
+      selectedProtection = orderAtLoad.protection.option;
+    }
+    applyProtectionVisual();
+    hydrateTripInfo();
+
     document.addEventListener('click', function(e) {
-      const protectionCard = e.target.closest('.protecci-n-por-interrupci-n, .tarifa-reembolsable, .group-110');
-      
-      if (protectionCard) {
-        // Remover selección de todas las tarjetas
-        document.querySelectorAll('.protecci-n-por-interrupci-n, .tarifa-reembolsable, .group-110').forEach(card => {
-          card.classList.remove('protection-selected');
-        });
-        
-        // Agregar selección a la tarjeta clickeada
-        protectionCard.classList.add('protection-selected');
+      const interruption = e.target.closest('.protecci-n-por-interrupci-n');
+      const refundable = e.target.closest('.tarifa-reembolsable');
+      const none = e.target.closest('.group-110');
+
+      if (interruption) selectedProtection = 'interruption';
+      if (refundable) selectedProtection = 'refundable';
+      if (none) selectedProtection = 'none';
+
+      if (interruption || refundable || none) {
+        applyProtectionVisual();
+        hydrateTripInfo();
       }
     });
 
-    // Botón regreso
     const regresoBtn = document.querySelector('.regreso-btn');
     if (regresoBtn) {
       regresoBtn.addEventListener('click', function() {
@@ -330,10 +529,10 @@
       });
     }
 
-    // Botón continuar
     const continuarBtn = document.querySelector('.continuar');
     if (continuarBtn) {
       continuarBtn.addEventListener('click', function() {
+        hydrateTripInfo();
         window.location.href = '../pago-1-1/';
       });
     }

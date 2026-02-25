@@ -10,6 +10,7 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
     <title>Pago 1.1 | Prototipo Viva</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/payment-cart-summary.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -187,9 +188,9 @@
     <div class="rectangle-1093"></div>
     <div class="descuento-doters">Descuento Doters</div>
   </div>
-  <div class="rectangle-98"></div>
-  <div class="carrito-de-compra">Carrito de compra</div>
-  <div class="tarifa-de-uso">
+  <div class="rectangle-98 legacy-cart-node"></div>
+  <div class="carrito-de-compra legacy-cart-node">Carrito de compra</div>
+  <div class="tarifa-de-uso legacy-cart-node">
     <img class="rectangle-105" src="../assets/img/rectangle-1050.svg" />
     <div class="tarifa-de-uso-de-aeropuerto">Tarifa de Uso de Aeropuerto</div>
     <div class="tua-mex">TUA MEX</div>
@@ -197,13 +198,13 @@
     <div class="_351-00">$351.00</div>
     <div class="tua-cun">TUA CUN</div>
   </div>
-  <div class="otros-cargos">
+  <div class="otros-cargos legacy-cart-node">
     <div class="rectangle-106"></div>
     <div class="otros-cargos2">Otros cargos</div>
     <div class="_1-016-00">$1,016.00</div>
     <div class="transfer">Transfer</div>
   </div>
-  <div class="ida-tab">
+  <div class="ida-tab legacy-cart-node">
     <div class="rectangle-103"></div>
     <div class="s-b-21-feb-07-00-am-directo">
       Sáb, 21 Feb ° 07:00 AM ° Directo
@@ -212,7 +213,7 @@
     <div class="_1-082-66">$1,082.66</div>
     <div class="cd-m-xico-mez-canc-n-cun">Cd. México (MEZ) - Cancún (CUN)</div>
   </div>
-  <div class="regreso-tab">
+  <div class="regreso-tab legacy-cart-node">
     <div class="rectangle-104"></div>
     <div class="canc-n-cun-cd-m-xico-mex">Cancún (CUN) - Cd. México (MEX)</div>
     <div class="s-b-28-feb-06-10-am-directo">
@@ -221,7 +222,7 @@
     <div class="_1-x-tarifa-zero2">1x Tarifa Zero</div>
     <div class="_753-35">$753.35</div>
   </div>
-  <div class="group-113">
+  <div class="group-113 legacy-cart-node">
     <div class="group-112">
       <div class="rectangle-108"></div>
       <div class="total">Total</div>
@@ -427,19 +428,271 @@
   <div class="cuadro">
     <div class="rectangle-502"></div>
   </div>
+  <div id="paymentCartHost" class="payment-cart-host"></div>
 </div>
     </div>
   </body>
 
+  <script src="../assets/js/payment-cart-summary.js"></script>
   <script>
+    const paymentOptions = {
+      1: { key: 'card', label: 'Tarjeta de crédito o débito', fee: 0 },
+      2: { key: 'clicktopay', label: 'ClickToPay', fee: 0 },
+      3: { key: 'cash', label: 'Pago en efectivo o depósito bancario', fee: -32.04 },
+      4: { key: 'mercadopago', label: 'MercadoPago', fee: -32.04 },
+      5: { key: 'other', label: 'Otras formas de pago', fee: -32.04 },
+    };
+
+    let selectedPaymentOption = 1;
+
+    function readOrder() {
+      try {
+        const raw = sessionStorage.getItem('flightCartOrder');
+        return raw ? JSON.parse(raw) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeOrder(order) {
+      try {
+        sessionStorage.setItem('flightCartOrder', JSON.stringify(order));
+      } catch (error) {
+      }
+    }
+
+    function setText(selector, value) {
+      const node = document.querySelector(selector);
+      if (node && typeof value === 'string') node.textContent = value;
+    }
+
+    function setScopedText(parentSelector, childSelector, value) {
+      const parent = document.querySelector(parentSelector);
+      if (!parent || typeof value !== 'string') return;
+      const node = parent.querySelector(childSelector);
+      if (node) node.textContent = value;
+    }
+
+    function money(value) {
+      return `$${Number(value || 0).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function shortCode(place) {
+      const clean = String(place || '').replace(/\(.*?\)/g, '').replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]/g, ' ').trim();
+      if (!clean) return '---';
+      const words = clean.split(/\s+/).filter(Boolean);
+      if (words.length >= 2) return `${words[0][0] || ''}${words[1][0] || ''}${words[2]?.[0] || ''}`.toUpperCase();
+      return clean.slice(0, 3).toUpperCase();
+    }
+
+    function formatTime12h(hhmm) {
+      if (!hhmm || !hhmm.includes(':')) return '--:--';
+      const [hStr, mStr] = hhmm.split(':');
+      const h = Number(hStr);
+      const m = Number(mStr);
+      if (Number.isNaN(h) || Number.isNaN(m)) return '--:--';
+      const period = h >= 12 ? 'PM' : 'AM';
+      const h12 = h % 12 === 0 ? 12 : h % 12;
+      return `${h12}:${String(m).padStart(2, '0')} ${period}`;
+    }
+
+    function formatDateLong(isoDate) {
+      if (!isoDate) return '-';
+      const d = new Date(`${isoDate}T12:00:00`);
+      if (Number.isNaN(d.getTime())) return '-';
+      return d.toLocaleDateString('es-MX', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function getBasePayable(order) {
+      const totals = order?.totals || {};
+      if (Number.isFinite(Number(totals.payable))) return Number(totals.payable);
+      return Number(totals.grand || 0);
+    }
+
+    function optionAmount(optionNumber, basePayable) {
+      const fee = paymentOptions[optionNumber]?.fee || 0;
+      return basePayable + fee;
+    }
+
+    function toggleReturnSections(showReturn) {
+      ['.regreso', '.regreso-tab'].forEach((selector) => {
+        const node = document.querySelector(selector);
+        if (!node) return;
+        node.style.display = showReturn ? '' : 'none';
+      });
+    }
+
+    function adjustCartPanelHeight() {
+      const panel = document.querySelector('.rectangle-98');
+      if (!panel) return;
+
+      const selectors = ['.carrito-de-compra', '.ida-tab', '.regreso-tab', '.tarifa-de-uso', '.otros-cargos', '.group-113'];
+      const panelTop = panel.offsetTop;
+      let maxBottom = panelTop + 846;
+
+      selectors.forEach((selector) => {
+        const node = document.querySelector(selector);
+        if (!node || node.style.display === 'none') return;
+        const bottom = node.offsetTop + node.offsetHeight;
+        if (bottom > maxBottom) maxBottom = bottom;
+      });
+
+      panel.style.height = `${Math.max(846, maxBottom - panelTop + 28)}px`;
+    }
+
+    function renderModularCart(order, totalOverride) {
+      const host = document.getElementById('paymentCartHost');
+      if (!host || !window.renderPaymentCartSummary || !order) return;
+      window.renderPaymentCartSummary({ root: host, order, totalOverride });
+    }
+
+    function applyOptionVisual() {
+      const page = document.querySelector('.pago-1-1');
+      if (!page) return;
+      page.classList.remove('selected-option-1', 'selected-option-2', 'selected-option-3', 'selected-option-4', 'selected-option-5');
+      page.classList.add(`selected-option-${selectedPaymentOption}`);
+    }
+
+    function hydratePaymentInfo() {
+      const order = readOrder();
+      if (!order) return;
+
+      const outbound = order.selectedOutbound;
+      const incoming = order.selectedReturn;
+
+      setScopedText('.infor', '.ciudad-de-m-xico', order.search?.origin || 'Origen');
+      setScopedText('.infor', '.canc-n', order.search?.destination || 'Destino');
+      setScopedText('.infor', '.mex3', shortCode(order.search?.origin));
+
+      setScopedText('.ida', '.cun', shortCode(order.search?.destination));
+      setScopedText('.regreso', '.cun2', shortCode(order.search?.destination));
+      setScopedText('.regreso', '.mex2', shortCode(order.search?.origin));
+
+      setText('.cd-m-xico-mez-canc-n-cun', `${order.search?.origin || 'Origen'} - ${order.search?.destination || 'Destino'}`);
+      setText('.canc-n-cun-cd-m-xico-mex', `${order.search?.destination || 'Destino'} - ${order.search?.origin || 'Origen'}`);
+      setText('.s-b-21-feb-2026', formatDateLong(order.search?.departDate));
+      setText('.s-b-28-feb-2026', order.roundTrip ? formatDateLong(order.search?.returnDate) : 'Sin regreso');
+      toggleReturnSections(Boolean(order.roundTrip));
+      setText('._7-00-am', formatTime12h(outbound?.departTime));
+      setText('._10-15-am', formatTime12h(outbound?.arriveTime));
+      setText('._6-10-am', formatTime12h(incoming?.departTime));
+      setText('._7-35-am', formatTime12h(incoming?.arriveTime));
+
+      const passengerCount = Number(order.passengers || 1);
+      const protectionLabel = String(order?.protection?.label || '').trim();
+      const protectionStatus =
+        protectionLabel && protectionLabel.toLowerCase() !== 'viaje sin protección'
+          ? `Protección seleccionada: ${protectionLabel}`
+          : 'Estás viajando sin protección';
+      setText('.your-name', `${passengerCount} ${passengerCount === 1 ? 'pasajero' : 'pasajeros'}`);
+      setText('.est-s-viajando-sin-protecci-n', protectionStatus);
+      setText('._1-016-00', money(Number(order.totals?.ground || 0) + Number(order.totals?.extras || 0)));
+      setText('.transfer', order.intermodal?.label || 'Sin intermodal');
+      setText('._3-813', money(getBasePayable(order)));
+      setText('._380-75', money(Number(order.totals?.tua || 0)));
+
+      const payable = getBasePayable(order);
+      const amount1 = optionAmount(1, payable);
+      const amount2 = optionAmount(2, payable);
+      const amount3 = optionAmount(3, payable);
+
+      setText('._4-221-30', money(amount1));
+      setText('._4-221-302', money(amount2));
+      setText('._4-189-26', money(amount3));
+      setText('._4-189-262', money(amount3));
+      setText('._4-189-263', money(amount3));
+      setText('._4-189-264', money(optionAmount(selectedPaymentOption, payable)));
+
+      order.paymentMethod = {
+        option: selectedPaymentOption,
+        key: paymentOptions[selectedPaymentOption].key,
+        label: paymentOptions[selectedPaymentOption].label,
+        fee: paymentOptions[selectedPaymentOption].fee,
+        amount: optionAmount(selectedPaymentOption, payable),
+      };
+      order.totals = order.totals || {};
+      order.totals.final = order.paymentMethod.amount;
+      writeOrder(order);
+
+      renderModularCart(order, order.paymentMethod.amount);
+      adjustCartPanelHeight();
+    }
+
+    const existingOrder = readOrder();
+    if (existingOrder?.paymentMethod?.option && paymentOptions[existingOrder.paymentMethod.option]) {
+      selectedPaymentOption = existingOrder.paymentMethod.option;
+    }
+    applyOptionVisual();
+    hydratePaymentInfo();
+
+    let isSubmittingPayment = false;
+
+    async function submitPaymentToBackend() {
+      const order = readOrder();
+      if (!order) return null;
+
+      const bookingId = Number(order?.booking?.id || order?.bookingId || 1);
+      const addonsRaw = Array.isArray(order?.selectedAddons) ? order.selectedAddons : [];
+      const addons = addonsRaw
+        .map((value) => Number(value))
+        .filter((value) => Number.isInteger(value) && value > 0);
+      const promoCode = order?.promoCode || order?.promo?.code || null;
+
+      try {
+        const response = await fetch('/api/pay', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bookingId, addons, promoCode }),
+        });
+
+        const payload = await response.json().catch(() => ({}));
+
+        order.paymentConfirmation = {
+          status: response.ok ? 'ok' : 'error',
+          backendMessage: payload?.message || '',
+          backendTotal: Number(payload?.total || 0),
+          createdAt: new Date().toISOString(),
+        };
+
+        if (response.ok && Number.isFinite(Number(payload?.total))) {
+          order.totals = order.totals || {};
+          order.totals.backendTotal = Number(payload.total);
+        }
+
+        writeOrder(order);
+        return payload;
+      } catch (_error) {
+        order.paymentConfirmation = {
+          status: 'error',
+          backendMessage: 'No fue posible sincronizar con backend.',
+          createdAt: new Date().toISOString(),
+        };
+        writeOrder(order);
+        return null;
+      }
+    }
+
+    async function proceedToConfirmation() {
+      if (isSubmittingPayment) return;
+      isSubmittingPayment = true;
+
+      try {
+        hydratePaymentInfo();
+        await submitPaymentToBackend();
+      } finally {
+        isSubmittingPayment = false;
+        window.location.href = '../pago-confirmado/';
+      }
+    }
+
     document.addEventListener('click', function (e) {
       const paymentOption = e.target.closest('.payment-option-hitbox');
       if (paymentOption) {
-        const option = paymentOption.dataset.option;
-        const page = document.querySelector('.pago-1-1');
-        if (page) {
-          page.classList.remove('selected-option-1', 'selected-option-2', 'selected-option-3', 'selected-option-4', 'selected-option-5');
-          page.classList.add(`selected-option-${option}`);
+        const option = Number(paymentOption.dataset.option || '1');
+        if (paymentOptions[option]) {
+          selectedPaymentOption = option;
+          applyOptionVisual();
+          hydratePaymentInfo();
         }
       }
 
@@ -450,7 +703,7 @@
 
       const continueButton = e.target.closest('.continuar-btn');
       if (continueButton) {
-        window.location.href = '../pago-confirmado/';
+        proceedToConfirmation();
       }
 
       const signInButton = e.target.closest('.rectangle-116, .iniciar-sesi-n');
@@ -459,7 +712,7 @@
       }
     });
 
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', async function (e) {
       if (e.key !== 'Enter' && e.key !== ' ') return;
 
       const backButton = e.target.closest('.regreso-btn');
@@ -471,7 +724,7 @@
       const continueButton = e.target.closest('.continuar-btn');
       if (continueButton) {
         e.preventDefault();
-        window.location.href = '../pago-confirmado/';
+        await proceedToConfirmation();
       }
     });
   </script>

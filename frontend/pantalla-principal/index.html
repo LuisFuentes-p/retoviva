@@ -267,6 +267,27 @@
 			</div>
 		</footer>
 
+		<button type="button" class="aero-bot-trigger" id="aeroBotTrigger" aria-label="Abrir chat de ayuda">
+			<img src="../assets/img/aero bot.png" alt="Aero Bot" />
+		</button>
+
+		<div class="aero-bot-overlay" id="aeroBotOverlay" aria-hidden="true">
+			<div class="aero-bot-modal" role="dialog" aria-modal="true" aria-labelledby="aeroBotTitle">
+				<div class="aero-bot-header">
+					<div>
+						<h3 id="aeroBotTitle">Chatbot Viva Aerobus</h3>
+						<p>Asistente con opciones rápidas</p>
+					</div>
+					<div class="aero-bot-actions">
+						<button type="button" class="aero-bot-mini" id="aeroBotRestart" aria-label="Reiniciar chat">↻</button>
+						<button type="button" class="aero-bot-close" id="aeroBotClose" aria-label="Cerrar chat">✕</button>
+					</div>
+				</div>
+				<div class="aero-bot-body" id="aeroBotMessages"></div>
+				<div class="aero-bot-options" id="aeroBotOptions"></div>
+			</div>
+		</div>
+
 		<script src="../assets/js/destination-dropdown.js"></script>
 		<script src="./destinations-module.js"></script>
 		<script>
@@ -313,6 +334,232 @@
 
 				const query = new URLSearchParams(payload).toString();
 				window.location.href = `../results/?${query}`;
+			});
+
+			const aeroBotTrigger = document.getElementById("aeroBotTrigger");
+			const aeroBotOverlay = document.getElementById("aeroBotOverlay");
+			const aeroBotClose = document.getElementById("aeroBotClose");
+			const aeroBotRestart = document.getElementById("aeroBotRestart");
+			const aeroBotMessages = document.getElementById("aeroBotMessages");
+			const aeroBotOptions = document.getElementById("aeroBotOptions");
+
+			const chatbotFlow = {
+				start: {
+					bot: [
+						"¡Hola! 😊 Bienvenido(a) a Viva Aerobus.",
+						"Estoy aquí para acompañarte en tu experiencia de vuelo.",
+						"¿Es tu primera vez volando con nosotros?",
+					],
+					options: [
+						{ label: "Sí", next: "first_yes" },
+						{ label: "No", next: "first_no" },
+					],
+				},
+				first_yes: {
+					bot: [
+						"¡Qué emocionante! ✈",
+						"¿Quieres que te comparta una guía de supervivencia para tu vuelo?",
+					],
+					options: [
+						{ label: "Sí, quiero la guía", next: "guide_yes" },
+						{ label: "No, gracias", next: "guide_no" },
+					],
+				},
+				first_no: {
+					bot: [
+						"¡Genial! Gracias por volver a volar con nosotros 💛",
+						"Antes de continuar, ¿tu vuelo es nacional o internacional?",
+					],
+					options: [
+						{ label: "1⃣ Nacional", next: "national" },
+						{ label: "2⃣ Internacional", next: "international" },
+					],
+				},
+				guide_yes: {
+					bot: [
+						"Perfecto 💛 Aquí tienes tu guía básica:",
+						"• Equipaje de mano permitido: 1 pieza de hasta 10 kg.<br>• Líquidos: máximo 100 ml por envase, en bolsa transparente.<br>• Identificación y pase de abordar listos.<br>• Llega 2 horas antes al aeropuerto.<br>• Usa ropa cómoda y lleva una chamarra ligera.",
+						"Ahora cuéntame 👀 ¿Tu vuelo es?",
+					],
+					options: [
+						{ label: "1⃣ Nacional", next: "national" },
+						{ label: "2⃣ Internacional", next: "international" },
+					],
+				},
+				guide_no: {
+					bot: [
+						"Sin problema 😊",
+						"¿Tu vuelo es nacional o internacional?",
+					],
+					options: [
+						{ label: "1⃣ Nacional", next: "national" },
+						{ label: "2⃣ Internacional", next: "international" },
+					],
+				},
+				national: {
+					bot: [
+						"Perfecto ✈ Para vuelos nacionales recuerda:",
+						"• Presentar identificación oficial vigente.<br>• Llegar mínimo 2 horas antes.",
+						"¿Quieres que te muestre también qué objetos no están permitidos?",
+					],
+					options: [
+						{ label: "Sí", next: "not_allowed" },
+						{ label: "No", next: "checkin_q" },
+					],
+				},
+				international: {
+					bot: [
+						"Perfecto 🌎 Para vuelos internacionales te recomendamos:",
+						"• Revisar vigencia de pasaporte y requisitos migratorios.<br>• Llegar mínimo 3 horas antes.<br>• Verificar equipaje documentado y restricciones del destino.",
+						"¿Quieres ver objetos no permitidos en equipaje de mano?",
+					],
+					options: [
+						{ label: "Sí", next: "not_allowed" },
+						{ label: "No", next: "checkin_q" },
+					],
+				},
+				not_allowed: {
+					bot: [
+						"No está permitido llevar:",
+						"• Objetos punzocortantes.<br>• Sustancias inflamables o explosivas.<br>• Bebidas alcohólicas abiertas.<br>• Más de 100 ml de líquidos en equipaje de mano.",
+						"¿Quieres recibir algunos tips para pasar más rápido el filtro de seguridad?",
+					],
+					options: [
+						{ label: "Sí", next: "security_tips" },
+						{ label: "No", next: "checkin_q" },
+					],
+				},
+				security_tips: {
+					bot: [
+						"Consejos para seguridad 🚦:",
+						"• Ten lista tu identificación y pase de abordar.<br>• Guarda líquidos en la bolsa transparente.<br>• Evita objetos metálicos en bolsillos.<br>• Lleva tu equipaje de mano ordenado.",
+						"Antes de llegar al aeropuerto 👇 ¿Ya hiciste tu check-in?",
+					],
+					options: [
+						{ label: "Sí, ya lo hice", next: "done" },
+						{ label: "No, ayúdame", next: "checkin_help" },
+					],
+				},
+				checkin_q: {
+					bot: [
+						"Antes de llegar al aeropuerto 👇 ¿Ya hiciste tu check-in?",
+					],
+					options: [
+						{ label: "Sí, ya lo hice", next: "done" },
+						{ label: "No, ayúdame", next: "checkin_help" },
+					],
+				},
+				checkin_help: {
+					bot: [
+						"¡Claro! 😊 ¿Cómo prefieres hacer tu check-in?",
+					],
+					options: [
+						{ label: "1⃣ Digital", next: "digital" },
+						{ label: "2⃣ En persona", next: "in_person" },
+					],
+				},
+				digital: {
+					bot: [
+						"Excelente decisión 👍 Es más rápido y evitas filas.",
+						"• Ingresa a la app o página web.<br>• Ten a la mano tu código de reservación.<br>• Confirma tus datos.<br>• Descarga tu pase de abordar en tu celular.<br>Si no documentas equipaje, podrás ir directo al filtro de seguridad ✨",
+						"💛 Estoy aquí para que tu experiencia sea fácil y sin estrés. ¿Hay algo más en lo que te pueda ayudar?",
+					],
+					options: [
+						{ label: "Sí, volver al inicio", next: "start" },
+						{ label: "No, gracias", next: "close" },
+					],
+				},
+				in_person: {
+					bot: [
+						"Perfecto 😊",
+						"• Llega mínimo 2 horas antes si es nacional (3 horas si es internacional).<br>• Dirígete a mostradores o kioscos de auto check-in.<br>• Ten lista tu identificación y código de reservación.<br>• Si documentas equipaje, entrégalo después de obtener tu pase.",
+						"💛 Estoy aquí para que tu experiencia sea fácil y sin estrés. ¿Hay algo más en lo que te pueda ayudar?",
+					],
+					options: [
+						{ label: "Sí, volver al inicio", next: "start" },
+						{ label: "No, gracias", next: "close" },
+					],
+				},
+				done: {
+					bot: [
+						"¡Excelente! 🎉 Ya llevas un gran avance.",
+						"💛 ¿Hay algo más en lo que te pueda ayudar?",
+					],
+					options: [
+						{ label: "Sí, volver al inicio", next: "start" },
+						{ label: "No, gracias", next: "close" },
+					],
+				},
+			};
+
+			function appendBotMessage(text) {
+				const bubble = document.createElement("div");
+				bubble.className = "aero-bot-msg bot";
+				bubble.innerHTML = text;
+				aeroBotMessages?.appendChild(bubble);
+				aeroBotMessages.scrollTop = aeroBotMessages.scrollHeight;
+			}
+
+			function appendUserMessage(text) {
+				const bubble = document.createElement("div");
+				bubble.className = "aero-bot-msg user";
+				bubble.textContent = text;
+				aeroBotMessages?.appendChild(bubble);
+				aeroBotMessages.scrollTop = aeroBotMessages.scrollHeight;
+			}
+
+			function renderOptions(options) {
+				if (!aeroBotOptions) return;
+				aeroBotOptions.innerHTML = "";
+
+				options.forEach((option) => {
+					const button = document.createElement("button");
+					button.type = "button";
+					button.className = "aero-bot-option";
+					button.textContent = option.label;
+					button.addEventListener("click", () => {
+						appendUserMessage(option.label);
+						if (option.next === "close") {
+							appendBotMessage("¡Gracias por usar Aero Bot! ✈");
+							aeroBotOptions.innerHTML = "";
+							return;
+						}
+						goToState(option.next);
+					});
+					aeroBotOptions.appendChild(button);
+				});
+			}
+
+			function goToState(stateKey) {
+				const state = chatbotFlow[stateKey];
+				if (!state) return;
+
+				state.bot.forEach((line) => appendBotMessage(line));
+				renderOptions(state.options || []);
+			}
+
+			function resetChat() {
+				if (aeroBotMessages) aeroBotMessages.innerHTML = "";
+				if (aeroBotOptions) aeroBotOptions.innerHTML = "";
+				goToState("start");
+			}
+
+			function openChat() {
+				aeroBotOverlay?.classList.add("open");
+				aeroBotOverlay?.setAttribute("aria-hidden", "false");
+				if (!aeroBotMessages?.children.length) resetChat();
+			}
+
+			function closeChat() {
+				aeroBotOverlay?.classList.remove("open");
+				aeroBotOverlay?.setAttribute("aria-hidden", "true");
+			}
+
+			aeroBotTrigger?.addEventListener("click", openChat);
+			aeroBotClose?.addEventListener("click", closeChat);
+			aeroBotRestart?.addEventListener("click", resetChat);
+			aeroBotOverlay?.addEventListener("click", (event) => {
+				if (event.target === aeroBotOverlay) closeChat();
 			});
 		</script>
 	</body>

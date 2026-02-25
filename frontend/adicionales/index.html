@@ -152,7 +152,7 @@
         <p class="text-wrapper-21">Viaja desde y/o hacia el aeropuerto con Uber de manera rápida y cómoda.</p>
         <div class="rectangle-13"></div>
         <div class="desde-MXN">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-22">$11111</div>
+        <div class="text-wrapper-22">$220</div>
       </div>
       <div class="coco-bongo">
         <div class="rectangle-11"></div>
@@ -164,7 +164,7 @@
         <div class="text-wrapper-24">Coco Bongo</div>
         <div class="rectangle-15"></div>
         <div class="desde-MXN-2">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-25">$11111</div>
+        <div class="text-wrapper-25">$890</div>
       </div>
       <div class="viva-express">
         <div class="rectangle-16"></div>
@@ -173,7 +173,7 @@
         <p class="text-wrapper-27">Pasa directo a nuestra fila express para documentar tu maleta.</p>
         <div class="rectangle-18"></div>
         <div class="desde-MXN-3">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-28">$11111</div>
+        <div class="text-wrapper-28">$150</div>
       </div>
       </div>
       <div class="servicios-2"><div class="text-wrapper-7">Otros servicios</div></div>
@@ -182,7 +182,7 @@
         <div class="rectangle-19"></div>
         <div class="text-wrapper-29">Viva Transfer</div>
         <div class="desde-MXN-4">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-30">$11111</div>
+        <div class="text-wrapper-30">$189</div>
         <p class="text-wrapper-31">
           Asegura tu transporte desde el aeropuerto hasta destino con nuestro servicio de traslado compartido,
         </p>
@@ -192,14 +192,14 @@
         <div class="rectangle-19"></div>
         <div class="text-wrapper-35">Viva Bus</div>
         <div class="desde-MXN-6">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-36">$11111</div>
+        <div class="text-wrapper-36">$179</div>
         <p class="text-wrapper-37">Te transportaremos del aeropuerto a diferentes puntos de la ciudad y de regreso</p>
         <div class="rectangle-22"></div>
       </div>
       <div class="mascota-carga">
         <div class="rectangle-19"></div>
         <div class="desde-MXN-5">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-32">$11111</div>
+        <div class="text-wrapper-32">$699</div>
         <div class="text-wrapper-33">Mascota en carga</div>
         <p class="text-wrapper-34">
           Si tu perro pesa más de 12 kg, podemos transportarlo en una zona de carga especialmente habilitada para
@@ -210,7 +210,7 @@
       <div class="mascota-en-cabina">
         <div class="rectangle-19"></div>
         <div class="desde-MXN-6">desde<br /><br /><br />MXN</div>
-        <div class="text-wrapper-36">$11111</div>
+        <div class="text-wrapper-36">$549</div>
         <div class="text-wrapper-38">Mascota en cabina</div>
         <p class="text-wrapper-39">
           Disfruta de la compañía de tu mascota llevándola contigo debajo del asiento que tengas enfrente
@@ -228,6 +228,10 @@
             </span>
             <span class="text-wrapper-40">Política de Privacidad</span>
           </p>
+          <div class="addons-total-box" id="addonsTotalBox">
+            <span class="addons-total-label">Total adicionales seleccionados</span>
+            <strong class="addons-total-value" id="addonsTotalValue">$0 MXN</strong>
+          </div>
           <div class="botones-footer">
             <div class="regreso">
               <div class="ellipse-2"></div>
@@ -263,8 +267,211 @@
     </div>
   </body>
   <script>
-    // Servicio adicional seleccionado
-    let selectedService = null;
+    const SERVICE_SELECTORS = '.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina';
+    const selectedServices = new Set();
+    const serviceConfig = {
+      'uber': { id: 'uber', name: 'Uber', price: 220 },
+      'coco-bongo': { id: 'coco-bongo', name: 'Coco Bongo', price: 890 },
+      'viva-express': { id: 'viva-express', name: 'Viva Express', price: 150 },
+      'viva-transfer': { id: 'viva-transfer', name: 'Viva Transfer', price: 189, mapsToIntermodal: 'transfer' },
+      'viva-bus': { id: 'viva-bus', name: 'Viva Bus', price: 179, mapsToIntermodal: 'bus' },
+      'mascota-carga': { id: 'mascota-carga', name: 'Mascota en carga', price: 699 },
+      'mascota-en-cabina': { id: 'mascota-cabina', name: 'Mascota en cabina', price: 549 },
+    };
+
+    function currency(value) {
+      return `$${Number(value || 0).toLocaleString('es-MX')} MXN`;
+    }
+
+    function getServiceKeyFromCard(card) {
+      if (!card) return null;
+      return Object.keys(serviceConfig).find((key) => card.classList.contains(key)) || null;
+    }
+
+    function readOrder() {
+      try {
+        const raw = sessionStorage.getItem('flightCartOrder');
+        return raw ? JSON.parse(raw) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeOrder(order) {
+      try {
+        sessionStorage.setItem('flightCartOrder', JSON.stringify(order));
+      } catch (error) {
+      }
+    }
+
+    function resolveServicePrice(key, order) {
+      const config = serviceConfig[key];
+      if (!config) return 0;
+
+      if (config.mapsToIntermodal && Array.isArray(order?.selectedAddons)) {
+        const intermodalAddon = order.selectedAddons.find(
+          (addon) => addon?.type === 'intermodal' && addon?.service === config.mapsToIntermodal
+        );
+        if (intermodalAddon && Number(intermodalAddon.price) > 0) {
+          return Number(intermodalAddon.price);
+        }
+      }
+
+      return Number(config.price || 0);
+    }
+
+    function updateAddonsTotal() {
+      const order = readOrder();
+      const totalNode = document.getElementById('addonsTotalValue');
+      if (!totalNode) return;
+
+      let total = 0;
+      selectedServices.forEach((key) => {
+        total += resolveServicePrice(key, order);
+      });
+
+      totalNode.textContent = currency(total);
+    }
+
+    function setServicePriceText(cardSelector, valueSelector, key, order) {
+      const node = document.querySelector(`${cardSelector} ${valueSelector}`);
+      if (!node) return;
+      node.textContent = `$${resolveServicePrice(key, order)}`;
+    }
+
+    function renderServiceCardPrices() {
+      const order = readOrder();
+      setServicePriceText('.uber', '.text-wrapper-22', 'uber', order);
+      setServicePriceText('.coco-bongo', '.text-wrapper-25', 'coco-bongo', order);
+      setServicePriceText('.viva-express', '.text-wrapper-28', 'viva-express', order);
+      setServicePriceText('.viva-transfer', '.text-wrapper-30', 'viva-transfer', order);
+      setServicePriceText('.viva-bus', '.text-wrapper-36', 'viva-bus', order);
+      setServicePriceText('.mascota-carga', '.text-wrapper-32', 'mascota-carga', order);
+      setServicePriceText('.mascota-en-cabina', '.text-wrapper-36', 'mascota-en-cabina', order);
+    }
+
+    function syncServiceVisual(card, selected) {
+      if (!card) return;
+      card.classList.toggle('service-selected', selected);
+    }
+
+    function toggleService(card) {
+      const key = getServiceKeyFromCard(card);
+      if (!key) return;
+
+      const selected = selectedServices.has(key);
+      if (selected) {
+        selectedServices.delete(key);
+      } else {
+        selectedServices.add(key);
+      }
+
+      syncServiceVisual(card, !selected);
+      updateAddonsTotal();
+    }
+
+    function preloadIntermodalSelectionFromOrder() {
+      const order = readOrder();
+      if (!order || !Array.isArray(order.selectedAddons)) {
+        updateAddonsTotal();
+        return;
+      }
+
+      const selectedIntermodalServices = order.selectedAddons
+        .filter((addon) => addon?.type === 'intermodal')
+        .map((addon) => addon.service);
+
+      Object.entries(serviceConfig).forEach(([key, config]) => {
+        if (!config.mapsToIntermodal) return;
+        if (!selectedIntermodalServices.includes(config.mapsToIntermodal)) return;
+
+        const card = document.querySelector(`.${key}`);
+        if (!card) return;
+
+        selectedServices.add(key);
+        syncServiceVisual(card, true);
+      });
+
+      updateAddonsTotal();
+    }
+
+    function persistSelectedAddonsToOrder() {
+      const existingOrder = readOrder() || {
+        createdAt: new Date().toISOString(),
+        search: {},
+        roundTrip: false,
+        passengers: 1,
+        selectedAddons: [],
+        totals: { base: 0, tua: 0, ground: 0, extras: 0, grand: 0 },
+      };
+
+      const previousAddons = Array.isArray(existingOrder.selectedAddons) ? existingOrder.selectedAddons : [];
+      const preservedIntermodal = previousAddons.filter((addon) => addon?.type === 'intermodal');
+      const newAddons = [];
+
+      selectedServices.forEach((key) => {
+        const config = serviceConfig[key];
+        if (!config) return;
+        const price = resolveServicePrice(key, existingOrder);
+
+        if (config.mapsToIntermodal) {
+          const intermodal = preservedIntermodal.find((addon) => addon?.service === config.mapsToIntermodal);
+          if (intermodal) {
+            intermodal.price = price;
+            intermodal.name = intermodal.name || config.name;
+            newAddons.push(intermodal);
+            return;
+          }
+
+          newAddons.push({
+            id: `intermodal-${config.mapsToIntermodal}`,
+            type: 'intermodal',
+            service: config.mapsToIntermodal,
+            name: config.name,
+            price,
+            quantity: 1,
+          });
+          return;
+        }
+
+        newAddons.push({
+          id: `addon-${config.id}`,
+          type: 'adicional',
+          service: config.id,
+          name: config.name,
+          price,
+          quantity: 1,
+        });
+      });
+
+      const intermodalTotal = newAddons
+        .filter((addon) => addon.type === 'intermodal')
+        .reduce((acc, addon) => acc + Number(addon.price || 0), 0);
+
+      const extrasTotal = newAddons
+        .filter((addon) => addon.type !== 'intermodal')
+        .reduce((acc, addon) => acc + Number(addon.price || 0), 0);
+
+      existingOrder.selectedAddons = newAddons;
+      existingOrder.intermodal = intermodalTotal > 0
+        ? {
+          service: 'mixed',
+          option: 'selected',
+          label: newAddons.filter((addon) => addon.type === 'intermodal').map((addon) => addon.name).join(' + '),
+          totalPrice: intermodalTotal,
+        }
+        : { service: 'none', option: 'none', label: 'Sin intermodal', totalPrice: 0 };
+
+      existingOrder.totals = existingOrder.totals || {};
+      existingOrder.totals.ground = intermodalTotal;
+      existingOrder.totals.extras = extrasTotal;
+      existingOrder.totals.grand = Number(existingOrder.totals.base || 0)
+        + Number(existingOrder.totals.tua || 0)
+        + intermodalTotal
+        + extrasTotal;
+
+      writeOrder(existingOrder);
+    }
 
     // Manejo de selección de opciones de equipaje
     document.querySelectorAll('.option-equipaje').forEach(option => {
@@ -290,26 +497,17 @@
       });
     });
 
-    // Manejo de selección de servicios adicionales usando event delegation
+    // Manejo de selección de servicios adicionales usando event delegation (multi-selección)
     document.addEventListener('click', function(e) {
-      const serviceCard = e.target.closest('.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina');
+      const serviceCard = e.target.closest(SERVICE_SELECTORS);
       
       if (serviceCard) {
         // No activar si clickeamos en el badge/button específico
         if (e.target.closest('.rectangle-13, .rectangle-15, .rectangle-18, .rectangle-20, .rectangle-22, .rectangle-21, .rectangle-23')) {
           return;
         }
-        
-        // Remover selección anterior de todos los servicios
-        document.querySelectorAll('.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina').forEach(c => {
-          c.classList.remove('service-selected');
-        });
-        
-        // Seleccionar actual
-        serviceCard.classList.add('service-selected');
-        selectedService = serviceCard.className;
-        
-        console.log('Servicio seleccionado:', selectedService);
+
+        toggleService(serviceCard);
       }
     });
 
@@ -318,25 +516,25 @@
       const btn = e.target.closest('.rectangle-13, .rectangle-15, .rectangle-18, .rectangle-20, .rectangle-22, .rectangle-21, .rectangle-23');
       if (btn) {
         e.stopPropagation();
-        // Solo marca visualmente que se va a añadir después de continuar
-        const service = btn.closest('.uber, .coco-bongo, .viva-express, .viva-transfer, .viva-bus, .mascota-carga, .mascota-en-cabina');
-        if (service && !service.classList.contains('service-selected')) {
-          service.click();
+        const service = btn.closest(SERVICE_SELECTORS);
+        if (service) {
+          toggleService(service);
         }
       }
     });
 
     // Botón continuar
     document.querySelector('.continuar').addEventListener('click', function() {
-      if (selectedService) {
-        // Proceder con la adición después de continuar
-        window.location.href = '../asientos/';
-      }
+      persistSelectedAddonsToOrder();
+      window.location.href = '../asientos/';
     });
 
     // Botón regreso
     document.querySelector('.regreso').addEventListener('click', function() {
       window.history.back();
     });
+
+    preloadIntermodalSelectionFromOrder();
+    renderServiceCardPrices();
   </script>
 </html>

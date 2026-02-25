@@ -318,6 +318,146 @@ body {
   background: #f7fbff;
 }
 
+.aero-bot-trigger {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid #00ae42;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.aero-bot-trigger img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.aero-bot-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 24, 17, 0.46);
+  display: none;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 20px;
+  z-index: 60;
+}
+
+.aero-bot-overlay.open {
+  display: flex;
+}
+
+.aero-bot-modal {
+  width: min(420px, calc(100vw - 24px));
+  max-height: min(82vh, 760px);
+  background: #ffffff;
+  border: 1px solid #cde0d4;
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(12, 36, 23, 0.28);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+}
+
+.aero-bot-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid #dce8e0;
+  background: linear-gradient(180deg, #eff9f2 0%, #ffffff 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.aero-bot-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.aero-bot-header p {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: #557164;
+}
+
+.aero-bot-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.aero-bot-mini,
+.aero-bot-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid #b6d2c2;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.aero-bot-body {
+  padding: 12px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f9fcfa;
+}
+
+.aero-bot-msg {
+  max-width: 92%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  line-height: 1.35;
+  font-size: 0.88rem;
+}
+
+.aero-bot-msg.bot {
+  align-self: flex-start;
+  background: #ffffff;
+  border: 1px solid #cfe2d6;
+  color: #243f32;
+}
+
+.aero-bot-msg.user {
+  align-self: flex-end;
+  background: #00ae42;
+  color: #ffffff;
+}
+
+.aero-bot-options {
+  border-top: 1px solid #dce8e0;
+  padding: 10px;
+  background: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.aero-bot-option {
+  border: 1px solid #9bc7ab;
+  background: #f0faf3;
+  color: #1f4a34;
+  border-radius: 999px;
+  padding: 8px 10px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aero-bot-option:hover {
+  background: #ddf3e5;
+}
+
 .destination-controls {
   margin-top: 0.7rem;
   display: grid;

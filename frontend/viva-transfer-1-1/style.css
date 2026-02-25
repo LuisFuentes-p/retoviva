@@ -1,3 +1,246 @@
+.viva-transfer-page {
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+:root {
+  --viva-green: #00ae42;
+  --viva-green-strong: #068a38;
+  --viva-dark: #11301e;
+  --viva-text: #303030;
+  --viva-muted: #5d6d65;
+  --viva-line: #d8e3dc;
+  --white: #fff;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.top-header {
+  background: #eff7f1;
+  border-bottom: 1px solid var(--viva-line);
+}
+
+.top-header-row {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ghost-link {
+  background: none;
+  border: none;
+  color: var(--viva-text);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.ghost-link:hover,
+.ghost-link.is-link:hover {
+  color: var(--viva-green);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.session-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.session-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+.main-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--viva-line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.main-header-row {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--viva-line);
+  border-radius: 999px;
+  background: #f6fbf7;
+  cursor: pointer;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--viva-dark);
+  text-decoration: none;
+  line-height: 1;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.logo-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--viva-muted);
+  font-weight: 500;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.main-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.primary-btn {
+  background: var(--viva-green);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.primary-btn:hover {
+  background: var(--viva-green-strong);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--viva-green);
+  border: 2px solid var(--viva-green);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.secondary-btn:hover {
+  background: var(--viva-green);
+  color: var(--white);
+}
+
+.viva-progress-bar {
+  border-bottom: 1px solid var(--viva-line);
+  background: #ffffff;
+}
+
+.viva-progress-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 20px;
+}
+
+.viva-progress-steps {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.viva-step {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.viva-step-number {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #bccfc2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #406252;
+}
+
+.viva-step-label {
+  font-size: 0.78rem;
+  color: #587769;
+  font-weight: 600;
+}
+
+.viva-step.is-done .viva-step-number,
+.viva-step.is-active .viva-step-number {
+  background: #00ae42;
+  border-color: #00ae42;
+  color: #ffffff;
+}
+
+.viva-step.is-active .viva-step-label {
+  color: #00ae42;
+}
+
+.viva-step-line {
+  height: 1px;
+  background: #cde0d4;
+}
+
+.transfer-shell {
+  padding: 20px;
+}
+
+.transfer-scale-host {
+  margin: 0 auto;
+  position: relative;
+}
+
 .viva-transfer-1-1,
 .viva-transfer-1-1 * {
   box-sizing: border-box;
@@ -6,7 +249,10 @@
   background: #ffffff;
   height: 4592px;
   position: relative;
-  overflow-x: auto;
+  overflow: hidden;
+  border: 1px solid #d8e3dc;
+  border-radius: 24px;
+  transform-origin: top left;
 }
 .rectangle-43 {
   background: #d9d9d9;
@@ -2630,10 +2876,6 @@
   width: 24px;
   height: 60px;
 }
-.toliet {
-  position: absolute;
-  inset: 0;
-}
 .toilet {
   background: #646464;
   border-style: solid;
@@ -2736,10 +2978,6 @@
   left: 90px;
   top: 3005px;
 }
-.zona-1 {
-  position: absolute;
-  inset: 0;
-}
 .zona-12 {
   color: #000000;
   text-align: left;
@@ -2759,10 +2997,6 @@
   position: absolute;
   left: 207px;
   top: 1211px;
-}
-.zona-4 {
-  position: absolute;
-  inset: 0;
 }
 .zona-13 {
   color: #000000;
@@ -2785,6 +3019,12 @@
   position: absolute;
   left: 120px;
   top: 3035px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 52px;
 }
 .mayor-espacio-al-viajar2 {
   color: #000000;
@@ -2795,10 +3035,6 @@
   position: absolute;
   left: 207px;
   top: 3076px;
-}
-.zona-2 {
-  position: absolute;
-  inset: 0;
 }
 .zona-22 {
   color: #000000;
@@ -2819,10 +3055,6 @@
   position: absolute;
   left: 207px;
   top: 1349px;
-}
-.zona-5 {
-  position: absolute;
-  inset: 0;
 }
 .zona-23 {
   color: #000000;
@@ -2845,6 +3077,12 @@
   position: absolute;
   left: 120px;
   top: 3185px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 52px;
 }
 .asiento-regular-que-m-s-te-guste2 {
   color: #000000;
@@ -2855,10 +3093,6 @@
   position: absolute;
   left: 207px;
   top: 3214px;
-}
-.zona-3 {
-  position: absolute;
-  inset: 0;
 }
 .zona-32 {
   color: #000000;
@@ -2881,10 +3115,6 @@
   top: 1476px;
   width: 543px;
 }
-.zona-6 {
-  position: absolute;
-  inset: 0;
-}
 .zona-33 {
   color: #000000;
   text-align: left;
@@ -2906,6 +3136,12 @@
   position: absolute;
   left: 120px;
   top: 3306px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 52px;
 }
 .asientos-en-las-primeras-filas-de-avi-n-con-abordaje-prioritario-y-m-s-espacio2 {
   color: #000000;
@@ -2937,10 +3173,6 @@
   position: absolute;
   left: 331px;
   top: 3471px;
-}
-.conton-aceptar {
-  position: absolute;
-  inset: 0;
 }
 .rectangle-902 {
   background: #ff4d29;
@@ -3000,18 +3232,15 @@
   left: 120px;
   top: 3556px;
 }
-.boton {
-  position: absolute;
-  inset: 0;
-}
 .rectangle-91 {
-  background: #02af42;
+  background: #b5b5b5;
   border-radius: 50px;
   width: 90px;
   height: 37px;
   position: absolute;
   left: 690px;
   top: 1061px;
+  cursor: pointer;
 }
 .ellipse-71 {
   background: #ffffff;
@@ -3019,17 +3248,19 @@
   width: 30px;
   height: 30px;
   position: absolute;
-  left: 745px;
-  top: 1065px;
+  left: 4px;
+  top: 4px;
+  transition: transform 0.2s ease;
 }
 .rectangle-912 {
-  background: #02af42;
+  background: #b5b5b5;
   border-radius: 50px;
   width: 90px;
   height: 37px;
   position: absolute;
   left: 690px;
   top: 2926px;
+  cursor: pointer;
 }
 .ellipse-712 {
   background: #ffffff;
@@ -3037,8 +3268,22 @@
   width: 30px;
   height: 30px;
   position: absolute;
-  left: 745px;
-  top: 2930px;
+  left: 4px;
+  top: 4px;
+  transition: transform 0.2s ease;
+}
+.seat-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.seat-switch input:checked + .ellipse-71,
+.seat-switch input:checked + .ellipse-712 {
+  transform: translateX(52px);
+}
+.seat-switch.is-on {
+  background: #02af42;
 }
 .continuar {
   width: 375px;
@@ -3046,9 +3291,10 @@
   position: absolute;
   left: 945px;
   top: 4434px;
+  cursor: pointer;
 }
 .rectangle-14 {
-  background: #d9d9d9;
+  background: #02af42;
   border-radius: 60px;
   width: 100%;
   height: 100%;
@@ -3059,7 +3305,7 @@
   top: 0%;
 }
 .continuar2 {
-  color: #000000;
+  color: #ffffff;
   text-align: left;
   font-family: "Montserrat-SemiBold", sans-serif;
   font-size: 24px;
@@ -3072,6 +3318,41 @@
   top: 30%;
   height: 41.43%;
 }
+.continuar.is-disabled {
+  cursor: not-allowed;
+}
+.continuar.is-disabled .rectangle-14 {
+  background: #c3c3c3;
+}
+
+.regreso {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  left: 855px;
+  top: 4434px;
+  border-radius: 999px;
+  border: 1px solid #00ae42;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.regreso .ellipse-2 {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(0, 174, 66, 0.08);
+}
+
+.flecha-pequena {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
+}
+
 .cuadro-gris {
   width: 60px;
   height: 60px;
@@ -3084,7 +3365,7 @@
   border-radius: 4px;
   border-style: solid;
   border-color: #646464;
-  border-width: 1px;
+  border-width: 2px;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -3092,6 +3373,24 @@
   left: 0%;
   bottom: 0%;
   top: 0%;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 52px;
+}
+
+.rectangle-50.is-selected {
+  border-color: #02af42;
+  background: #02af42;
+}
+
+.rectangle-872.is-selected,
+.rectangle-882.is-selected,
+.rectangle-892.is-selected {
+  border-color: #02af42;
+  background: #02af42;
 }
 .cuadro-gris2 {
   width: 60px;
@@ -3106,4 +3405,25 @@
   position: absolute;
   left: 121px;
   top: 1446px;
+}
+
+@media (max-width: 1100px) {
+  .main-header-row,
+  .top-header-row {
+    justify-content: center;
+  }
+
+  .main-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .viva-progress-steps {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .viva-step-line {
+    display: none;
+  }
 }

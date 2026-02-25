@@ -55,108 +55,10 @@
         <h1 class="page-title">Mis Vuelos y Reservas</h1>
         <p class="page-subtitle">Aquí puedes ver tus vuelos confirmados y hacer check-in</p>
 
-        <!-- Vuelo 1 -->
-        <div class="vuelo-card">
-          <div class="vuelo-header">
-            <div class="vuelo-route">
-              <span class="ruta-origen">Ciudad de México</span>
-              <span class="ruta-arrow">→</span>
-              <span class="ruta-destino">Cancún</span>
-            </div>
-            <div class="vuelo-fecha">Sáb., 21 Feb. 2026</div>
-          </div>
-
-          <div class="vuelo-details">
-            <div class="vuelo-horario">
-              <div class="horario-item">
-                <div class="hora">7:00 AM</div>
-                <div class="ciudad-code">MEX</div>
-              </div>
-              <div class="vuelo-linea"></div>
-              <div class="horario-item">
-                <div class="hora">10:15 AM</div>
-                <div class="ciudad-code">CUN</div>
-              </div>
-            </div>
-
-            <div class="vuelo-info">
-              <div class="info-item">
-                <span class="info-label">Vuelo directo</span>
-                <span class="info-value">VB-451</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Pasajeros</span>
-                <span class="info-value">2 adultos</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Asientos</span>
-                <span class="info-value">12A, 12B</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Estado</span>
-                <span class="info-value status-confirmado">Confirmado</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="vuelo-acciones">
-            <button type="button" class="btn-accion btn-detalles">Ver detalles</button>
-            <button type="button" class="btn-accion btn-checkin">Check-in</button>
-          </div>
-        </div>
-
-        <!-- Vuelo 2 -->
-        <div class="vuelo-card">
-          <div class="vuelo-header">
-            <div class="vuelo-route">
-              <span class="ruta-origen">Cancún</span>
-              <span class="ruta-arrow">→</span>
-              <span class="ruta-destino">Ciudad de México</span>
-            </div>
-            <div class="vuelo-fecha">Sáb., 28 Feb. 2026</div>
-          </div>
-
-          <div class="vuelo-details">
-            <div class="vuelo-horario">
-              <div class="horario-item">
-                <div class="hora">6:10 AM</div>
-                <div class="ciudad-code">CUN</div>
-              </div>
-              <div class="vuelo-linea"></div>
-              <div class="horario-item">
-                <div class="hora">7:35 AM</div>
-                <div class="ciudad-code">MEX</div>
-              </div>
-            </div>
-
-            <div class="vuelo-info">
-              <div class="info-item">
-                <span class="info-label">Vuelo directo</span>
-                <span class="info-value">VB-452</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Pasajeros</span>
-                <span class="info-value">2 adultos</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Asientos</span>
-                <span class="info-value">15A, 15B</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Estado</span>
-                <span class="info-value status-confirmado">Confirmado</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="vuelo-acciones">
-            <button type="button" class="btn-accion btn-detalles">Ver detalles</button>
-            <button type="button" class="btn-accion btn-checkin">Check-in</button>
-          </div>
-        </div>
+        <div id="bookingsList"></div>
 
         <!-- Llamada a acción si no hay vuelos -->
-        <div class="sin-vuelos" style="display: none;">
+        <div class="sin-vuelos" id="emptyState" style="display: none;">
           <p>No tienes vuelos reservados</p>
           <a href="../pantalla-principal/" class="primary-btn">Reservar un vuelo</a>
         </div>
@@ -164,6 +66,219 @@
     </div>
 
     <script>
+      function readOrder() {
+        try {
+          const raw = sessionStorage.getItem('flightCartOrder');
+          return raw ? JSON.parse(raw) : null;
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function formatDate(isoDate) {
+        if (!isoDate) return 'Fecha por confirmar';
+        const date = new Date(`${isoDate}T12:00:00`);
+        if (Number.isNaN(date.getTime())) return 'Fecha por confirmar';
+        return date.toLocaleDateString('es-MX', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+      }
+
+      function formatTime12h(hhmm) {
+        if (!hhmm || !hhmm.includes(':')) return '--:--';
+        const [hStr, mStr] = hhmm.split(':');
+        const h = Number(hStr);
+        const m = Number(mStr);
+        if (Number.isNaN(h) || Number.isNaN(m)) return '--:--';
+        const period = h >= 12 ? 'PM' : 'AM';
+        const h12 = h % 12 === 0 ? 12 : h % 12;
+        return `${h12}:${String(m).padStart(2, '0')} ${period}`;
+      }
+
+      function shortCode(place) {
+        const clean = String(place || '').replace(/\(.*?\)/g, '').replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]/g, ' ').trim();
+        if (!clean) return '---';
+        const words = clean.split(/\s+/).filter(Boolean);
+        if (words.length >= 2) return `${words[0][0] || ''}${words[1][0] || ''}${words[2]?.[0] || ''}`.toUpperCase();
+        return clean.slice(0, 3).toUpperCase();
+      }
+
+      function getSeatSummary(order, legKey) {
+        const selectedSeats = Array.isArray(order?.seats?.[legKey])
+          ? order.seats[legKey].map((item) => item?.seat).filter(Boolean)
+          : [];
+        return selectedSeats.length ? selectedSeats.join(', ') : 'Sin seleccionar';
+      }
+
+      function passengersLabel(count) {
+        const total = Number(count || 1);
+        return `${total} ${total === 1 ? 'adulto' : 'adultos'}`;
+      }
+
+      function buildLegsFromOrder(order) {
+        if (!order?.search) return [];
+
+        const origin = order.search.origin || 'Origen';
+        const destination = order.search.destination || 'Destino';
+        const outbound = order.selectedOutbound || {};
+        const incoming = order.selectedReturn || {};
+        const passengerCount = Number(order.passengers || 1);
+        const status = order?.paymentConfirmation?.status === 'ok' ? 'Confirmado' : 'Pendiente';
+
+        const legs = [
+          {
+            origin,
+            destination,
+            date: order.search.departDate,
+            departTime: outbound.departTime,
+            arriveTime: outbound.arriveTime,
+            flightNumber: outbound.number || 'VB----',
+            passengers: passengersLabel(passengerCount),
+            seats: getSeatSummary(order, 'outbound'),
+            status,
+          },
+        ];
+
+        if (order.roundTrip) {
+          legs.push({
+            origin: destination,
+            destination: origin,
+            date: order.search.returnDate,
+            departTime: incoming.departTime,
+            arriveTime: incoming.arriveTime,
+            flightNumber: incoming.number || 'VB----',
+            passengers: passengersLabel(passengerCount),
+            seats: getSeatSummary(order, 'return'),
+            status,
+          });
+        }
+
+        return legs;
+      }
+
+      function buildLegsFromApi(payload) {
+        if (!payload?.flight) return [];
+
+        const flight = payload.flight;
+        const passengers = '1 adulto';
+        const legs = [
+          {
+            origin: flight.origin || 'Origen',
+            destination: flight.destination || 'Destino',
+            date: flight.departureDate,
+            departTime: flight.departureTime,
+            arriveTime: null,
+            flightNumber: flight.number || 'VB----',
+            passengers,
+            seats: 'Sin seleccionar',
+            status: 'Confirmado',
+          },
+        ];
+
+        if (flight.returnDate) {
+          legs.push({
+            origin: flight.destination || 'Destino',
+            destination: flight.origin || 'Origen',
+            date: flight.returnDate,
+            departTime: flight.returnTime,
+            arriveTime: null,
+            flightNumber: flight.number || 'VB----',
+            passengers,
+            seats: 'Sin seleccionar',
+            status: 'Confirmado',
+          });
+        }
+
+        return legs;
+      }
+
+      function createCard(leg) {
+        const statusClass = String(leg.status || '').toLowerCase() === 'confirmado'
+          ? 'info-value status-confirmado'
+          : 'info-value';
+        return `
+          <div class="vuelo-card">
+            <div class="vuelo-header">
+              <div class="vuelo-route">
+                <span class="ruta-origen">${leg.origin}</span>
+                <span class="ruta-arrow">→</span>
+                <span class="ruta-destino">${leg.destination}</span>
+              </div>
+              <div class="vuelo-fecha">${formatDate(leg.date)}</div>
+            </div>
+
+            <div class="vuelo-details">
+              <div class="vuelo-horario">
+                <div class="horario-item">
+                  <div class="hora">${formatTime12h(leg.departTime)}</div>
+                  <div class="ciudad-code">${shortCode(leg.origin)}</div>
+                </div>
+                <div class="vuelo-linea"></div>
+                <div class="horario-item">
+                  <div class="hora">${formatTime12h(leg.arriveTime)}</div>
+                  <div class="ciudad-code">${shortCode(leg.destination)}</div>
+                </div>
+              </div>
+
+              <div class="vuelo-info">
+                <div class="info-item">
+                  <span class="info-label">Vuelo directo</span>
+                  <span class="info-value">${leg.flightNumber}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Pasajeros</span>
+                  <span class="info-value">${leg.passengers}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Asientos</span>
+                  <span class="info-value">${leg.seats}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Estado</span>
+                  <span class="${statusClass}">${leg.status}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="vuelo-acciones">
+              <button type="button" class="btn-accion btn-detalles">Ver detalles</button>
+              <button type="button" class="btn-accion btn-checkin">Check-in</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderLegs(legs) {
+        const bookingsList = document.getElementById('bookingsList');
+        const emptyState = document.getElementById('emptyState');
+        if (!bookingsList || !emptyState) return;
+
+        if (!Array.isArray(legs) || !legs.length) {
+          bookingsList.innerHTML = '';
+          emptyState.style.display = '';
+          return;
+        }
+
+        emptyState.style.display = 'none';
+        bookingsList.innerHTML = legs.map(createCard).join('');
+      }
+
+      async function hydrateRealBookings() {
+        const order = readOrder();
+        const fromOrder = buildLegsFromOrder(order);
+        if (fromOrder.length) {
+          renderLegs(fromOrder);
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/booking');
+          if (!response.ok) throw new Error('Sin datos de backend');
+          const payload = await response.json();
+          renderLegs(buildLegsFromApi(payload));
+        } catch (error) {
+          renderLegs([]);
+        }
+      }
+
       document.addEventListener('click', function (e) {
         const checkinBtn = e.target.closest('.btn-checkin');
         if (checkinBtn) {
@@ -187,7 +302,16 @@
           checkinBtn.classList.toggle('checked-in');
           checkinBtn.textContent = checkinBtn.classList.contains('checked-in') ? '✓ Check-in realizado' : 'Check-in';
         }
+
+        const detallesBtn = e.target.closest('.btn-detalles');
+        if (detallesBtn) {
+          e.preventDefault();
+          const card = detallesBtn.closest('.vuelo-card');
+          card.classList.toggle('expanded');
+        }
       });
+
+      hydrateRealBookings();
     </script>
   </body>
 </html>

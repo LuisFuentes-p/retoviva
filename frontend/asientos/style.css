@@ -436,6 +436,11 @@ body {
 	color: var(--white);
 }
 
+.seat.passenger-locked {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
 /* ===== INFO BOX ===== */
 .info-box {
 	background: #e8f5e9;
@@ -501,6 +506,13 @@ body {
 	background: var(--viva-bg);
 	border: 1px solid var(--viva-line);
 	border-radius: 12px;
+	cursor: pointer;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.passenger-item.is-active {
+	border-color: var(--viva-green);
+	box-shadow: 0 0 0 2px rgba(0, 174, 66, 0.14);
 }
 
 .passenger-info {
